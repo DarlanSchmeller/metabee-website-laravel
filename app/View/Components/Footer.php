@@ -35,7 +35,7 @@ class Footer extends Component
                 'title' => 'Empresa',
                 'links' => [
                     'Cursos',
-                    'Sobre',
+                    'Sobre Nós',
                     'Instrutores',
                     'Planos',
                     'Contato',

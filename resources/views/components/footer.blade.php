@@ -1,31 +1,21 @@
-<footer class="bg-slate-900 text-gray-300 border-t border-slate-700">
+<footer class="bg-slate-900 text-gray-300 border-t border-amber-500/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="grid lg:grid-cols-6 gap-8">
+        <div class="grid lg:grid-cols-6 gap-8 place-items-center lg:place-items-start text-center lg:text-left">
             <div class="lg:col-span-2">
-                <div class="flex items-center space-x-3 mb-6">
-
-                    {{-- Logo --}}
-                    <div class="relative w-10 h-10">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600 rounded-lg rotate-45">
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-gray-900 -rotate-45" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2L21 7v10l-9 5-9-5V7z"></path>
-                            </svg>
-                        </div>
-                    </div>
-
+                <div class="flex flex-col items-center lg:items-start space-y-3 mb-6">
+                    <x-logo />
                     <span
-                        class="text-xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">MetaBee</span>
+                        class="text-xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+                        MetaBee
+                    </span>
                 </div>
 
-                <p class="text-gray-400 mb-6 leading-relaxed">
+                <p class="text-gray-400 mb-6 leading-relaxed max-w-sm mx-auto lg:mx-0">
                     Capacitando a próxima geração de engenheiros e inovadores em robótica
                     através de educação online de ponta e experiências práticas.
                 </p>
 
-                <div class="flex space-x-4">
+                <div class="flex justify-center lg:justify-start space-x-4">
                     @foreach ($socialLinks as $social)
                         <a href="{{ $social['href'] }}"
                             class="w-10 h-10 bg-gray-900 border border-amber-500/30 rounded-lg flex items-center
@@ -53,10 +43,10 @@
         </div>
 
         <div class="border-t border-amber-500/20 mt-12 pt-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex flex-col md:flex-row justify-center md:justify-between items-center text-center md:text-left">
                 <p class="text-gray-400 text-sm">© {{ date('Y') }} MetaBee. Todos os direitos reservados.</p>
 
-                <div class="flex space-x-6 mt-4 md:mt-0">
+                <div class="flex flex-wrap justify-center md:justify-end space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-gray-400 hover:text-amber-400 text-sm transition-colors">Política de
                         Privacidade</a>
                     <a href="#" class="text-gray-400 hover:text-amber-400 text-sm transition-colors">Termos de

@@ -13,7 +13,7 @@ class Header extends Component
     {
         $this->menuItems = [
             ['label' => 'Cursos', 'href' => '#'],
-            ['label' => 'Sobre', 'href' => '#'],
+            ['label' => 'Sobre Nós', 'href' => '#'],
             ['label' => 'Instrutores', 'href' => '#'],
             ['label' => 'Planos', 'href' => '#'],
             ['label' => 'Contato', 'href' => '#'],
