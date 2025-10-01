@@ -50,14 +50,6 @@ class Footer extends Component
                 ],
             ],
         ];
-
-        $this->socialLinks = [
-            ['icon' => 'facebook', 'href' => '#'],
-            ['icon' => 'twitter', 'href' => '#'],
-            ['icon' => 'youtube', 'href' => '#'],
-            ['icon' => 'linkedin', 'href' => '#'],
-            ['icon' => 'instagram', 'href' => '#'],
-        ];
     }
 
     public function render(): View
