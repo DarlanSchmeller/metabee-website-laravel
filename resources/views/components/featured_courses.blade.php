@@ -17,9 +17,12 @@
                         <img src="{{ $course['image'] }}" alt="{{ $course['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                         
                         <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold {{ $course['levelColor'] }}">
-                                {{ $course['level'] }}
-                            </span>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold
+                            {{ $course['levelColor'] }}
+                        ">
+                            {{ $course['level'] }}
+                        </span>
+
                         </div>
 
                         <div class="absolute top-4 right-4 bg-gray-900/90 backdrop-blur-sm border border-amber-500/30 rounded-full p-2 shadow-lg">
