@@ -1,56 +1,4 @@
-@props([
-    'courses' => [
-        [
-            'id' => 1,
-            'title' => 'Fundamentos Completos de Robótica',
-            'instructor' => 'Dra. Sarah Chen',
-            'rating' => 4.9,
-            'students' => 2840,
-            'duration' => '12 horas',
-            'price' => 99,
-            'image' => 'https://images.pexels.com/photos/8294585/pexels-photo-8294585.jpeg?auto=compress&cs=tinysrgb&w=800',
-            'level' => 'Iniciante',
-            'tags' => ['Arduino', 'Sensores', 'Programação'],
-        ],
-        [
-            'id' => 2,
-            'title' => 'IA Avançada para Robótica',
-            'instructor' => 'Prof. Michael Rodriguez',
-            'rating' => 4.8,
-            'students' => 1920,
-            'duration' => '18 horas',
-            'price' => 149,
-            'image' => 'https://images.pexels.com/photos/8294577/pexels-photo-8294577.jpeg?auto=compress&cs=tinysrgb&w=800',
-            'level' => 'Avançado',
-            'tags' => ['Machine Learning', 'Visão Computacional', 'ROS'],
-        ],
-        [
-            'id' => 3,
-            'title' => 'Sistemas de Automação Industrial',
-            'instructor' => 'Dr. James Wilson',
-            'rating' => 4.7,
-            'students' => 1540,
-            'duration' => '15 horas',
-            'price' => 129,
-            'image' => 'https://images.pexels.com/photos/8294493/pexels-photo-8294493.jpeg?auto=compress&cs=tinysrgb&w=800',
-            'level' => 'Intermediário',
-            'tags' => ['PLC', 'SCADA', 'HMI'],
-        ],
-    ]
-])
-
-@php
-    function getLevelColor($level) {
-        return match ($level) {
-            'Iniciante' => 'bg-green-100 text-green-800',
-            'Intermediário' => 'bg-yellow-100 text-yellow-800',
-            'Avançado' => 'bg-red-100 text-red-800',
-            default => 'bg-gray-100 text-gray-800',
-        };
-    }
-@endphp
-
-<section class="py-20 bg-zinc-950">
+<section class="py-20 bg-gray-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-bold text-white mb-4">
@@ -69,7 +17,7 @@
                         <img src="{{ $course['image'] }}" alt="{{ $course['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                         
                         <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold {{ getLevelColor($course['level']) }}">
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold {{ $course['levelColor'] }}">
                                 {{ $course['level'] }}
                             </span>
                         </div>

@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
+use App\Constants\Globals;
 
 class Header extends Component
 {
@@ -11,13 +12,7 @@ class Header extends Component
 
     public function __construct()
     {
-        $this->menuItems = [
-            ['label' => 'Cursos', 'href' => '#'],
-            ['label' => 'Sobre Nós', 'href' => '#'],
-            ['label' => 'Instrutores', 'href' => '#'],
-            ['label' => 'Planos', 'href' => '#'],
-            ['label' => 'Contato', 'href' => '#'],
-        ];
+        $this->menuItems = GLOBALS::MENU_ITEMS;
     }
 
     public function render(): View

@@ -19,10 +19,9 @@
                 @endforeach
             </nav>
 
-            {{-- Desktop Actions --}}
             <div class="hidden md:flex items-center space-x-4">
                 <button class="px-4 py-2 text-amber-400 border border-amber-500/50 rounded-lg hover:bg-amber-500/10 transition-colors">Entrar</button>
-                <button class="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all font-semibold">Começar</button>
+                <button class="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all font-semibold">Começar Agora</button>
             </div>
 
             {{-- Mobile menu button --}}

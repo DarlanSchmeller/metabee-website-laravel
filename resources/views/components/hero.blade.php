@@ -1,28 +1,25 @@
 <section class="relative bg-zinc-900 pt-20 pb-16 overflow-hidden">
-    {{-- Hexagonal Grid Background --}}
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0"
             style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='%23fbbf24' stroke-width='0.5'/%3E%3C/svg%3E&quot;); background-size: 60px 60px">
         </div>
     </div>
 
-    {{-- Glowing Orbs --}}
     <div class="absolute top-20 right-20 w-96 h-96 bg-amber-500/20 rounded-full filter blur-3xl animate-pulse"></div>
     <div class="absolute bottom-20 left-20 w-96 h-96 bg-yellow-500/20 rounded-full filter blur-3xl animate-pulse"
         style="animation-delay: 1s"></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-            {{-- Content --}}
             <div class="max-w-md mx-auto lg:max-w-none lg:mx-0">
                 <div
                     class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/30 rounded-full text-sm font-medium text-amber-400 mb-6">
                     <x-heroicon-o-cube class="w-4 h-4 mr-2 text-amber-500" />
-                    Novo: Curso Avançado de Robótica com IA disponível
+                    {{ $news_message }}
                 </div>
 
                 <h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                    Domine
+                    Domine a
                     <span
                         class="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
                         Robótica
@@ -31,11 +28,10 @@
                 </h1>
 
                 <p class="text-lg text-gray-400 mb-8 leading-relaxed">
-                    Junte-se a milhares de estudantes aprendendo robótica, IA e automação de ponta.
+                    Junte-se a outros estudantes aprendendo programação, robótica, IA e automação de ponta.
                     Do iniciante ao especialista, temos o curso perfeito para sua jornada.
                 </p>
 
-                {{-- CTA Buttons --}}
                 <div class="flex flex-col sm:flex-row gap-4 mb-12">
                     <a href="#"
                         class="group bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
@@ -53,7 +49,6 @@
                     </a>
                 </div>
 
-                {{-- Stats --}}
                 <div class="flex items-center space-x-8">
                     <div class="flex items-center">
                         <x-heroicon-o-users class="w-5 h-5 text-amber-500 mr-2" />
@@ -66,7 +61,6 @@
                 </div>
             </div>
 
-            {{-- Image/Illustration --}}
             <div class="mt-16 lg:mt-0">
                 <div class="relative">
                     <div
@@ -78,7 +72,6 @@
                     <img src="{{ asset('images/robot.png') }}" alt="Robô"
                         class="relative rounded-3xl shadow-2xl shadow-amber-500/20 w-full h-96 object-cover border border-amber-500/30" />
 
-                    {{-- Floating Cards --}}
                     <div
                         class="absolute -top-6 -left-6 bg-gray-900 border border-amber-500/30 rounded-2xl p-4 shadow-xl shadow-amber-500/20">
                         <div class="flex items-center space-x-3">
@@ -91,7 +84,7 @@
                         class="absolute -bottom-6 -right-6 bg-gray-900 border border-amber-500/30 rounded-2xl p-4 shadow-xl shadow-amber-500/20">
                         <div class="text-center">
                             <div class="text-2xl font-bold text-amber-500">98%</div>
-                            <div class="text-sm text-gray-400">Taxa de sucesso</div>
+                            <div class="text-sm text-gray-400">Taxa de Aprendizado</div>
                         </div>
                     </div>
                 </div>

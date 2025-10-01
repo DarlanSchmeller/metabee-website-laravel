@@ -51,8 +51,6 @@
                         Privacidade</a>
                     <a href="#" class="text-gray-400 hover:text-amber-400 text-sm transition-colors">Termos de
                         Serviço</a>
-                    <a href="#" class="text-gray-400 hover:text-amber-400 text-sm transition-colors">Política de
-                        Cookies</a>
                 </div>
             </div>
         </div>

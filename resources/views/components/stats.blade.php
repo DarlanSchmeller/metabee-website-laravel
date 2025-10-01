@@ -18,7 +18,7 @@
         ],
         [
             'icon' => 'trophy',
-            'value' => '95%',
+            'value' => '98%',
             'label' => 'Taxa de Sucesso',
             'color' => 'text-amber-400',
             'bgColor' => 'bg-amber-500/10',

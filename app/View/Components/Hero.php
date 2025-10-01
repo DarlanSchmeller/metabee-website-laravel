@@ -8,12 +8,14 @@ use Illuminate\View\Component;
 
 class Hero extends Component
 {
+    public $news_message;
+
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        $this->news_message = "Novo: Curso Avançado de Robótica com IA disponível";
     }
 
     /**
