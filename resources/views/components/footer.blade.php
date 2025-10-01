@@ -11,7 +11,7 @@
                 </div>
 
                 <p class="text-gray-400 mb-6 leading-relaxed max-w-sm mx-auto lg:mx-0">
-                    Capacitando a próxima geração de engenheiros e inovadores em robótica
+                    Capacitando a próxima geração de engenheiros e inovadores em tecnologia
                     através de educação online de ponta e experiências práticas.
                 </p>
 
