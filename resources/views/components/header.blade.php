@@ -4,7 +4,7 @@
 
             {{-- Logo --}}
             <a href="{{ route('/') }}">
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
                     <x-logo />
                     <span class="text-2xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">MetaBee</span>
                 </div>
