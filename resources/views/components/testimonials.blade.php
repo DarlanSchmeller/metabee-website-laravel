@@ -7,7 +7,7 @@
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
                 O que nossos alunos dizem
             </h2>
-            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">
                 Junte-se a milhares de alunos satisfeitos que transformaram suas carreiras através dos nossos cursos.
             </p>
         </div>

@@ -27,7 +27,7 @@
                     & construa o futuro
                 </h1>
 
-                <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+                <p class="text-lg text-gray-300 mb-8 leading-relaxed">
                     Junte-se a outros estudantes aprendendo programação, robótica, IA e automação de ponta.
                     Do iniciante ao especialista, temos o curso perfeito para sua jornada.
                 </p>
@@ -52,11 +52,11 @@
                 <div class="flex items-center space-x-8">
                     <div class="flex items-center">
                         <x-heroicon-o-users class="w-5 h-5 text-amber-500 mr-2" />
-                        <span class="text-sm text-gray-400">500+ Estudantes</span>
+                        <span class="text-sm text-gray-300">500+ Estudantes</span>
                     </div>
                     <div class="flex items-center">
                         <x-heroicon-o-academic-cap class="w-5 h-5 text-amber-500 mr-2" />
-                        <span class="text-sm text-gray-400">120+ Cursos</span>
+                        <span class="text-sm text-gray-300">120+ Cursos</span>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                         class="absolute -bottom-6 -right-6 bg-gray-900 border border-amber-500/30 rounded-2xl p-4 shadow-xl shadow-amber-500/20">
                         <div class="text-center">
                             <div class="text-2xl font-bold text-amber-500">98%</div>
-                            <div class="text-sm text-gray-400">Taxa de Aprendizado</div>
+                            <div class="text-sm text-gray-300">Taxa de Aprendizado</div>
                         </div>
                     </div>
                 </div>

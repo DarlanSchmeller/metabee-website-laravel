@@ -11,7 +11,7 @@
             Preços
             <span class="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Transparentes</span>
         </h1>
-        <p class="text-xl text-gray-400 leading-relaxed">
+        <p class="text-xl text-gray-300 leading-relaxed">
             Escolha o plano perfeito para sua jornada de aprendizado. Todos os planos incluem acesso vitalício aos cursos adquiridos.
         </p>
     </div>

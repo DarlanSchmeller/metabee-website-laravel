@@ -4,7 +4,7 @@
             <h2 class="text-4xl font-bold text-white mb-4">
                 Cursos em Destaque
             </h2>
-            <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p class="text-lg text-gray-300 max-w-2xl mx-auto">
                 Descubra nossos cursos mais populares de robótica, criados por especialistas da indústria
                 e aprovados por milhares de estudantes no mundo todo.
             </p>

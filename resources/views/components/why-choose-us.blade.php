@@ -4,7 +4,7 @@
             <h2 class="text-4xl font-bold text-white mb-4">
                 Por que escolher a MetaBee?
             </h2>
-            <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p class="text-lg text-gray-300 max-w-2xl mx-auto">
                 Oferecemos a plataforma de educação em robótica mais completa e prática,
                 preparada para o futuro da tecnologia.
             </p>

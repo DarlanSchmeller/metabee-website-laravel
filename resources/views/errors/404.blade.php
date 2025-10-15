@@ -27,7 +27,7 @@
                 <span class="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent animate-gradient-x">404</span>
             </h1>
 
-            <p class="text-gray-400 text-lg mb-10 leading-relaxed max-w-xl mx-auto">
+            <p class="text-gray-300 text-lg mb-10 leading-relaxed max-w-xl mx-auto">
                 Ops! O conteúdo que você procura não existe ou foi movido.  
                 Que tal voltar para a página inicial?
             </p>
