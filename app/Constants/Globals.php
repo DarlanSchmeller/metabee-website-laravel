@@ -6,8 +6,8 @@ class Globals
 {
     const MENU_ITEMS = [
         ['label' => 'Home', 'href' => '/'],
-        ['label' => 'Sobre nós', 'href' => '/sobre-nos'],
         ['label' => 'Cursos', 'href' => '/cursos'],
+        ['label' => 'Sobre nós', 'href' => '/sobre-nos'],
         ['label' => 'Planos', 'href' => '/planos'],
     ];
 }

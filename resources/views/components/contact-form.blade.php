@@ -28,7 +28,7 @@
             </div>
 
             @if (!$submitted)
-            <form method="POST" action="{{ route('/') }}" class="space-y-6">
+            <form method="POST" action="{{ route('home') }}" class="space-y-6">
                 @csrf
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>

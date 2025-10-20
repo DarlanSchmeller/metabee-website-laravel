@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center h-16">
 
             {{-- Logo --}}
-            <a href="{{ route('/') }}">
+            <a href="{{ route('home') }}">
                 <div class="flex items-center space-x-2">
                     <x-logo />
                     <span class="text-2xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">MetaBee</span>

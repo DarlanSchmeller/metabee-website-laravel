@@ -84,7 +84,7 @@
                         class="absolute -bottom-6 -right-6 bg-gray-900 border border-amber-500/30 rounded-2xl p-4 shadow-xl shadow-amber-500/20">
                         <div class="text-center">
                             <div class="text-2xl font-bold text-amber-500">98%</div>
-                            <div class="text-sm text-gray-300">Taxa de Aprendizado</div>
+                            <div class="text-sm text-gray-300">Taxa de Sucesso</div>
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,6 @@ class FeaturedCourses extends Component
             [
                 'id' => 1,
                 'title' => 'Fundamentos Completos de Robótica',
-                'instructor' => 'Dra. Sarah Chen',
                 'rating' => 4.9,
                 'students' => 2840,
                 'duration' => '12 horas',
@@ -32,7 +31,6 @@ class FeaturedCourses extends Component
             [
                 'id' => 2,
                 'title' => 'IA Avançada para Robótica',
-                'instructor' => 'Prof. Michael Rodriguez',
                 'rating' => 4.8,
                 'students' => 1920,
                 'duration' => '18 horas',
@@ -45,7 +43,6 @@ class FeaturedCourses extends Component
             [
                 'id' => 3,
                 'title' => 'Sistemas de Automação Industrial',
-                'instructor' => 'Dr. James Wilson',
                 'rating' => 4.7,
                 'students' => 1540,
                 'duration' => '15 horas',

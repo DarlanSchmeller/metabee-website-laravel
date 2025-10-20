@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class PricingHero extends Component
+class StatsSecondary extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class PricingHero extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.pricing-hero');
+        return view('components.stats-secondary');
     }
 }

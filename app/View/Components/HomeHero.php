@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Hero extends Component
+class HomeHero extends Component
 {
     public $news_message;
 
@@ -23,6 +23,6 @@ class Hero extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.hero');
+        return view('components.home-hero');
     }
 }

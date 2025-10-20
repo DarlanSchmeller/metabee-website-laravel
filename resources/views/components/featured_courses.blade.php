@@ -38,8 +38,6 @@
                             {{ $course['title'] }}
                         </h3>
 
-                        <p class="text-gray-400 mb-4">por {{ $course['instructor'] }}</p>
-
                         <div class="flex flex-wrap gap-2 mb-4">
                             @foreach ($course['tags'] as $tag)
                                 <span class="px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full text-xs font-medium">
