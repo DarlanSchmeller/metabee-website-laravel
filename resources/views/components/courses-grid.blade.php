@@ -54,7 +54,7 @@
 
                         {{-- Preço e Botão --}}
                         <div class="flex items-center justify-between pt-4 border-t border-amber-500/20">
-                            <span class="text-2xl font-bold text-white">R${{ $course['price'] }}</span>
+                            <span class="text-2xl font-bold text-white">R$ {{ $course['price'] }}</span>
                             <a href="#"
                                 class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300">
                                 Inscreva-se
@@ -67,6 +67,9 @@
                     <p class="text-gray-400 text-lg">Nenhum curso encontrado.</p>
                 </div>
             @endforelse
+        </div>
+        <div class="mt-8 flex justify-center">
+            {{ $courses->links() }}
         </div>
     </div>
 </section>

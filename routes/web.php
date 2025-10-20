@@ -1,14 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CourseController;
 
 Route::get('/', function () {
     return view('pages.home');
-})->name('home');
+})->name('home')->middleware();
 
-Route::get('/cursos', function () {
-    return view('pages.cursos');
-})->name('cursos');
+Route::get('/cursos', [CourseController::class, 'index'])->name('cursos.index');
 
 Route::get('/sobre-nos', function () {
     return view('pages.sobre-nos');

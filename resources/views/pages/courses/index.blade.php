@@ -1,39 +1,4 @@
 <x-layout>
-    @php
-        $courses = [
-            [
-                'id' => 1,
-                'title' => 'Introdução à Robótica',
-                'category' => 'beginner',
-                'description' =>
-                    'Aprenda os fundamentos da robótica, incluindo mecânica básica, sensores e sistemas de controle.',
-                'image' =>
-                    'https://images.pexels.com/photos/8294614/pexels-photo-8294614.jpeg?auto=compress&cs=tinysrgb&w=800',
-                'instructor' => 'Dra. Sarah Chen',
-                'duration' => '8 semanas',
-                'students' => '12.450',
-                'rating' => 4.8,
-                'price' => 49,
-                'level' => 'Iniciante',
-            ],
-            [
-                'id' => 2,
-                'title' => 'IA Avançada para Robótica',
-                'category' => 'advanced',
-                'description' =>
-                    'Domine algoritmos de aprendizado de máquina e redes neurais aplicadas a robôs autônomos.',
-                'image' =>
-                    'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-                'instructor' => 'Prof. Marcus Johnson',
-                'duration' => '12 semanas',
-                'students' => '8.230',
-                'rating' => 4.9,
-                'price' => 129,
-                'level' => 'Avançado',
-            ],
-        ];
-    @endphp
-
     <div class="min-h-screen bg-gray-950">
         <x-hero-section title="Explore Nossos" highlight="Cursos" :break-title="true"
             content="Escolha entre dezenas de cursos desenvolvidos por especialistas da indústria e avance do básico ao profissional.">
