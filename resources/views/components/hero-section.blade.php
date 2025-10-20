@@ -13,7 +13,9 @@
         <h1 class="text-4xl md:text-6xl font-bold mb-6 {{ $textColor }}">
             {!! nl2br(e($title)) !!}
             @if ($highlight)
-                <br>
+                @if ($breakTitle)
+                    <br>
+                @endif
                 <span class="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
                     {{ $highlight }}
                 </span>
@@ -26,4 +28,5 @@
             </p>
         @endif
     </div>
+    {{ $slot }}
 </section>

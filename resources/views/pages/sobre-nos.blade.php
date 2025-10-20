@@ -4,6 +4,7 @@
             title="Construindo o Futuro da"
             highlight="Educação em Robótica"
             subtitle="Nossa missão é capacitar a próxima geração de inovadores com educação em robótica acessível, envolvente e transformadora."
+            :break-title="true"
         />
         <x-stats-secondary />
         <x-story-section />

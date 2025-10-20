@@ -4,6 +4,7 @@
             title="Preços"
             highlight="Transparentes"
             subtitle="Escolha o plano perfeito para sua jornada de aprendizado. Todos os planos incluem acesso vitalício aos cursos adquiridos."
+            :break-title="true"
         />
         <x-pricing />
         <x-features />
