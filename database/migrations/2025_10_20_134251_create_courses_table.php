@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('image');
             $table->string('instructor');
+            $table->integer('duration');
             $table->integer('students');
             $table->float('rating');
             $table->float('price');

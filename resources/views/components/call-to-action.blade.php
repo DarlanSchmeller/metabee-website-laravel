@@ -1,4 +1,4 @@
-@props(['title', 'content', 'buttonText', 'icon' => false])
+@props(['title', 'content', 'buttonText', 'icon' => false, 'link' => ''])
 
 <section class="py-20 relative z-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,10 +18,12 @@
             <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
                 {{ $content }}
             </p>
-            <button
-                class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
-                {{ $buttonText }}
-            </button>
+            <a href="{{ $link }}">
+                <button
+                    class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
+                    {{ $buttonText }}
+                </button>
+            </a>
         </div>
     </div>
 </section>

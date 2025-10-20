@@ -9,6 +9,10 @@ Route::get('/', function () {
 
 Route::get('/cursos', [CourseController::class, 'index'])->name('cursos.index');
 
+Route::get('/cursos/search', [CourseController::class, 'search'])->name('cursos.search');
+
+Route::get('/cursos/{curso}', [CourseController::class, 'show'])->name('cursos.show');
+
 Route::get('/sobre-nos', function () {
     return view('pages.sobre-nos');
 })->name('sobre-nos');

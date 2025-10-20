@@ -14,6 +14,7 @@
             content="Oferecemos soluções empresariais sob medida para organizações com necessidades específicas. Entre em
                 contato com nossa equipe para discutir sua demanda."
             buttonText="Pronto para Começar Sua Jornada?"
+            link="{{ route('home') }}"
         />
     </div>
 </x-layout>

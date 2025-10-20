@@ -37,9 +37,34 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Course $course): View
     {
-        //
+        $course = Course::where('id', $course)->get();
+
+        return view('pages.courses.show', $course);
+    }
+
+    public function search(Request $request): View
+    {
+        $searchKeywords = strtolower($request->input('keywords'));
+        $searchCategories = $request->input('categories', []);
+        $query = Course::query();
+
+        if ($searchKeywords) {
+            $query->where(function($q) use ($searchKeywords) {
+                $q->whereRaw('LOWER(title) like ?', ['%' . $searchKeywords . '%']);
+                    $q->orWhereRaw('LOWER(description) like ?', ['%' . $searchKeywords . '%']);
+            });
+        }
+
+        if (!empty($searchCategories)) {
+            $searchCategories = array_map('strtolower', $searchCategories);
+            $query->whereIn('category', $searchCategories);
+        }
+
+        $courses = $query->paginate(10);
+        
+        return view('pages.courses.index')->with('courses', $courses);
     }
 
     /**
