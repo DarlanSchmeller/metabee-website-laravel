@@ -37,11 +37,11 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Course $course): View
+    public function show($id)
     {
-        $course = Course::where('id', $course)->get();
+        $course = Course::findOrFail($id);
 
-        return view('pages.courses.show', $course);
+        return view('pages.courses.show')->with('course', $course);
     }
 
     public function search(Request $request): View

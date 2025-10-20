@@ -36,6 +36,16 @@
                             <span>{{ $course['instructor'] }}</span>
                         </div>
 
+                        {{-- Tags --}}
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            @foreach ($course['tags'] as $tag)
+                                <span class="px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full text-xs font-medium">
+                                    {{ $tag }}
+                                </span>
+                            @endforeach
+                        </div>
+
+
                         {{-- Stats --}}
                         <div class="flex items-center justify-between text-sm text-gray-400 mb-4">
                             <div class="flex items-center space-x-1">
@@ -57,7 +67,7 @@
                             <span class="text-2xl font-bold text-white">R$ {{ $course['price'] }}</span>
                             <a href="{{ route('cursos.show', $course->id) }}"
                             class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300">
-                                Inscreva-se
+                                Visualizar Curso
                             </a>
                         </div>
                     </div>
