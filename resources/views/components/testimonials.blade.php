@@ -31,7 +31,7 @@
                     </p>
 
                     <div class="flex items-center space-x-4">
-                        <img src="{{ $testimonial['imagem'] }}" alt="{{ $testimonial['nome'] }}" class="w-12 h-12 rounded-full object-cover border-2 border-amber-500/30" />
+                        <img src="{{ asset('images/testimonials/' . $testimonial['imagem']) }}" alt="{{ $testimonial['nome'] }}" class="w-12 h-12 rounded-full object-cover border-2 border-amber-500/30" />
                         <div>
                             <h4 class="text-white font-semibold">{{ $testimonial['nome'] }}</h4>
                             <p class="text-gray-400 text-sm">{{ $testimonial['cargo'] }}</p>

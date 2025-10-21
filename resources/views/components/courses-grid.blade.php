@@ -33,7 +33,7 @@
                             {{ $course['description'] }}
                         </p>
                         <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <span>{{ $course['instructor'] }}</span>
+                            <span>Por {{ $course['instructor']['name'] }}</span>
                         </div>
 
                         {{-- Tags --}}

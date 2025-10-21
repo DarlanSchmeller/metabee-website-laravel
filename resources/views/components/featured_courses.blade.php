@@ -22,7 +22,7 @@
                             <span
                                 class="px-3 py-1 rounded-full text-xs font-semibold
                             {{ $getLevelColor($course->level) }}">
-                                {{ $course['level'] }}
+                                {{ ucfirst($course['level']) }}
                             </span>
 
                         </div>

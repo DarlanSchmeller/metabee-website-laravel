@@ -151,11 +151,11 @@
                             class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 text-white">
                             <h2 class="text-2xl font-bold mb-6">Seu Instrutor</h2>
                             <div class="flex items-start space-x-6">
-                                <img src="{{ $course['instructorImage'] }}" alt="{{ $course['instructor'] }}"
+                                <img src="{{ asset('storage/user_images/' . $course['instructor']['user_image']) }}" alt="{{ $course['instructor']['name'] }}"
                                     class="w-24 h-24 rounded-2xl object-cover border-2 border-amber-500/30" />
                                 <div>
-                                    <h3 class="text-xl font-bold mb-2">{{ $course['instructor'] }}</h3>
-                                    <p class="text-content leading-relaxed">{{ $course['instructorBio'] }}</p>
+                                    <h3 class="text-xl font-bold mb-2">{{ $course['instructor']['name'] }}</h3>
+                                    <p class="text-content leading-relaxed">{{ $course['instructor']['bio'] }}</p>
                                 </div>
                             </div>
                         </div>

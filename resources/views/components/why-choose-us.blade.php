@@ -82,7 +82,7 @@
                     <p class="text-lg mb-6 text-gray-400">
                         Junte-se a milhares de alunos que já estão construindo o futuro com a robótica.
                     </p>
-                    <a href="#"
+                    <a href="{{ route('planos') }}"
                        class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-8 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all inline-block">
                         Comece Hoje
                     </a>

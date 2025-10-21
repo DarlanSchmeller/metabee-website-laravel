@@ -14,25 +14,10 @@
                 <div class="mb-8 flex items-center space-x-4">
                     <div
                         class="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-amber-500/20 to-yellow-500/20 rounded-xl border border-amber-500/30">
-                        @if ($plan['icon'] === 'bolt')
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-amber-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                        @elseif($plan['icon'] === 'crown')
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-amber-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 17l4-12 4 12 4-12 4 12H5z" />
-                            </svg>
-                        @elseif($plan['icon'] === 'rocket')
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-amber-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 21V12l-2 2 2-2 5-5 5 5-2 2v9H9z" />
-                            </svg>
-                        @endif
+                        {{-- Dynamic Heroicon --}}
+                        <x-dynamic-component 
+                            :component="'heroicon-o-' . $plan['icon']" 
+                            class="h-7 w-7 text-amber-500 stroke-current" />
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold">{{ $plan['name'] }}</h3>
@@ -48,11 +33,7 @@
                 <ul class="space-y-4 mb-8">
                     @foreach ($plan['features'] as $feature)
                         <li class="flex items-start">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-amber-500 mr-3 mt-0.5"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
+                            <x-heroicon-o-check class="w-5 h-5 text-amber-500 mr-3 mt-0.5 stroke-current" />
                             <span class="text-gray-300 text-sm">{{ $feature }}</span>
                         </li>
                     @endforeach

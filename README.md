@@ -46,8 +46,17 @@ php artisan db:seed
 
 You will have a test user available with the following credentials:
 
--   Email: test@test.com
+-   Email: clistenis@metabee.com
 -   Password: 12345678
+
+
+### Setup the Storage Symlink
+
+```
+php artisan storage:link 
+```
+
+Setup the symlink to public storage for displaying user uploaded images
 
 #### Run Server
 

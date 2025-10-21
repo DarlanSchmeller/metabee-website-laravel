@@ -13,7 +13,7 @@ class Pricing extends Component
         $this->plans = [
             [
                 'name' => 'Starter',
-                'icon' => 'bolt',
+                'icon' => 'academic-cap',
                 'price' => '29',
                 'period' => 'mês',
                 'description' => 'Perfeito para iniciantes começando sua jornada em robótica',
@@ -28,7 +28,7 @@ class Pricing extends Component
             ],
             [
                 'name' => 'Profissional',
-                'icon' => 'crown',
+                'icon' => 'bolt',
                 'price' => '79',
                 'period' => 'mês',
                 'description' => 'Ideal para estudantes sérios e profissionais',
@@ -46,7 +46,7 @@ class Pricing extends Component
             ],
             [
                 'name' => 'Enterprise',
-                'icon' => 'rocket',
+                'icon' => 'building-office',
                 'price' => '299',
                 'period' => 'mês',
                 'description' => 'Para equipes e organizações',

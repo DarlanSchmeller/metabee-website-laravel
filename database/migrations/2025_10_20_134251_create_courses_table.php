@@ -18,8 +18,9 @@ return new class extends Migration
             $table->text('description');
             $table->text('fullDescription');
             $table->string('image');
-            $table->string('instructor');
-            $table->string('instructorImage')->nullable();
+            $table->foreignId('instructorId')
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->integer('duration');
             $table->integer('lessons');
             $table->integer('students')->default(0);

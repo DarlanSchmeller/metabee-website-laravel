@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,20 +27,21 @@ class CourseFactory extends Factory
             'https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800',
         ];
 
+        $user = User::first() ?? User::factory()->create();
+
         return [
             'title' => fake()->sentence(6, 3),
             'category' => fake()->randomElement(['ia & ml', 'hardware', 'programacao']),
             'description' => fake()->paragraph(2),
             'fullDescription' => fake()->paragraphs(3, true),
             'image' => fake()->randomElement($placeholderThumbnails),
-            'instructor' => fake()->name(),
-            'instructorImage' => fake()->imageUrl(200, 200),
+            'instructorId' => $user->id,
             'duration' => fake()->numberBetween(1, 80),
             'lessons' => fake()->numberBetween(5, 50),
             'students' => fake()->numberBetween(12, 520),
             'projects' => fake()->numberBetween(0, 10),
             'tags' => fake()->randomElements([
-                'Popular', 'Featured', 'New', 'Trending', 'AI', 'Hardware', 'Programming'
+                'Popular', 'Em Destaque', 'Novo', 'Em Alta', 'AI', 'Hardware', 'Programação'
             ], rand(1, 3)),
             'whatYouLearn' => fake()->sentences(rand(3, 6)),
             'skills' => fake()->words(rand(3, 6)),

@@ -39,7 +39,7 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $course = Course::findOrFail($id);
+        $course = Course::with('instructor')->findOrFail($id);
 
         return view('pages.courses.show')->with('course', $course);
     }
