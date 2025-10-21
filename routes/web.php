@@ -23,5 +23,7 @@ Route::get('/planos', function () {
 })->name('planos');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/create-account', [LoginController::class, 'index'])->name('create-account');

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class LoginController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display the login page
      */
     public function index(): View
     {
@@ -16,50 +18,34 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Attempt to authenticate a user
      */
-    public function create()
+    public function authenticate(Request $request): RedirectResponse
     {
-        //
+        $credentials = $request->validate([
+            'email' => 'required|string|email|max:100',
+            'password' => 'required|string',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            // Regenerate the session to prevent fixation attacks
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('home'))->with('success', 'Você agora está logado!');
+        }
+
+        return redirect()->intended(route('login'))->with('error', 'As credenciais fornecidas não correspondem com nossos registros.');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Log a user out
      */
-    public function store(Request $request)
+    public function logout(Request $request): RedirectResponse
     {
-        //
-    }
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect('/')->with('success', 'Você agora está deslogado, até breve!');;
     }
 }

@@ -15,6 +15,11 @@
         <x-header />
     @endunless
 
+    {{-- Display Alert messages --}}
+    @if (session('success') || session('error'))
+        <x-alert />
+    @endif
+
     <!-- Main content -->
     <main>
         {{ $slot }}
