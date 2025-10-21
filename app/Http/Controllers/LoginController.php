@@ -34,7 +34,7 @@ class LoginController extends Controller
             return redirect()->intended(route('home'))->with('success', 'Você agora está logado!');
         }
 
-        return redirect()->intended(route('login'))->with('error', 'As credenciais fornecidas não correspondem com nossos registros.');
+        return redirect()->intended(route('login'))->with('error', 'As credenciais fornecidas não correspondem com nossos registros.')->withInput();
     }
 
     /**
