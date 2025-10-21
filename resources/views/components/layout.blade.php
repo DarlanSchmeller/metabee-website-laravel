@@ -11,7 +11,9 @@
 
 <body class="bg-gray-800">
     <!-- Header -->
-    <x-header />
+    @unless(Route::currentRouteName() === 'login')
+        <x-header />
+    @endunless
 
     <!-- Main content -->
     <main>
@@ -19,7 +21,9 @@
     </main>
 
     <!-- Footer -->
-    <x-footer />
+    @unless(Route::currentRouteName() === 'login')
+        <x-footer />
+    @endunless
 </body>
 
 </html>

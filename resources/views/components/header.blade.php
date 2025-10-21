@@ -1,4 +1,4 @@
-<header class="bg-gray-900/95 backdrop-blur-sm border-b border-amber-500/20 sticky top-0 z-50" x-data="{ open: false }">
+<header class="bg-gray-900/95 backdrop-blur-sm border-b border-amber-500/20 sticky top-0 z-50" x-data="{ open: false } overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
 
@@ -22,8 +22,10 @@
             </nav>
 
             <div class="hidden md:flex items-center space-x-4">
-                <button
-                    class="px-4 py-2 text-amber-400 border border-amber-500/50 rounded-lg hover:bg-amber-500/10 transition-colors">Entrar</button>
+                <a href="{{ route('login') }}">
+                    <button
+                        class="px-4 py-2 text-amber-400 border border-amber-500/50 rounded-lg hover:bg-amber-500/10 transition-colors">Entrar</button>
+                </a>
                 <a href="{{ route('planos') }}">
                     <button
                         class="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 rounded-lg
@@ -60,10 +62,14 @@
                     </a>
                 @endforeach
                 <div class="pt-4 space-y-2">
-                    <button
-                        class="w-full px-4 py-2 text-amber-400 border border-amber-500/50 rounded-lg hover:bg-amber-500/10 transition-colors">Entrar</button>
-                    <button
-                        class="w-full px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 rounded-lg hover:shadow-lg transition-all font-semibold">Começar</button>
+                    <a href="{{ route('login') }}">
+                        <button
+                            class="w-full px-4 py-2 text-amber-400 border border-amber-500/50 rounded-lg hover:bg-amber-500/10 transition-colors">Entrar</button>
+                    </a>
+                    <a href="{{ route('planos') }}">
+                        <button
+                            class="w-full px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 rounded-lg hover:shadow-lg transition-all font-semibold">Começar</button>
+                    </a>
                 </div>
             </nav>
         </div>

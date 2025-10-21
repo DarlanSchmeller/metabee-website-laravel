@@ -2,7 +2,7 @@
     'stats' => [
         ['500+', 'Alunos Ativos'],
         ['120+', 'Cursos Disponíveis'],
-        ['98%', 'Taxa de Sucesso'],
+        ['98%', 'Taxa de Satisfação'],
         ['24h', 'Suporte'],
     ],
 ])
