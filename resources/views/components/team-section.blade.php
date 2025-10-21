@@ -1,22 +1,22 @@
 @props([
     'teamMembers' => [
         [
-            'alex.jpg',
-            'Dr. Alex Rivera',
-            'Fundador & CEO',
-            'Ex-professor do MIT com mais de 20 anos de experiência em robótica.',
+            'ceo.jpg',
+            'Clistenes Grizafis Bento',
+            'Presidente e Fundador',
+            'Com uma sólida experiência na indústria no desenvolvimento de AMRs, Clistenes é o principal idealizador da MetaBee. Formado em Matemática e Engenharia de Software, ele combina conhecimento técnico com uma visão estratégica voltada para democratizar o acesso às tecnologias emergentes.',
         ],
         [
-            'sarah.jpg',
-            'Sarah Chen',
-            'Chefe de Educação',
-            'Especialista em IA e aprendizado de máquina, responsável pelo design dos currículos.',
+            'diretora.jpg',
+            'Ana Caroline de Paula',
+            'Diretora Educacional',
+            'Mestre em Educação, Ana Caroline é a responsável pela criação dos materiais didáticos e pelas metodologias de ensino da MetaBee. Sua abordagem inovadora combina teoria e prática para oferecer uma experiência de aprendizado transformadora e acessível.',
         ],
         [
-            'marcus.jpg',
-            'Marcus Johnson',
-            'Instrutor Líder',
-            'Veterano da indústria com passagem pela Tesla e Boston Dynamics.',
+            'gerente.png',
+            'Marcos Alexander de Paula',
+            'Gerente administrativo',
+            'Com mais de 20 anos de experiência como empresário, Marcos Alexander cuida da infraestrutura da MetaBee, garantindo que o laboratório, equipamentos e recursos estejam sempre disponíveis e em perfeito funcionamento.',
         ],
     ],
 ])

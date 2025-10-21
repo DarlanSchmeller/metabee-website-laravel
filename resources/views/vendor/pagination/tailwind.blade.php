@@ -3,11 +3,11 @@
 
     {{-- Previous Link --}}
     @if ($paginator->onFirstPage())
-        <span class="px-4 py-2 bg-gray-800 text-gray-500 rounded-l-xl cursor-not-allowed">Previous</span>
+        <span class="px-4 py-2 bg-gray-800 text-gray-500 rounded-l-xl cursor-not-allowed">Anterior</span>
     @else
         <a href="{{ $paginator->previousPageUrl() }}"
            class="px-4 py-2 bg-gray-700 text-white rounded-l-xl hover:bg-amber-500 hover:text-gray-900 transition-all duration-300">
-           Previous
+           Anterior
         </a>
     @endif
 
@@ -37,10 +37,10 @@
     @if ($paginator->hasMorePages())
         <a href="{{ $paginator->nextPageUrl() }}"
            class="px-4 py-2 bg-gray-700 text-white rounded-r-xl hover:bg-amber-500 hover:text-gray-900 transition-all duration-300">
-           Next
+           Próximo
         </a>
     @else
-        <span class="px-4 py-2 bg-gray-800 text-gray-500 rounded-r-xl cursor-not-allowed">Next</span>
+        <span class="px-4 py-2 bg-gray-800 text-gray-500 rounded-r-xl cursor-not-allowed">Próximo</span>
     @endif
 
 </nav>
