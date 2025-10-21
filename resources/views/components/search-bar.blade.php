@@ -1,5 +1,5 @@
 <form method="GET" action="{{ route('cursos.search') }}">
-    <div class="max-w-2xl mx-auto mb-8">
+    <div class="max-w-2xl mx-auto mb-8 md:px-0 px-8">
         <div class="relative">
             <x-heroicon-o-magnifying-glass
                 class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500" />

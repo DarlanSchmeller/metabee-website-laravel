@@ -3,7 +3,7 @@
 <x-layout>
     <div class="min-h-screen bg-gray-950">
         {{-- Hero Section --}}
-        <section class="relative pt-24 pb-12 overflow-hidden">
+        <section class="relative pt-24 pb-12">
             <div class="absolute top-20 right-20 w-96 h-96 bg-amber-500/20 rounded-full filter blur-3xl"></div>
 
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -150,7 +150,7 @@
                         <div
                             class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 text-white">
                             <h2 class="text-2xl font-bold mb-6">Seu Instrutor</h2>
-                            <div class="flex items-start space-x-6">
+                            <div class="flex items-start space-x-6 md:flex-row md:gap-0 flex-col gap-8">
                                 <img src="{{ asset('storage/user_images/' . $course['instructor']['user_image']) }}" alt="{{ $course['instructor']['name'] }}"
                                     class="w-24 h-24 rounded-2xl object-cover border-2 border-amber-500/30" />
                                 <div>
@@ -163,7 +163,7 @@
 
                     {{-- Sidebar --}}
                     <div class="lg:col-span-1">
-                        <div class="sticky top-24">
+                        <div class="sticky top-32">
                             <div
                                 class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 text-white">
                                 {{-- Preço --}}
@@ -224,6 +224,8 @@
                             </div>
                         </div>
                     </div>
+
+                    
                 </div>
             </div>
         </section>

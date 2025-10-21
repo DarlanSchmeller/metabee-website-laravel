@@ -12,11 +12,14 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             <div class="max-w-md mx-auto lg:max-w-none lg:mx-0">
-                <div
-                    class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/30 rounded-full text-sm font-medium text-amber-400 mb-6">
-                    <x-heroicon-o-cube class="w-4 h-4 mr-2 text-amber-500" />
-                    {{ $news_message }}
-                </div>
+                <a href="{{ route('cursos.index') }}">
+                    <div
+                        class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/30 rounded-full text-sm font-medium text-amber-400 mb-6
+                            transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                        <x-heroicon-o-cube class="w-4 h-4 mr-2 text-amber-500" />
+                        {{ $news_message }}
+                    </div>
+                </a>
 
                 <h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
                     Domine a

@@ -17,7 +17,7 @@
                     {{-- Image --}}
                     <div class="relative h-48 overflow-hidden">
                         <img src="{{ $course['image'] }}" alt="{{ $course['title'] }}"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                            class="w-full h-full object-cover group-hover:scale-113 transition-transform duration-300" />
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
                         <div class="absolute top-4 right-4 bg-gray-900/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-500 text-sm font-semibold border border-amber-500/30">
                             {{ ucfirst($course['level']) ?? 'Nível' }}
