@@ -27,7 +27,10 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        // Check if user is authorized
+        $this->authorize('create', Course::class);
+
+        return view('pages.courses.create');
     }
 
     /**
@@ -35,7 +38,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->request);
     }
 
     /**

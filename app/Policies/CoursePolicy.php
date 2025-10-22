@@ -28,7 +28,7 @@ class CoursePolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === 'instructor';
     }
 
     /**
@@ -36,7 +36,7 @@ class CoursePolicy
      */
     public function update(User $user, Course $course): bool
     {
-        return $user->id === $course->instructor_id;
+        return $user->id === $course->instructor_id && $user->role === 'instructor';
     }
 
     /**
@@ -44,7 +44,7 @@ class CoursePolicy
      */
     public function delete(User $user, Course $course): bool
     {
-        return $user->id === $course->instructor_id;
+        return $user->id === $course->instructor_id && $user->role === 'instructor';
     }
 
     /**
