@@ -1,5 +1,16 @@
 <form method="POST" action="{{ route("login") }}" class="space-y-5 md:space-y-6">
     @csrf
+
+    @if ($errors->any())
+        <div class="bg-red-500 text-white p-4 rounded mb-4">
+            <ul class="list-disc list-inside">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     {{-- Email --}}
     <div class="space-y-2">
         <label for="email" class="text-gray-200 text-sm md:text-base">E-mail</label>

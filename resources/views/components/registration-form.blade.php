@@ -6,6 +6,16 @@
 >
     @csrf
 
+    @if ($errors->any())
+        <div class="bg-red-500 text-white p-4 rounded mb-4">
+            <ul class="list-disc list-inside">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     {{-- Full name --}}
     <div class="space-y-2">
         <label for="name" class="text-gray-200 text-sm md:text-base">Nome Completo</label>
@@ -19,7 +29,7 @@
                 autofocus
                 placeholder="Seu nome completo"
                 value="{{ old("name") }}"
-                class="pl-10 bg-zinc-800/50 border outline-none border-zinc-700 text-white placeholder:text-gray-300 focus:border-amber-500 focus:ring-amber-500/20 focus:ring-1 rounded-lg w-full py-3 text-base md:text-lg transition"
+                class="pl-10 bg-zinc-800/50 border outline-none border-zinc-700 text-white placeholder:text-gray-300 focus:border-amber-500 focus:ring-amber-500/20 focus:ring-1 rounded-lg w-full py-3 text-base md:text- transition"
             />
         </div>
     </div>
