@@ -4,9 +4,10 @@
         <div class="space-y-6">
             @foreach ($faq as $item)
                 <div
-                    class="bg-gray-900/50 border border-amber-500/20 rounded-xl p-6 hover:border-amber-500/40 transition-all">
-                    <h3 class="text-white font-semibold mb-2">{{ $item['question'] }}</h3>
-                    <p class="text-gray-400">{{ $item['answer'] }}</p>
+                    class="bg-gray-900/50 border border-amber-500/20 rounded-xl p-6 hover:border-amber-500/40 transition-all"
+                >
+                    <h3 class="text-white font-semibold mb-2">{{ $item["question"] }}</h3>
+                    <p class="text-gray-400">{{ $item["answer"] }}</p>
                 </div>
             @endforeach
         </div>

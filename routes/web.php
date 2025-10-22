@@ -25,7 +25,7 @@ Route::get('/planos', function () {
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
-    Route::get('/create-account', [LoginController::class, 'index'])->name('create-account');
+    Route::get('/registro', [LoginController::class, 'index'])->name('register');
 });
 
 Route::middleware('auth')->group(function () {
