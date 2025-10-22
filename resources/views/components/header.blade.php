@@ -29,7 +29,6 @@
             {{-- Right-side actions --}}
             @auth
                 <div class="hidden md:flex items-center space-x-8">
-                    {{-- User Avatar + Name --}}
                     <div class="flex items-center gap-2 text-gray-200">
                         {{-- Generic Avatar Icon --}}
                         <div

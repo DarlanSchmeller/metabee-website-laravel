@@ -9,14 +9,42 @@
             <div class="absolute top-20 right-20 w-96 h-96 bg-amber-500/20 rounded-full filter blur-3xl"></div>
 
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {{-- Back Button --}}
-                <a
-                    href="{{ route("cursos.index") }}"
-                    class="inline-flex items-center space-x-2 bg-gray-800/60 hover:bg-gray-700/80 text-amber-400 hover:text-amber-300 font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-amber-500/40 transition-all duration-200 border border-amber-500/30 mb-6"
-                >
-                    <x-heroicon-o-arrow-left class="w-5 h-5" />
-                    <span>Voltar para Cursos</span>
-                </a>
+                <div class="flex flex-row gap-6">
+                    {{-- Back Button --}}
+                    <a
+                        href="{{ route("cursos.index") }}"
+                        class="inline-flex items-center space-x-2 bg-gray-800/60 hover:bg-gray-700/80 text-amber-400 hover:text-amber-300 font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-amber-500/40 transition-all duration-200 border border-amber-500/30 mb-6"
+                    >
+                        <x-heroicon-o-arrow-left class="w-5 h-5" />
+                        <span>Voltar para Cursos</span>
+                    </a>
+                    @can("update", $course)
+                        {{-- Edit Button --}}
+                        <a
+                            href="{{ route("cursos.edit", $course->id) }}"
+                            class="inline-flex items-center space-x-2 bg-blue-700/80 hover:bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-blue-500/30 mb-6"
+                        >
+                            <x-heroicon-o-pencil class="w-5 h-5" />
+                            <span>Editar Curso</span>
+                        </a>
+
+                        <form
+                            action="{{ route("cursos.destroy", $course->id) }}"
+                            method="POST"
+                            onsubmit="return confirm('Tem certeza que deseja apagar este curso?')"
+                        >
+                            @csrf
+                            @method("DELETE")
+                            <button
+                                type="submit"
+                                class="inline-flex items-center space-x-2 bg-red-700/80 hover:bg-red-600 text-white font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-red-500/30 mb-6"
+                            >
+                                <x-heroicon-o-trash class="w-5 h-5" />
+                                <span>Apagar Curso</span>
+                            </button>
+                        </form>
+                    @endcan
+                </div>
 
                 <div class="grid lg:grid-cols-3 gap-12">
                     {{-- Main Content --}}

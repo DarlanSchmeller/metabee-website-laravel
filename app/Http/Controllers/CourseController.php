@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class CourseController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */
@@ -70,9 +74,12 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Course $course): View
     {
-        //
+        // Check if user is authorized
+        $this->authorize('update', $course);
+
+        return view('pages.courses.edit')->with('course', $course);
     }
 
     /**
@@ -86,8 +93,14 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Course $course): RedirectResponse
     {
-        //
+        // Check if user is authorized
+        $this->authorize('delete', $course);
+
+        // Delete course from DB
+        $course->delete();
+
+        return redirect()->route('cursos.index')->with('success', 'Curso deletado com sucesso!');
     }
 }

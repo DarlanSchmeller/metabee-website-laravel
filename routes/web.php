@@ -12,7 +12,11 @@ Route::get('/cursos', [CourseController::class, 'index'])->name('cursos.index');
 
 Route::get('/cursos/search', [CourseController::class, 'search'])->name('cursos.search');
 
-Route::get('/cursos/{curso}', [CourseController::class, 'show'])->name('cursos.show');
+Route::get('/cursos/edit/{course}', [CourseController::class, 'edit'])->name('cursos.edit');
+
+Route::delete('/cursos/delete/{course}', [CourseController::class, 'destroy'])->name('cursos.destroy');
+
+Route::get('/cursos/{course}', [CourseController::class, 'show'])->name('cursos.show');
 
 Route::get('/sobre-nos', function () {
     return view('pages.sobre-nos');
