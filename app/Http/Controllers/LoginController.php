@@ -14,7 +14,7 @@ class LoginController extends Controller
      */
     public function index(): View
     {
-        return view('pages.login');
+        return view('pages.auth.login');
     }
 
     /**
@@ -46,6 +46,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'Você agora está deslogado, até breve!');;
+        return redirect('/')->with('success', 'Você agora está deslogado, até breve!');
     }
 }

@@ -15,7 +15,7 @@ class HomeHero extends Component
      */
     public function __construct()
     {
-        $this->news_message = "Novo: Curso Avançado de Robótica com IA disponível";
+        $this->news_message = 'Novo: Curso Avançado de Robótica com IA disponível';
     }
 
     /**

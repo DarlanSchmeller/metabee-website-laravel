@@ -24,7 +24,7 @@ class Pricing extends Component
                     'Certificado de conclusão',
                     'Suporte por e-mail',
                 ],
-                'highlighted' => false
+                'highlighted' => false,
             ],
             [
                 'name' => 'Profissional',
@@ -42,7 +42,7 @@ class Pricing extends Component
                     'Webinars exclusivos',
                     'Recursos para download',
                 ],
-                'highlighted' => true
+                'highlighted' => true,
             ],
             [
                 'name' => 'Enterprise',
@@ -60,7 +60,7 @@ class Pricing extends Component
                     'Ferramentas de colaboração em equipe',
                     'Membros ilimitados na equipe',
                 ],
-                'highlighted' => false
+                'highlighted' => false,
             ],
         ];
     }

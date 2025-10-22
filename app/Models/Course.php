@@ -11,6 +11,7 @@ class Course extends Model
     use HasFactory;
 
     protected $table = 'courses';
+
     protected $fillable = [
         'title',
         'category',
@@ -50,6 +51,6 @@ class Course extends Model
 
     public function instructor(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'instructorId');
+        return $this->belongsTo(User::class, 'instructor_id');
     }
 }

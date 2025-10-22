@@ -9,10 +9,15 @@ use Illuminate\View\Component;
 class HeroSection extends Component
 {
     public string $title;
+
     public ?string $highlight;
+
     public ?bool $breakTitle;
+
     public ?string $subtitle;
+
     public string $bgColor;
+
     public string $textColor;
 
     /**

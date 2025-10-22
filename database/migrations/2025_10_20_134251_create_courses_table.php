@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('fullDescription');
             $table->string('image');
-            $table->foreignId('instructorId')
+            $table->foreignId('instructor_id')
                 ->constrained('users')
                 ->onDelete('cascade');
             $table->integer('duration');

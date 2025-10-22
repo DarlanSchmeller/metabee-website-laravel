@@ -14,7 +14,7 @@ class CourseController extends Controller
     public function index(Course $curso): View
     {
         $courses = Course::latest()->paginate(9);
-        
+
         return view('pages.courses.index')->with('courses', $courses);
     }
 
@@ -51,19 +51,19 @@ class CourseController extends Controller
         $query = Course::query();
 
         if ($searchKeywords) {
-            $query->where(function($q) use ($searchKeywords) {
-                $q->whereRaw('LOWER(title) like ?', ['%' . $searchKeywords . '%']);
-                    $q->orWhereRaw('LOWER(description) like ?', ['%' . $searchKeywords . '%']);
+            $query->where(function ($q) use ($searchKeywords) {
+                $q->whereRaw('LOWER(title) like ?', ['%'.$searchKeywords.'%']);
+                $q->orWhereRaw('LOWER(description) like ?', ['%'.$searchKeywords.'%']);
             });
         }
 
-        if (!empty($searchCategories)) {
+        if (! empty($searchCategories)) {
             $searchCategories = array_map('strtolower', $searchCategories);
             $query->whereIn('category', $searchCategories);
         }
 
         $courses = $query->paginate(10);
-        
+
         return view('pages.courses.index')->with('courses', $courses);
     }
 

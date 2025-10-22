@@ -2,9 +2,9 @@
 
 namespace App\View\Components;
 
+use App\Constants\Globals;
 use Illuminate\View\Component;
 use Illuminate\View\View;
-use App\Constants\Globals;
 
 class Header extends Component
 {

@@ -8,6 +8,7 @@ use Illuminate\View\View;
 class Footer extends Component
 {
     public $footerSections;
+
     public $socialLinks;
 
     public function __construct()
@@ -28,7 +29,7 @@ class Footer extends Component
                     'Documentação',
                     'Tutoriais',
                     'Comunidade',
-                    'Carreiras'
+                    'Carreiras',
                 ],
             ],
             [
@@ -46,7 +47,7 @@ class Footer extends Component
                     'Central de Ajuda',
                     'Suporte ao Estudante',
                     'Política de Reembolso',
-                    'Termos de Serviço'
+                    'Termos de Serviço',
                 ],
             ],
         ];

@@ -35,20 +35,20 @@ class CourseFactory extends Factory
             'description' => fake()->paragraph(2),
             'fullDescription' => fake()->paragraphs(3, true),
             'image' => fake()->randomElement($placeholderThumbnails),
-            'instructorId' => $user->id,
+            'instructor_id' => $user->id,
             'duration' => fake()->numberBetween(1, 80),
             'lessons' => fake()->numberBetween(5, 50),
             'students' => fake()->numberBetween(12, 520),
             'projects' => fake()->numberBetween(0, 10),
             'tags' => fake()->randomElements([
-                'Popular', 'Em Destaque', 'Novo', 'Em Alta', 'AI', 'Hardware', 'Programação'
+                'Popular', 'Em Destaque', 'Novo', 'Em Alta', 'AI', 'Hardware', 'Programação',
             ], rand(1, 3)),
             'whatYouLearn' => fake()->sentences(rand(3, 6)),
             'skills' => fake()->words(rand(3, 6)),
-            'curriculum' => array_map(fn($i) => [
+            'curriculum' => array_map(fn ($i) => [
                 'module' => fake()->sentence(3),
                 'lessons' => fake()->numberBetween(2, 8),
-                'duration' => fake()->numberBetween(10, 120) . ' min'
+                'duration' => fake()->numberBetween(10, 120).' min',
             ], range(1, rand(3, 6))),
             'requirements' => fake()->sentences(rand(2, 5)),
             'language' => fake()->randomElement(['Português', 'English', 'Español']),

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\Course;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Course::factory()->count(20)->create([
-            'instructorId' => $user->id,
+            'instructor_id' => $user->id,
         ]);
     }
 }
