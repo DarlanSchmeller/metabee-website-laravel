@@ -1,6 +1,6 @@
-# :honeybee: Metabee Website (Laravel)
+# :honeybee: MetaBee Website (Laravel)
 
-This is a website developed for the brazilian company Metabee built using Laravel 12 and Tailwind CSS.
+This is a website developed for the brazilian company MetaBee built using Laravel 12 and Tailwind CSS.
 
 ## Usage
 

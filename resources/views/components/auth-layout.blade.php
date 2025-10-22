@@ -1,7 +1,9 @@
+@props(["title" => "", "subtitle" => ""])
+
 <div class="relative w-screen min-h-screen flex flex-col lg:flex-row">
     {{-- Fullscreen Image --}}
     <div class="absolute inset-0">
-        <img src="{{ asset("images/classroom.jpg") }}" alt="MetaBee Academy" class="w-full h-full object-cover" />
+        <img src="{{ asset("images/classroom.jpg") }}" alt="MetaBee Classroom" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/75 to-black/95"></div>
     </div>
 
@@ -9,7 +11,10 @@
     <div class="hidden lg:flex flex-1 relative z-10 items-center justify-center p-12">
         <div class="flex flex-col gap-6 max-w-lg">
             {{-- Logo --}}
-            <a href="{{ route("home") }}" class="flex items-center space-x-3">
+            <a
+                href="{{ route("home") }}"
+                class="flex items-center space-x-3 w-max transform transition-transform duration-300 hover:scale-105"
+            >
                 <x-logo />
                 <span
                     class="text-4xl font-bold drop-shadow-xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent"
@@ -60,9 +65,13 @@
             </div>
 
             {{-- Welcome message --}}
-            <div class="text-center mb-4 lg:mb-6">
-                <h3 class="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">Bem-vindo de volta!</h3>
-                <p class="text-gray-300 text-sm md:text-base mt-1">Entre com suas credenciais para continuar</p>
+            <div class="text-center mb-2 lg:mb-4">
+                <h3 class="text-3xl font-bold text-white tracking-tight">
+                    {{ $title }}
+                </h3>
+                <p class="text-gray-200 text-base mt-2">
+                    {{ $subtitle }}
+                </p>
             </div>
 
             {{-- Form container --}}

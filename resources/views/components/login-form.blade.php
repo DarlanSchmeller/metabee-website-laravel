@@ -19,23 +19,40 @@
     </div>
 
     {{-- Password --}}
-    <div class="space-y-2">
+    <div x-data="{ show: false }" class="space-y-2">
         <div class="flex items-center justify-between">
             <label for="password" class="text-gray-200 text-sm md:text-base">Senha</label>
             <a href="#" class="text-xs md:text-sm text-amber-400 hover:text-amber-300 transition-colors">
                 Esqueceu a senha?
             </a>
         </div>
+
         <div class="relative">
+            {{-- Lock icon --}}
             <x-heroicon-o-lock-closed class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+
             <input
+                :type="show ? 'text' : 'password'"
                 id="password"
-                type="password"
                 name="password"
                 required
                 placeholder="••••••••"
                 class="pl-10 pr-10 bg-zinc-800/50 border outline-none border-zinc-700 text-white placeholder:text-gray-300 focus:border-amber-500 focus:ring-amber-500/20 focus:ring-1 rounded-lg w-full py-3 text-base md:text-lg transition"
             />
+
+            {{-- Toggle button --}}
+            <button
+                type="button"
+                @click="show = !show"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 transition"
+            >
+                <template x-if="!show">
+                    <x-heroicon-o-eye class="w-5 h-5" />
+                </template>
+                <template x-if="show">
+                    <x-heroicon-o-eye-slash class="w-5 h-5" />
+                </template>
+            </button>
         </div>
     </div>
 

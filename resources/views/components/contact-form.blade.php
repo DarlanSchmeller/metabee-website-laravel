@@ -31,7 +31,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Fale Conosco</h2>
 
                 <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-                    Tem dúvidas sobre nossos cursos? Quer saber mais sobre a Metabee? Nós adoraríamos ouvir você.
+                    Tem dúvidas sobre nossos cursos? Quer saber mais sobre a MetaBee? Nós adoraríamos ouvir você.
                 </p>
             </div>
 
