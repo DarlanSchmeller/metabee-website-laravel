@@ -6,6 +6,7 @@ use App\Models\Course;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CourseController extends Controller
@@ -36,9 +37,51 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        dd($request->request);
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:100',
+            'category' => 'required|string|max:50',
+            'description' => 'required|string|300',
+            'fullDescription' => 'nullable|string|1000',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:1080',
+            'duration' => 'nullable|integer|min:0',
+            'lessons' => 'nullable|integer|min:0',
+            'projects' => 'nullable|integer|min:0',
+            'language' => 'nullable|string|max:50',
+            'price' => 'nullable|numeric|min:0',
+            'level' => 'required|in:iniciante,intermediario,avançado',
+            'tags' => 'nullable|string',
+            'whatYouLearn' => 'nullable|string',
+            'skills' => 'nullable|string',
+            'curriculum' => 'nullable|string',
+            'requirements' => 'nullable|string',
+        ]);
+
+        // Handle checkboxes
+        $validatedData['certificate'] = $request->has('certificate');
+        $validatedData['resources'] = $request->has('resources');
+
+        // Assign instructor_id to course
+        $validatedData['instructor_id'] = Auth::user()->id;
+
+        // Handle fields that should be JSON
+        $jsonFields = ['tags', 'whatYoulearn', 'skills', 'curriculum', 'requirements'];
+
+        foreach ($jsonFields as $field) {
+            // Split string by comma and filter out empty values
+            if (!empty($requestData[$field])) {
+                $validatedData[$field] = array_values(array_filter(array_map('trim', explode(',', $validatedData[$field]))));
+            } else {
+                $validatedData[$field] = [];
+            }
+        }
+
+        // Handle image upload
+
+        Course::create($validatedData);
+
+        return redirect()->route('cursos.index')->with('success', 'Curso criado com sucesso!');
     }
 
     /**

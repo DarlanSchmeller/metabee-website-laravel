@@ -100,6 +100,34 @@
             </div>
 
             <x-text-input label="Tags (separadas por vírgula)" name="tags" placeholder="Ex: JavaScript, Web, Backend" />
+
+            <x-text-area-input
+                label="O que você vai aprender"
+                name="whatYouLearn"
+                rows="3"
+                placeholder="Digite cada item separado por vírgula"
+            />
+
+            <x-text-area-input
+                label="Skills"
+                name="skills"
+                rows="3"
+                placeholder="Ex: JavaScript, Laravel, Tailwind"
+            />
+
+            <x-text-area-input
+                label="Currículo do curso"
+                name="curriculum"
+                rows="3"
+                placeholder="Ex: Aula 1: Introdução..."
+            />
+
+            <x-text-area-input
+                label="Requisitos"
+                name="requirements"
+                rows="3"
+                placeholder="Ex: Conhecimento básico de HTML/CSS"
+            />
         </div>
     </div>
 

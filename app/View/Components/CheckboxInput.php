@@ -21,6 +21,6 @@ class CheckboxInput extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.checkbox-input');
+        return view('components.inputs.checkbox-input');
     }
 }
