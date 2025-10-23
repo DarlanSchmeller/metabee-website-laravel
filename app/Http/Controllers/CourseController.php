@@ -42,8 +42,8 @@ class CourseController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:100',
             'category' => 'required|string|max:50',
-            'description' => 'required|string|300',
-            'fullDescription' => 'nullable|string|1000',
+            'description' => 'required|string|max:300',
+            'fullDescription' => 'nullable|string|max:1000',
             'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:1080',
             'duration' => 'nullable|integer|min:0',
             'lessons' => 'nullable|integer|min:0',
@@ -66,11 +66,11 @@ class CourseController extends Controller
         $validatedData['instructor_id'] = Auth::user()->id;
 
         // Handle fields that should be JSON
-        $jsonFields = ['tags', 'whatYoulearn', 'skills', 'curriculum', 'requirements'];
+        $jsonFields = ['tags', 'whatYouLearn', 'skills', 'curriculum', 'requirements'];
 
         foreach ($jsonFields as $field) {
             // Split string by comma and filter out empty values
-            if (!empty($requestData[$field])) {
+            if (!empty($validatedData[$field])) {
                 $validatedData[$field] = array_values(array_filter(array_map('trim', explode(',', $validatedData[$field]))));
             } else {
                 $validatedData[$field] = [];

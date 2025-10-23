@@ -52,8 +52,8 @@
                         {{-- Imagem do Curso --}}
                         <div class="relative rounded-2xl overflow-hidden mb-8">
                             <img
-                                src="{{ $course["image"] }}"
-                                alt="{{ $course["title"] }}"
+                                src="{{ $course->image }}"
+                                alt="{{ $course->title }}"
                                 class="w-full h-96 object-cover"
                             />
                             <div
@@ -63,10 +63,10 @@
                                 <div
                                     class="inline-block bg-gray-900/90 backdrop-blur-sm px-4 py-2 rounded-full text-amber-500 text-sm font-semibold border border-amber-500/30 mb-4"
                                 >
-                                    {{ ucfirst($course["level"]) }}
+                                    {{ ucfirst($course->level) }}
                                 </div>
                                 <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
-                                    {{ $course["title"] }}
+                                    {{ $course->title }}
                                 </h1>
                             </div>
                         </div>
@@ -75,19 +75,19 @@
                         <div class="flex flex-wrap gap-6 mb-8 text-white">
                             <div class="flex items-center space-x-2">
                                 <x-heroicon-o-star class="w-5 h-5 text-amber-500" />
-                                <span class="font-semibold">{{ $course["rating"] }}</span>
+                                <span class="font-semibold">{{ $course->rating }}</span>
                             </div>
                             <div class="flex items-center space-x-2">
                                 <x-heroicon-o-user-group class="w-5 h-5 text-amber-500" />
-                                <span class="text-content">{{ $course["students"] }} alunos</span>
+                                <span class="text-content">{{ $course->students }} alunos</span>
                             </div>
                             <div class="flex items-center space-x-2">
                                 <x-heroicon-o-clock class="w-5 h-5 text-amber-500" />
-                                <span class="text-content">{{ $course["duration"] }} horas</span>
+                                <span class="text-content">{{ $course->duration }} horas</span>
                             </div>
                             <div class="flex items-center space-x-2">
                                 <x-heroicon-o-book-open class="w-5 h-5 text-amber-500" />
-                                <span class="text-content">{{ $course["lessons"] }} aulas</span>
+                                <span class="text-content">{{ $course->lessons }} aulas</span>
                             </div>
                         </div>
 
@@ -97,12 +97,12 @@
                         >
                             <h2 class="text-2xl font-bold mb-4">Sobre este Curso</h2>
                             <p class="text-content leading-relaxed mb-6">
-                                {{ $course["fullDescription"] }}
+                                {{ $course->fullDescription }}
                             </p>
                             <div class="grid md:grid-cols-3 gap-4 text-content">
                                 <div class="flex items-center space-x-2">
                                     <x-heroicon-o-globe-alt class="w-5 h-5 text-amber-500" />
-                                    <span>{{ $course["language"] }}</span>
+                                    <span>{{ $course->language }}</span>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <x-heroicon-o-check-badge class="w-5 h-5 text-amber-500" />
@@ -121,7 +121,7 @@
                         >
                             <h2 class="text-2xl font-bold mb-6">O que você vai aprender</h2>
                             <div class="grid md:grid-cols-2 gap-4 text-content">
-                                @foreach ($course["whatYouLearn"] as $item)
+                                @foreach ($course->whatYouLearn as $item)
                                     <div class="flex items-start space-x-3">
                                         <x-heroicon-o-check-circle
                                             class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5"
@@ -138,7 +138,7 @@
                         >
                             <h2 class="text-2xl font-bold mb-6">Habilidades que você irá adquirir</h2>
                             <div class="flex flex-wrap gap-3">
-                                @foreach ($course["skills"] as $skill)
+                                @foreach ($course->skills as $skill)
                                     <span
                                         class="px-4 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400 text-sm font-medium"
                                     >
@@ -154,7 +154,7 @@
                         >
                             <h2 class="text-2xl font-bold mb-6">Currículo do Curso</h2>
                             <div class="space-y-4">
-                                @foreach ($course["curriculum"] as $index => $module)
+                                @foreach ($course->curriculum as $index => $module)
                                     <div
                                         class="flex items-center justify-between p-4 bg-gray-800/50 border border-amber-500/20 rounded-xl hover:border-amber-500/40 transition-all"
                                     >
@@ -168,14 +168,14 @@
                                             </div>
                                             <div>
                                                 <h3 class="text-white font-semibold">
-                                                    {{ $module->module }}
+                                                    {{ $module['module'] }}
                                                 </h3>
-                                                <p class="text-content text-sm">{{ $module->lessons }} aulas</p>
+                                                <p class="text-content text-sm">{{ $module['lessons'] }} aulas</p>
                                             </div>
                                         </div>
                                         <div class="flex items-center space-x-2 text-content text-sm">
                                             <x-heroicon-o-clock class="w-4 h-4" />
-                                            <span>{{ $module->duration }}</span>
+                                            <span>{{ $module['duration'] }}</span>
                                         </div>
                                     </div>
                                 @endforeach
@@ -188,7 +188,7 @@
                         >
                             <h2 class="text-2xl font-bold mb-6">Requisitos</h2>
                             <ul class="space-y-3 text-content">
-                                @foreach ($course["requirements"] as $req)
+                                @foreach ($course->requirements as $req)
                                     <li class="flex items-start space-x-3">
                                         <div class="w-2 h-2 bg-amber-500 rounded-full mt-2"></div>
                                         <span>{{ $req }}</span>
@@ -204,16 +204,16 @@
                             <h2 class="text-2xl font-bold mb-6">Seu Instrutor</h2>
                             <div class="flex items-start space-x-6 md:flex-row md:gap-0 flex-col gap-8">
                                 <img
-                                    src="{{ asset("storage/user_images/" . $course["instructor"]["user_image"]) }}"
-                                    alt="{{ $course["instructor"]["name"] }}"
+                                    src="{{ asset("storage/user_images/" . $course->instructor->user_image) }}"
+                                    alt="{{ $course->instructor->name }}"
                                     class="w-24 h-24 rounded-2xl object-cover border-2 border-amber-500/30"
                                 />
                                 <div>
                                     <h3 class="text-xl font-bold mb-2">
-                                        {{ $course["instructor"]["name"] }}
+                                        {{ $course->instructor->name }}
                                     </h3>
                                     <p class="text-content leading-relaxed">
-                                        {{ $course["instructor"]["bio"] }}
+                                        {{ $course->instructor->bio }}
                                     </p>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@
                             >
                                 {{-- Preço --}}
                                 <div class="mb-6">
-                                    <div class="text-4xl font-bold mb-2">${{ $course["price"] }}</div>
+                                    <div class="text-4xl font-bold mb-2">${{ $course->price }}</div>
                                     <p class="text-content">Pagamento único, acesso vitalício</p>
                                 </div>
 
@@ -253,11 +253,11 @@
                                     <div class="space-y-3 text-content">
                                         <div class="flex items-center space-x-3">
                                             <x-heroicon-o-play class="w-5 h-5 text-amber-500" />
-                                            <span>{{ $course["lessons"] }} aulas em vídeo</span>
+                                            <span>{{ $course->lessons }} aulas em vídeo</span>
                                         </div>
                                         <div class="flex items-center space-x-3">
                                             <x-heroicon-o-book-open class="w-5 h-5 text-amber-500" />
-                                            <span>{{ $course["projects"] }} projetos práticos</span>
+                                            <span>{{ $course->projects }} projetos práticos</span>
                                         </div>
                                         <div class="flex items-center space-x-3">
                                             <x-heroicon-o-arrow-down-tray class="w-5 h-5 text-amber-500" />
@@ -282,7 +282,7 @@
                                 <div class="border-t border-amber-500/20 pt-6 mt-6 text-content text-sm">
                                     Última atualização:
                                     <span class="text-white font-medium">
-                                        {{ $course["updated_at"]->translatedFormat("d F Y") }}
+                                        {{ $course->updated_at->translatedFormat("d F Y") }}
                                     </span>
                                 </div>
                             </div>

@@ -15,8 +15,8 @@
                 >
                     <div class="relative h-48 overflow-hidden">
                         <img
-                            src="{{ $course["image"] }}"
-                            alt="{{ $course["title"] }}"
+                            src="{{ $course->image }}"
+                            alt="{{ $course->title }}"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
 
@@ -24,7 +24,7 @@
                             <span
                                 class="px-3 py-1 rounded-full text-xs font-semibold {{ $getLevelColor($course->level) }}"
                             >
-                                {{ ucfirst($course["level"]) }}
+                                {{ ucfirst($course->level) }}
                             </span>
                         </div>
 
@@ -33,22 +33,22 @@
                         >
                             <div class="flex items-center space-x-1">
                                 <x-heroicon-s-star class="w-4 h-4 text-amber-500 fill-current" />
-                                <span class="text-sm font-semibold text-amber-400">{{ $course["rating"] }}</span>
+                                <span class="text-sm font-semibold text-amber-400">{{ $course->rating }}</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                            {{ $course["title"] }}
+                            {{ $course->title }}
                         </h3>
 
                         <p class="text-gray-400 text-sm mb-4 line-clamp-2">
-                            {{ $course["description"] }}
+                            {{ $course->description }}
                         </p>
 
                         <div class="flex flex-wrap gap-2 mb-4">
-                            @foreach ($course["tags"] as $tag)
+                            @foreach ($course->tags as $tag)
                                 <span
                                     class="px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full text-xs font-medium"
                                 >
@@ -60,24 +60,24 @@
                         <div class="flex items-center space-x-4 text-sm text-gray-400 mb-6">
                             <div class="flex items-center">
                                 <x-heroicon-o-users class="w-4 h-4 mr-1" />
-                                {{ number_format($course["students"], 0, ",", ".") }} alunos
+                                {{ number_format($course->students, 0, ",", ".") }} alunos
                             </div>
 
                             <div class="flex items-center">
                                 <x-heroicon-o-clock class="w-4 h-4 mr-1" />
-                                {{ $course["duration"] }} horas
+                                {{ $course->duration }} horas
                             </div>
 
                             <div class="flex items-center space-x-1">
                                 <x-heroicon-o-star class="w-4 h-4 text-amber-400" />
-                                <span class="text-white font-semibold">{{ $course["rating"] }}</span>
+                                <span class="text-white font-semibold">{{ $course->rating }}</span>
                             </div>
                         </div>
 
                         <div class="mt-auto flex items-center justify-between pt-6 border-t border-amber-500/20"></div>
 
                         <div class="flex items-center justify-between">
-                            <div class="text-2xl font-bold text-amber-400">R$ {{ $course["price"] }}</div>
+                            <div class="text-2xl font-bold text-amber-400">R$ {{ $course->price }}</div>
                             <a href="{{ route("cursos.show", $course->id) }}">
                                 <button
                                     class="group/btn bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300"

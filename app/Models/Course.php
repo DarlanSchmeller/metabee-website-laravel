@@ -35,15 +35,15 @@ class Course extends Model
     ];
 
     protected $casts = [
-        'tags' => 'array',
-        'whatYouLearn' => 'array',
-        'skills' => 'array',
-        'curriculum' => 'object',
-        'requirements' => 'array',
         'certificate' => 'boolean',
         'resources' => 'boolean',
         'rating' => 'float',
         'price' => 'float',
+        'tags' => 'array',
+        'whatYouLearn' => 'array',
+        'skills' => 'array',
+        'curriculum' => 'array',
+        'requirements' => 'array',
     ];
 
     public function instructor(): BelongsTo

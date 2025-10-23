@@ -5,7 +5,7 @@
         <div class="mb-8">
             <p class="text-gray-400">
                 Exibindo
-                <span class="text-amber-500 font-semibold">{{ count($courses) }}</span>
+                <span class="text-amber-500 font-semibold">{{ $courses->count() }}</span>
                 cursos
             </p>
         </div>
@@ -18,33 +18,33 @@
                     {{-- Image --}}
                     <div class="relative h-48 overflow-hidden">
                         <img
-                            src="{{ $course["image"] }}"
-                            alt="{{ $course["title"] }}"
+                            src="{{ $course->image }}"
+                            alt="{{ $course->title }}"
                             class="w-full h-full object-cover group-hover:scale-113 transition-transform duration-300"
                         />
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
                         <div
                             class="absolute top-4 right-4 bg-gray-900/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-500 text-sm font-semibold border border-amber-500/30"
                         >
-                            {{ ucfirst($course["level"]) ?? "Nível" }}
+                            {{ ucfirst($course->level) ?? "Nível" }}
                         </div>
                     </div>
 
                     {{-- Content --}}
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                            {{ $course["title"] }}
+                            {{ $course->title }}
                         </h3>
                         <p class="text-gray-400 text-sm mb-4 line-clamp-2">
-                            {{ $course["description"] }}
+                            {{ $course->description }}
                         </p>
                         <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <span>Por {{ $course["instructor"]["name"] }}</span>
+                            <span>Por {{ $course->instructor->name }}</span>
                         </div>
 
                         {{-- Tags --}}
                         <div class="flex flex-wrap gap-2 mb-4">
-                            @foreach ($course["tags"] as $tag)
+                            @foreach ($course->tags as $tag)
                                 <span
                                     class="px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full text-xs font-medium"
                                 >
@@ -57,23 +57,23 @@
                         <div class="flex items-center justify-between text-sm text-gray-400 mb-4">
                             <div class="flex items-center space-x-1">
                                 <x-heroicon-o-clock class="w-4 h-4" />
-                                <span>{{ $course["duration"] }} horas</span>
+                                <span>{{ $course->duration }} horas</span>
                             </div>
                             <div class="flex items-center space-x-1">
                                 <x-heroicon-o-user-group class="w-4 h-4" />
-                                <span>{{ $course["students"] }} alunos</span>
+                                <span>{{ $course->students }} alunos</span>
                             </div>
                             <div class="flex items-center space-x-1">
                                 <x-heroicon-o-star class="w-4 h-4 text-amber-400" />
                                 <span class="text-white font-semibold">
-                                    {{ $course["rating"] }}
+                                    {{ $course->rating }}
                                 </span>
                             </div>
                         </div>
 
                         {{-- Price & Button --}}
                         <div class="mt-auto flex items-center justify-between pt-6 border-t border-amber-500/20">
-                            <span class="text-2xl font-bold text-white">R$ {{ $course["price"] }}</span>
+                            <span class="text-2xl font-bold text-white">R$ {{ $course->price }}</span>
                             <a
                                 href="{{ route("cursos.show", $course->id) }}"
                                 class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300"
