@@ -29,7 +29,7 @@
                               'text-amber-500': step > s,
                               'text-gray-500': step < s
                           }"
-                        x-text="['Básico','Detalhes','Recursos'][s-1]"
+                        x-text="['Básico','Estrutura','Recursos'][s-1]"
                     ></span>
                 </div>
 

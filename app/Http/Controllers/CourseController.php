@@ -44,19 +44,25 @@ class CourseController extends Controller
             'category' => 'required|string|max:50',
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
-            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:1080',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2080',
             'duration' => 'nullable|integer|min:0',
             'lessons' => 'nullable|integer|min:0',
             'projects' => 'nullable|integer|min:0',
             'language' => 'nullable|string|max:50',
             'price' => 'nullable|numeric|min:0',
             'level' => 'required|in:iniciante,intermediario,avançado',
+            'modules.*.module' => 'required|string|max:100',
+            'modules.*.lessons' => 'required|integer|min:1',
+            'modules.*.duration' => 'required|string|max:50',
             'tags' => 'nullable|string',
             'whatYouLearn' => 'nullable|string',
             'skills' => 'nullable|string',
-            'curriculum' => 'nullable|string',
             'requirements' => 'nullable|string',
         ]);
+
+        if (empty($validatedData['modules'])) {
+            return redirect()->back()->withInput()->with('error', 'O currículo do curso é obrigatório!');
+        }
 
         // Handle checkboxes
         $validatedData['certificate'] = $request->has('certificate');
@@ -66,8 +72,7 @@ class CourseController extends Controller
         $validatedData['instructor_id'] = Auth::user()->id;
 
         // Handle fields that should be JSON
-        $jsonFields = ['tags', 'whatYouLearn', 'skills', 'curriculum', 'requirements'];
-
+        $jsonFields = ['tags', 'whatYouLearn', 'skills', 'requirements'];
         foreach ($jsonFields as $field) {
             // Split string by comma and filter out empty values
             if (! empty($validatedData[$field])) {
@@ -76,6 +81,10 @@ class CourseController extends Controller
                 $validatedData[$field] = [];
             }
         }
+
+        // Handle curriculum
+        $validatedData['curriculum'] = $validatedData['modules'];
+        unset($validatedData['modules']);
 
         // Handle image upload
 
