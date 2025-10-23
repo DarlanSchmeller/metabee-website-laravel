@@ -1,10 +1,7 @@
 <div class="mb-8 relative w-full" x-data>
     <div class="flex items-center w-full">
         <template x-for="(s, index) in 3" :key="s">
-            <div 
-                class="flex items-center"
-                :class="{ 'w-full': index < 2 }"
-            >
+            <div class="flex items-center" :class="{ 'w-full': index < 2 }">
                 <!-- Step Circle -->
                 <div class="flex flex-col items-center">
                     <div
@@ -25,19 +22,23 @@
                             <x-heroicon-o-photo class="w-5 h-5" />
                         </template>
                     </div>
-                    <span class="mt-2 text-sm font-medium"
-                          :class="{
+                    <span
+                        class="mt-2 text-sm font-medium"
+                        :class="{
                               'text-amber-400': step === s,
                               'text-amber-500': step > s,
                               'text-gray-500': step < s
                           }"
-                          x-text="['Básico','Detalhes','Recursos'][s-1]"></span>
+                        x-text="['Básico','Detalhes','Recursos'][s-1]"
+                    ></span>
                 </div>
 
                 <!-- Connector Line -->
                 <template x-if="index < 2">
-                    <div class="h-0.5 flex-grow mx-2 transition-colors"
-                         :class="step > s ? 'bg-amber-500' : 'bg-gray-800'"></div>
+                    <div
+                        class="h-0.5 flex-grow mx-2 transition-colors"
+                        :class="step > s ? 'bg-amber-500' : 'bg-gray-800'"
+                    ></div>
                 </template>
             </div>
         </template>

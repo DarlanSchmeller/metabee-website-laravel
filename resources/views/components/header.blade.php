@@ -122,13 +122,21 @@
 
                 {{-- Authenticated user mobile actions --}}
                 @auth
-                    <div class="pt-4 border-t border-amber-500/20 mt-2 space-y-3">
+                    <div class="pt-4 border-t border-amber-500/20 mt-2 space-y-4">
                         {{-- User Info --}}
                         <div class="flex items-center gap-3 text-gray-200">
                             <div
-                                class="w-9 h-9 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center"
+                                class="w-9 h-9 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center overflow-hidden"
                             >
-                                <x-heroicon-o-user class="w-5 h-5 text-amber-400" />
+                                @if (! empty(Auth::user()->user_image) && file_exists(storage_path("app/public/user_images/" . Auth::user()->user_image)))
+                                    <img
+                                        src="{{ asset("storage/user_images/" . Auth::user()->user_image) }}"
+                                        alt="{{ Auth::user()->name }}"
+                                        class="w-full h-full object-cover"
+                                    />
+                                @else
+                                    <x-heroicon-o-user class="w-5 h-5 text-amber-400" />
+                                @endif
                             </div>
                             <span class="font-medium text-base">
                                 {{ explode(" ", Auth::user()->name)[0] }}

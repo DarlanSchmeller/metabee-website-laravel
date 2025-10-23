@@ -1,14 +1,5 @@
 <section class="relative bg-zinc-900 pt-20 pb-16 overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-        <div
-            class="absolute inset-0"
-            style="
-                background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='%23fbbf24' stroke-width='0.5'/%3E%3C/svg%3E&quot;);
-                background-size: 60px 60px;
-            "
-        ></div>
-    </div>
-
+    <x-hexagon-background />
     <div class="absolute top-20 right-20 w-96 h-96 bg-amber-500/20 rounded-full filter blur-3xl animate-pulse"></div>
     <div
         class="absolute bottom-20 left-20 w-96 h-96 bg-yellow-500/20 rounded-full filter blur-3xl animate-pulse"
