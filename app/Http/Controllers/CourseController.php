@@ -70,7 +70,7 @@ class CourseController extends Controller
 
         foreach ($jsonFields as $field) {
             // Split string by comma and filter out empty values
-            if (!empty($validatedData[$field])) {
+            if (! empty($validatedData[$field])) {
                 $validatedData[$field] = array_values(array_filter(array_map('trim', explode(',', $validatedData[$field]))));
             } else {
                 $validatedData[$field] = [];

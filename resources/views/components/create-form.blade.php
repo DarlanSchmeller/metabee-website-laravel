@@ -108,12 +108,7 @@
                 placeholder="Digite cada item separado por vírgula"
             />
 
-            <x-text-area-input
-                label="Skills"
-                name="skills"
-                rows="3"
-                placeholder="Ex: JavaScript, Laravel, Tailwind"
-            />
+            <x-text-area-input label="Skills" name="skills" rows="3" placeholder="Ex: JavaScript, Laravel, Tailwind" />
 
             <x-text-area-input
                 label="Currículo do curso"

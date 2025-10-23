@@ -168,14 +168,14 @@
                                             </div>
                                             <div>
                                                 <h3 class="text-white font-semibold">
-                                                    {{ $module['module'] }}
+                                                    {{ $module["module"] }}
                                                 </h3>
-                                                <p class="text-content text-sm">{{ $module['lessons'] }} aulas</p>
+                                                <p class="text-content text-sm">{{ $module["lessons"] }} aulas</p>
                                             </div>
                                         </div>
                                         <div class="flex items-center space-x-2 text-content text-sm">
                                             <x-heroicon-o-clock class="w-4 h-4" />
-                                            <span>{{ $module['duration'] }}</span>
+                                            <span>{{ $module["duration"] }}</span>
                                         </div>
                                     </div>
                                 @endforeach
