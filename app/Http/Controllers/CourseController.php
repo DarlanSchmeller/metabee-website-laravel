@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class CourseController extends Controller
@@ -87,6 +88,10 @@ class CourseController extends Controller
         unset($validatedData['modules']);
 
         // Handle image upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('course_images', 'public');
+            $validatedData['image'] = $imagePath;
+        }
 
         Course::create($validatedData);
 
@@ -152,6 +157,11 @@ class CourseController extends Controller
     {
         // Check if user is authorized
         $this->authorize('delete', $course);
+
+        // Delete Course Image
+        if ($course->image) {
+            Storage::disk('public')->delete($course->image);
+        }
 
         // Delete course from DB
         $course->delete();

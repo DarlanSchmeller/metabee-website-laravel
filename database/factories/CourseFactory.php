@@ -4,17 +4,12 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
- */
 class CourseFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         $placeholderThumbnails = [
@@ -29,12 +24,26 @@ class CourseFactory extends Factory
 
         $user = User::first() ?? User::factory()->create();
 
+        // Pick a random image URL
+        $imageUrl = fake()->randomElement($placeholderThumbnails);
+
+        // Download image content
+        $imageContent = Http::get($imageUrl)->body();
+        $fileName = Str::random(20) . '.jpg';
+        $path = 'course_images/' . $fileName;
+
+        // Store the file in storage/app/public/course_images
+        Storage::disk('public')->put($path, $imageContent);
+
         return [
             'title' => fake()->sentence(6, 3),
             'category' => fake()->randomElement(['ia & ml', 'hardware', 'programacao']),
             'description' => fake()->paragraph(2),
             'fullDescription' => fake()->paragraphs(3, true),
-            'image' => fake()->randomElement($placeholderThumbnails),
+
+            // Store relative path (used with asset('storage/...'))
+            'image' => $path,
+
             'instructor_id' => $user->id,
             'duration' => fake()->numberBetween(1, 80),
             'lessons' => fake()->numberBetween(5, 50),
