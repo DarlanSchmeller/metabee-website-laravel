@@ -29,6 +29,6 @@ class CourseForm extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.course-form');
+        return view('components.forms.course-form');
     }
 }

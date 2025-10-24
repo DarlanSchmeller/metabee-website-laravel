@@ -11,7 +11,7 @@ use Illuminate\View\View;
 class RegisterController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      */
     public function create(): View
     {
@@ -19,7 +19,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user in DB.
      */
     public function store(Request $request): RedirectResponse
     {
@@ -40,7 +40,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified user from DB.
      */
     public function destroy(string $id)
     {

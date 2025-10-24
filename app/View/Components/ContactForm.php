@@ -23,6 +23,6 @@ class ContactForm extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.contact-form');
+        return view('components.forms.contact-form');
     }
 }

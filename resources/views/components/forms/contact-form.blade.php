@@ -12,20 +12,7 @@
                 <div
                     class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-500/20 to-yellow-500/20 rounded-2xl mb-6 border border-amber-500/30"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-8 h-8 text-amber-500"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m0 0v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8m18 0L12 13 3 8"
-                        />
-                    </svg>
+                    <x-heroicon-o-pencil-square class="w-8 h-8 text-amber-400" />
                 </div>
 
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Fale Conosco</h2>

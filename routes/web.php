@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -13,6 +14,7 @@ Route::get('/cursos', [CourseController::class, 'index'])->name('cursos.index');
 Route::get('/cursos/search', [CourseController::class, 'search'])->name('cursos.search');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/minha-conta', [AccountController::class, 'index'])->name('account.index');
     Route::get('/cursos/criar', [CourseController::class, 'create'])->name('cursos.create');
     Route::post('/cursos/criar', [CourseController::class, 'store'])->name('cursos.store');
     Route::get('/cursos/edit/{course}', [CourseController::class, 'edit'])->name('cursos.edit');
