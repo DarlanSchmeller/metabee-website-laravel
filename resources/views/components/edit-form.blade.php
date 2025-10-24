@@ -1,3 +1,7 @@
+@props([
+    "course",
+])
+
 <form
     method="POST"
     action="{{ route("cursos.store") }}"
@@ -6,7 +10,7 @@
 >
     @csrf
 
-    {{-- Etapa 1 — Informações básicas --}}
+    {{-- Step 1 - Basics --}}
     <div x-show="step === 1" x-transition>
         <div class="flex items-center gap-4 mb-8">
             <div
@@ -18,7 +22,12 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <x-text-input label="Título do curso" name="title" placeholder="Digite o título do curso" />
+            <x-text-input
+                label="Título do curso"
+                name="title"
+                placeholder="Digite o título do curso"
+                :value="$course->title"
+            />
 
             <x-text-input label="Categoria" name="category" placeholder="Digite a categoria" />
 
@@ -27,6 +36,7 @@
                 name="description"
                 rows="3"
                 placeholder="Digite uma descrição curta"
+                :value="$course->description"
                 required
             />
 
@@ -39,7 +49,7 @@
         </div>
     </div>
 
-    {{-- Etapa 2 — Estrutura e detalhes --}}
+    {{-- Step 2 - Structure --}}
     <div x-show="step === 2" x-transition>
         <div class="flex items-center gap-4 mb-8">
             <div
@@ -51,14 +61,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            @foreach ([
-                    ["Duração (horas)", "duration", "number", "1"],
-                    ["Aulas", "lessons", "number", "1"],
-                    ["Projetos", "projects", "number", "0"],
-                    ["Idioma", "language", "text", "Ex: Português"],
-                    ['Preço (R$)', "price", "number", "0.00"]
-                ]
-                as [$label, $name, $type, $placeholder])
+            @foreach ([["Duração (horas)", "duration", "number", "1"], ["Aulas", "lessons", "number", "1"], ["Projetos", "projects", "number", "0"], ["Idioma", "language", "text", "Ex: Português"], ['Preço (R$)', "price", "number", "0.00"]] as [$label, $name, $type, $placeholder])
                 <x-form-input
                     :label="$label"
                     :name="$name"
@@ -72,15 +75,84 @@
                 label="Nível"
                 name="level"
                 :options="[
-                    'iniciante' => 'Iniciante', 
-                    'intermediario' => 'Intermediário', 
-                    'avançado' => 'Avançado'
+                    'iniciante' => 'Iniciante',
+                    'intermediario' => 'Intermediário',
+                    'avançado' => 'Avançado',
                 ]"
             />
         </div>
+
+        {{-- Curriculum --}}
+        <div x-data="curriculumBuilder()" class="space-y-8 mt-14 pt-14 border-amber-500/30 border-t">
+            <div class="flex items-center gap-4 mb-4">
+                <div
+                    class="inline-flex items-center justify-center w-14 h-14 bg-amber-500/10 border border-amber-500/30 rounded-2xl"
+                >
+                    <x-heroicon-o-book-open class="w-7 h-7 text-amber-400" />
+                </div>
+                <h2 class="text-2xl font-semibold text-gray-100">Currículo do Curso</h2>
+            </div>
+
+            <template x-for="(module, index) in modules" :key="index">
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-900/50 border border-amber-500/20 rounded-2xl p-6 relative"
+                >
+                    <button
+                        type="button"
+                        class="absolute top-3 right-3 text-red-400 hover:text-red-500"
+                        @click="removeModule(index)"
+                        title="Remover módulo"
+                    >
+                        <x-heroicon-o-x-mark class="w-5 h-5" />
+                    </button>
+
+                    <div>
+                        <label class="block text-gray-200 mb-1">Nome do módulo</label>
+                        <input
+                            type="text"
+                            :name="'modules[' + index + '][module]'"
+                            class="w-full px-3 py-2 rounded-lg bg-gray-800 text-white"
+                            placeholder="Ex: Introdução à Robótica"
+                            x-model="module.module"
+                        />
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-200 mb-1">Total de Aulas</label>
+                        <input
+                            type="number"
+                            :name="'modules[' + index + '][lessons]'"
+                            min="1"
+                            class="w-full px-3 py-2 rounded-lg bg-gray-800 text-white"
+                            x-model="module.lessons"
+                        />
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-200 mb-1">Duração Total</label>
+                        <input
+                            type="text"
+                            :name="'modules[' + index + '][duration]'"
+                            class="w-full px-3 py-2 rounded-lg bg-gray-800 text-white"
+                            placeholder="Ex: 45 min"
+                            x-model="module.duration"
+                        />
+                    </div>
+                </div>
+            </template>
+
+            <button
+                type="button"
+                @click="addModule"
+                class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-400 px-4 py-2 rounded-lg hover:bg-amber-500/30 transition"
+            >
+                <x-heroicon-o-plus class="w-5 h-5" />
+                Adicionar módulo
+            </button>
+        </div>
     </div>
 
-    {{-- Etapa 3 — Recursos e publicação --}}
+    {{-- Step 3 - Resources --}}
     <div x-show="step === 3" x-transition>
         <div class="flex items-center gap-4 mb-8">
             <div
@@ -100,36 +172,55 @@
             </div>
 
             <x-text-input label="Tags (separadas por vírgula)" name="tags" placeholder="Ex: JavaScript, Web, Backend" />
+
+            <x-text-area-input
+                label="O que você vai aprender"
+                name="whatYouLearn"
+                rows="3"
+                placeholder="Digite cada item separado por vírgula"
+            />
+
+            <x-text-area-input label="Skills" name="skills" rows="3" placeholder="Ex: JavaScript, Laravel, Tailwind" />
+
+            <x-text-area-input
+                label="Requisitos"
+                name="requirements"
+                rows="3"
+                placeholder="Ex: Conhecimento básico de HTML/CSS"
+            />
         </div>
     </div>
 
-    {{-- Navegação --}}
-    <div class="flex justify-between items-center pt-10 mt-10 border-t border-amber-500/20">
+    {{-- Navigation --}}
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-10 mt-10 border-t border-amber-500/20">
+        {{-- Back button --}}
         <button
             type="button"
             x-show="step > 1"
             @click="step--"
-            class="inline-flex items-center px-6 py-3 bg-gray-800/70 hover:bg-gray-700 border border-amber-500/30 text-gray-200 font-medium rounded-xl transition-all"
+            class="w-full md:w-auto inline-flex justify-center items-center px-6 py-3 bg-gray-800/70 hover:bg-gray-700 border border-amber-500/30 text-gray-200 font-medium rounded-xl transition-all"
         >
             <x-heroicon-o-arrow-left class="w-5 h-5 mr-2 text-amber-400" />
             Voltar
         </button>
 
+        {{-- Next button --}}
         <template x-if="step < 3">
             <button
                 type="button"
                 @click="step++"
-                class="ml-auto inline-flex items-center px-7 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all"
+                class="w-full md:w-auto ml-0 md:ml-auto inline-flex justify-center items-center px-7 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all"
             >
                 Próximo
                 <x-heroicon-o-arrow-right class="w-5 h-5 ml-2" />
             </button>
         </template>
 
+        {{-- Submit button --}}
         <template x-if="step === 3">
             <button
                 type="submit"
-                class="ml-auto inline-flex items-center px-7 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all"
+                class="w-full md:w-auto ml-0 md:ml-auto inline-flex justify-center items-center px-7 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all"
             >
                 <x-heroicon-o-check class="w-5 h-5 mr-2" />
                 Enviar Curso
@@ -137,3 +228,27 @@
         </template>
     </div>
 </form>
+
+<script>
+    function curriculumBuilder() {
+        return {
+            modules: [
+                {
+                    module: '',
+                    lessons: 1,
+                    duration: '',
+                },
+            ],
+            addModule() {
+                this.modules.push({
+                    module: '',
+                    lessons: 1,
+                    duration: '',
+                })
+            },
+            removeModule(index) {
+                this.modules.splice(index, 1)
+            },
+        }
+    }
+</script>

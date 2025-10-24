@@ -1,3 +1,5 @@
+@vite("resources/js/components/curriculumBuilder.js")
+
 <form
     method="POST"
     action="{{ route("cursos.store") }}"
@@ -51,7 +53,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            @foreach ([["Duração (horas)", "duration", "number", "1"], ["Aulas", "lessons", "number", "1"], ["Projetos", "projects", "number", "0"], ["Idioma", "language", "text", "Ex: Português"], ['Preço (R$)', "price", "number", "0.00"]] as [$label, $name, $type, $placeholder])
+            @foreach ($courseFields as [$label, $name, $type, $placeholder])
                 <x-form-input
                     :label="$label"
                     :name="$name"
@@ -73,7 +75,13 @@
         </div>
 
         {{-- Curriculum --}}
-        <div x-data="curriculumBuilder()" class="space-y-8 mt-14 pt-14 border-amber-500/30 border-t">
+        <div
+            x-data="curriculumBuilder(
+                        {{ json_encode(old("modules", [["module" => "", "lessons" => 1, "duration" => ""]])) }},
+                        {{ json_encode($errors->toArray()) }},
+                    )"
+            class="space-y-8 mt-14 pt-14 border-amber-500/30 border-t"
+        >
             <div class="flex items-center gap-4 mb-4">
                 <div
                     class="inline-flex items-center justify-center w-14 h-14 bg-amber-500/10 border border-amber-500/30 rounded-2xl"
@@ -105,6 +113,11 @@
                             placeholder="Ex: Introdução à Robótica"
                             x-model="module.module"
                         />
+                        <p
+                            x-show="getError(index, 'module')"
+                            x-text="getError(index, 'module')"
+                            class="text-red-500 text-sm mt-1"
+                        ></p>
                     </div>
 
                     <div>
@@ -116,6 +129,11 @@
                             class="w-full px-3 py-2 rounded-lg bg-gray-800 text-white"
                             x-model="module.lessons"
                         />
+                        <p
+                            x-show="getError(index, 'lessons')"
+                            x-text="getError(index, 'lessons')"
+                            class="text-red-500 text-sm mt-1"
+                        ></p>
                     </div>
 
                     <div>
@@ -127,6 +145,11 @@
                             placeholder="Ex: 45 min"
                             x-model="module.duration"
                         />
+                        <p
+                            x-show="getError(index, 'duration')"
+                            x-text="getError(index, 'duration')"
+                            class="text-red-500 text-sm mt-1"
+                        ></p>
                     </div>
                 </div>
             </template>
@@ -218,27 +241,3 @@
         </template>
     </div>
 </form>
-
-<script>
-    function curriculumBuilder() {
-        return {
-            modules: [
-                {
-                    module: '',
-                    lessons: 1,
-                    duration: '',
-                },
-            ],
-            addModule() {
-                this.modules.push({
-                    module: '',
-                    lessons: 1,
-                    duration: '',
-                })
-            },
-            removeModule(index) {
-                this.modules.splice(index, 1)
-            },
-        }
-    }
-</script>

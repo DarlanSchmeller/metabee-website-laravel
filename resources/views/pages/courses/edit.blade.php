@@ -9,7 +9,7 @@
             </div>
 
             <x-progress-bar />
-            <x-create-form />
+            <x-edit-form :course="$course" />
         </div>
     </div>
 </x-layout>

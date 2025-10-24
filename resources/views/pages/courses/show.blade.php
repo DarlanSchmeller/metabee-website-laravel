@@ -52,7 +52,7 @@
                         {{-- Imagem do Curso --}}
                         <div class="relative rounded-2xl overflow-hidden mb-8">
                             <img
-                                src="{{ asset('storage/' . $course->image) }}"
+                                src="{{ asset("storage/" . $course->image) }}"
                                 alt="{{ $course->title }}"
                                 class="w-full h-96 object-cover"
                             />

@@ -15,7 +15,7 @@
                 >
                     <div class="relative h-48 overflow-hidden">
                         <img
-                            src="{{ asset('storage/' . $course->image) }}"
+                            src="{{ asset("storage/" . $course->image) }}"
                             alt="{{ $course->title }}"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />

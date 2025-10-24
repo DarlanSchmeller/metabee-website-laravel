@@ -8,12 +8,20 @@ use Illuminate\View\Component;
 
 class CreateForm extends Component
 {
+    public $courseFields;
+
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        $this->courseFields = [
+            ['Duração (horas)', 'duration', 'number', '1'],
+            ['Aulas', 'lessons', 'number', '1'],
+            ['Projetos', 'projects', 'number', '0'],
+            ['Idioma', 'language', 'text', 'Ex: Português'],
+            ['Preço (R$)', 'price', 'number', '0.00']
+        ];
     }
 
     /**
