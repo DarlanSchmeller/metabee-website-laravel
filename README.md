@@ -46,7 +46,7 @@ php artisan db:seed
 
 You will have a test user available with the following credentials:
 
--   Email: clistenis@metabee.com
+-   Email: clistenes@metabee.com
 -   Password: 12345678
 
 
