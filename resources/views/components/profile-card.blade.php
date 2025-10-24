@@ -1,3 +1,5 @@
+@props(['user' => null])
+
 <div class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-6 text-center">
     <div class="relative mb-4">
         <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-amber-500/30 mx-auto">

@@ -2,14 +2,14 @@
 
 <form
     method="POST"
-    action="{{ $course ? route("cursos.update", $course->id) : route("cursos.store") }}"
+    action="{{ !empty($course) ? route("cursos.update", $course->id) : route("cursos.store") }}"
     enctype="multipart/form-data"
     class="bg-gradient-to-br from-gray-900 to-gray-900 border border-amber-500/20 rounded-2xl p-10 md:p-12 text-white shadow-2xl backdrop-blur-xl"
 >
     @csrf
-    @unless ($course)
+    @if (!empty($course))
         @method("PUT")
-    @endunless
+    @endif
 
     {{-- Step 1 - Basics --}}
     <div x-show="step === 1" x-transition>

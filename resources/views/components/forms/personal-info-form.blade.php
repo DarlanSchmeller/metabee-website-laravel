@@ -10,8 +10,8 @@
     @method("PUT")
 
     <div class="flex items-center justify-between mb-6">
-        <h3 class="text-xl font-semibold text-white flex items-center gap-2">
-            <x-heroicon-o-user class="w-5 h-5 text-amber-500" />
+        <h3 class="text-xl font-semibold text-white flex items-center gap-3">
+            <x-heroicon-o-identification class="w-6 h-6 text-amber-500" />
             Informações Pessoais
         </h3>
         <button

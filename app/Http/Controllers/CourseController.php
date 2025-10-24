@@ -201,7 +201,7 @@ class CourseController extends Controller
         // Update course
         $course->update($validatedData);
 
-        return redirect()->route('cursos.show', $course->id)->with('success', 'Novo curso atualizado com sucesso!');
+        return redirect()->route('cursos.show', $course->id)->with('success', 'Curso atualizado com sucesso!');
     }
 
     /**

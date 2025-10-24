@@ -38,12 +38,4 @@ class RegisterController extends Controller
 
         return redirect()->route('login')->with('success', 'Você agora está registrado e pode realizar o login!');
     }
-
-    /**
-     * Remove the specified user from DB.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
