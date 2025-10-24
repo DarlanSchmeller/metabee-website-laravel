@@ -9,7 +9,7 @@
             </div>
 
             <x-progress-bar />
-            <x-create-form />
+            <x-course-form />
         </div>
     </div>
 </x-layout>

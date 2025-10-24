@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class CreateForm extends Component
+class CourseForm extends Component
 {
     public $courseFields;
 
@@ -16,11 +16,11 @@ class CreateForm extends Component
     public function __construct()
     {
         $this->courseFields = [
-            ['Duração (horas)', 'duration', 'number', '1'],
-            ['Aulas', 'lessons', 'number', '1'],
-            ['Projetos', 'projects', 'number', '0'],
-            ['Idioma', 'language', 'text', 'Ex: Português'],
-            ['Preço (R$)', 'price', 'number', '0.00']
+            ['Duração (horas)', 'duration', 'number', '1', null],
+            ['Aulas', 'lessons', 'number', '1', null],
+            ['Projetos', 'projects', 'number', '0', null],
+            ['Idioma', 'language', 'text', 'Ex: Português', null],
+            ['Preço (R$)', 'price', 'number', '0.00', '0.01'],
         ];
     }
 
@@ -29,6 +29,6 @@ class CreateForm extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.create-form');
+        return view('components.course-form');
     }
 }

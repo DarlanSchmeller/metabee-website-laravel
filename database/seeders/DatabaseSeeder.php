@@ -15,6 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Delete all course images
+        Storage::disk('public')->delete(Storage::disk('public')->files('course_images'));
+
+        // Delete all user images
+        Storage::disk('public')->delete(Storage::disk('public')->files('user_images'));
+
         // Create first user image
         $source = public_path('images/team/ceo.jpg');
         $filename = 'ceo.jpg';

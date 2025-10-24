@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/cursos/criar', [CourseController::class, 'create'])->name('cursos.create');
     Route::post('/cursos/criar', [CourseController::class, 'store'])->name('cursos.store');
     Route::get('/cursos/edit/{course}', [CourseController::class, 'edit'])->name('cursos.edit');
+    Route::post('/cursos/update/{course}', [CourseController::class, 'update'])->name('cursos.update');
     Route::delete('/cursos/delete/{course}', [CourseController::class, 'destroy'])->name('cursos.destroy');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

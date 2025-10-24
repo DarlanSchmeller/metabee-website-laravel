@@ -1,14 +1,15 @@
-@props([
-    "course",
-])
+@props(["course" => null])
 
 <form
     method="POST"
-    action="{{ route("cursos.store") }}"
+    action="{{ $course ? route("cursos.update", $course->id) : route("cursos.store") }}"
     enctype="multipart/form-data"
     class="bg-gradient-to-br from-gray-900 to-gray-900 border border-amber-500/20 rounded-2xl p-10 md:p-12 text-white shadow-2xl backdrop-blur-xl"
 >
     @csrf
+    @unless ($course)
+        @method("PUT")
+    @endunless
 
     {{-- Step 1 - Basics --}}
     <div x-show="step === 1" x-transition>
@@ -26,18 +27,23 @@
                 label="Título do curso"
                 name="title"
                 placeholder="Digite o título do curso"
-                :value="$course->title"
+                :value="old('title', $course?->title ?? '')"
             />
 
-            <x-text-input label="Categoria" name="category" placeholder="Digite a categoria" />
+            <x-text-input
+                label="Categoria"
+                name="category"
+                placeholder="Digite a categoria"
+                :value="old('category', $course?->category ?? '')"
+            />
 
             <x-text-area-input
                 label="Descrição curta"
                 name="description"
                 rows="3"
                 placeholder="Digite uma descrição curta"
-                :value="$course->description"
                 required
+                :value="old('description', $course?->description ?? '')"
             />
 
             <x-text-area-input
@@ -45,6 +51,7 @@
                 name="fullDescription"
                 rows="5"
                 placeholder="Digite a descrição completa do curso"
+                :value="old('fullDescription', $course?->fullDescription ?? '')"
             />
         </div>
     </div>
@@ -61,13 +68,15 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            @foreach ([["Duração (horas)", "duration", "number", "1"], ["Aulas", "lessons", "number", "1"], ["Projetos", "projects", "number", "0"], ["Idioma", "language", "text", "Ex: Português"], ['Preço (R$)', "price", "number", "0.00"]] as [$label, $name, $type, $placeholder])
+            @foreach ($courseFields as [$label, $name, $type, $placeholder, $step])
                 <x-form-input
                     :label="$label"
                     :name="$name"
                     :type="$type"
                     :placeholder="$placeholder"
                     :min="$type === 'number' ? $placeholder : null"
+                    :step="$step"
+                    :value="old($name, $course?->$name ?? '')"
                 />
             @endforeach
 
@@ -79,11 +88,18 @@
                     'intermediario' => 'Intermediário',
                     'avançado' => 'Avançado',
                 ]"
+                :selected="old('level', $course?->level ?? '')"
             />
         </div>
 
         {{-- Curriculum --}}
-        <div x-data="curriculumBuilder()" class="space-y-8 mt-14 pt-14 border-amber-500/30 border-t">
+        <div
+            x-data="curriculumBuilder(
+                        {{ json_encode(old("modules", $course?->curriculum ?? [["module" => "", "lessons" => 1, "duration" => ""]])) }},
+                        {{ json_encode($errors->toArray()) }},
+                    )"
+            class="space-y-8 mt-14 pt-14 border-amber-500/30 border-t"
+        >
             <div class="flex items-center gap-4 mb-4">
                 <div
                     class="inline-flex items-center justify-center w-14 h-14 bg-amber-500/10 border border-amber-500/30 rounded-2xl"
@@ -115,6 +131,11 @@
                             placeholder="Ex: Introdução à Robótica"
                             x-model="module.module"
                         />
+                        <p
+                            x-show="getError(index, 'module')"
+                            x-text="getError(index, 'module')"
+                            class="text-red-500 text-sm mt-1"
+                        ></p>
                     </div>
 
                     <div>
@@ -126,6 +147,11 @@
                             class="w-full px-3 py-2 rounded-lg bg-gray-800 text-white"
                             x-model="module.lessons"
                         />
+                        <p
+                            x-show="getError(index, 'lessons')"
+                            x-text="getError(index, 'lessons')"
+                            class="text-red-500 text-sm mt-1"
+                        ></p>
                     </div>
 
                     <div>
@@ -137,6 +163,11 @@
                             placeholder="Ex: 45 min"
                             x-model="module.duration"
                         />
+                        <p
+                            x-show="getError(index, 'duration')"
+                            x-text="getError(index, 'duration')"
+                            class="text-red-500 text-sm mt-1"
+                        ></p>
                     </div>
                 </div>
             </template>
@@ -167,26 +198,63 @@
             <x-file-input />
 
             <div class="grid sm:grid-cols-2 gap-6">
-                <x-checkbox-input name="certificate" label="Oferece certificado" />
-                <x-checkbox-input name="resources" label="Inclui materiais de apoio" />
+                <x-checkbox-input
+                    name="certificate"
+                    label="Oferece certificado"
+                    :checked="old('certificate', $course?->certificate ?? '')"
+                />
+                <x-checkbox-input
+                    name="resources"
+                    label="Inclui materiais de apoio"
+                    :checked="old('resources', $course?->resources ?? '')"
+                />
             </div>
 
-            <x-text-input label="Tags (separadas por vírgula)" name="tags" placeholder="Ex: JavaScript, Web, Backend" />
+            <x-text-input
+                label="Tags (separadas por vírgula)"
+                name="tags"
+                placeholder="Ex: JavaScript, Web, Backend"
+                :value="old(
+                    'tags',
+                    is_array($course?->tags ?? null) ? implode(', ', $course->tags) : $course?->tags ?? '',
+                )"
+            />
 
             <x-text-area-input
                 label="O que você vai aprender"
                 name="whatYouLearn"
                 rows="3"
                 placeholder="Digite cada item separado por vírgula"
+                :value="old(
+                    'whatYouLearn',
+                    is_array($course?->whatYouLearn ?? null)
+                        ? implode(', ', $course->whatYouLearn)
+                        : $course?->whatYouLearn ?? '',
+                )"
             />
 
-            <x-text-area-input label="Skills" name="skills" rows="3" placeholder="Ex: JavaScript, Laravel, Tailwind" />
+            <x-text-area-input
+                label="Skills"
+                name="skills"
+                rows="3"
+                placeholder="Ex: JavaScript, Laravel, Tailwind"
+                :value="old(
+                    'skills',
+                    is_array($course?->skills ?? null) ? implode(', ', $course->skills) : $course?->skills ?? '',
+                )"
+            />
 
             <x-text-area-input
                 label="Requisitos"
                 name="requirements"
                 rows="3"
                 placeholder="Ex: Conhecimento básico de HTML/CSS"
+                :value="old(
+                    'requirements',
+                    is_array($course?->requirements ?? null)
+                        ? implode(', ', $course->requirements)
+                        : $course?->requirements ?? '',
+                )"
             />
         </div>
     </div>
@@ -228,27 +296,3 @@
         </template>
     </div>
 </form>
-
-<script>
-    function curriculumBuilder() {
-        return {
-            modules: [
-                {
-                    module: '',
-                    lessons: 1,
-                    duration: '',
-                },
-            ],
-            addModule() {
-                this.modules.push({
-                    module: '',
-                    lessons: 1,
-                    duration: '',
-                })
-            },
-            removeModule(index) {
-                this.modules.splice(index, 1)
-            },
-        }
-    }
-</script>

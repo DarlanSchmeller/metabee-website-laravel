@@ -17,7 +17,7 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Course $curso): View
+    public function index(): View
     {
         $courses = Course::latest()->paginate(9);
 
@@ -145,9 +145,63 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Course $course): RedirectResponse
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:100',
+            'category' => 'required|string|max:50',
+            'description' => 'required|string|max:300',
+            'fullDescription' => 'nullable|string|max:1000',
+            'image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
+            'duration' => 'nullable|integer|min:0',
+            'lessons' => 'nullable|integer|min:0',
+            'projects' => 'nullable|integer|min:0',
+            'language' => 'nullable|string|max:50',
+            'price' => 'nullable|numeric|min:0',
+            'level' => 'required|in:iniciante,intermediario,avançado',
+            'modules.*.module' => 'required|string|max:100',
+            'modules.*.lessons' => 'required|integer|min:1',
+            'modules.*.duration' => 'required|string|max:50',
+            'tags' => 'nullable|string',
+            'whatYouLearn' => 'nullable|string',
+            'skills' => 'nullable|string',
+            'requirements' => 'nullable|string',
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($course->image) {
+                Storage::disk('public')->delete($course->image);
+            }
+
+            // Store new image
+            $imagePath = $request->file('image')->store('course_images', 'public');
+            $validatedData['image'] = $imagePath;
+        }
+
+        // Handle fields that should be JSON
+        $jsonFields = ['tags', 'whatYouLearn', 'skills', 'requirements'];
+        foreach ($jsonFields as $field) {
+            // Split string by comma and filter out empty values
+            if (! empty($validatedData[$field])) {
+                $validatedData[$field] = array_values(array_filter(array_map('trim', explode(',', $validatedData[$field]))));
+            } else {
+                $validatedData[$field] = [];
+            }
+        }
+
+        // Handle checkboxes
+        $validatedData['certificate'] = $request->has('certificate');
+        $validatedData['resources'] = $request->has('resources');
+
+        // Handle curriculum
+        $validatedData['curriculum'] = $validatedData['modules'];
+        unset($validatedData['modules']);
+
+        // Update course
+        $course->update($validatedData);
+
+        return redirect()->route('cursos.show', $course->id)->with('success', 'Novo curso atualizado com sucesso!');
     }
 
     /**
