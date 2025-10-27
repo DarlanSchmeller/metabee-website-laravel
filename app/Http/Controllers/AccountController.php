@@ -41,7 +41,7 @@ class AccountController extends Controller
                 'max:100',
                 Rule::unique('users')->ignore($user->id),
             ],
-            'bio' => 'string|min:16|max:800',
+            'bio' => 'nullable|string|min:16|max:800',
             'user_image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
         ]);
 
