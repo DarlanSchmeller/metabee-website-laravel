@@ -209,7 +209,7 @@
                             <h2 class="text-2xl font-bold mb-6">Seu Instrutor</h2>
                             <div class="flex items-start space-x-6 md:flex-row md:gap-0 flex-col gap-8">
                                 <img
-                                    src="{{ asset("storage/user_images/" . $course->instructor->user_image) }}"
+                                    src="{{ asset("storage/" . $course->instructor->user_image) }}"
                                     alt="{{ $course->instructor->name }}"
                                     class="w-24 h-24 rounded-2xl object-cover border-2 border-amber-500/30"
                                 />

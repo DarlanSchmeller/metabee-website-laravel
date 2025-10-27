@@ -4,7 +4,7 @@
     <div class="relative mb-4">
         <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-amber-500/30 mx-auto">
             <img
-                src="{{ asset("storage/user_images/" . $user->user_image) }}"
+                src="{{ asset("storage/" . $user->user_image) }}"
                 alt="{{ $user->name }}"
                 class="w-full h-full object-cover"
             />

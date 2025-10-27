@@ -30,29 +30,30 @@ class AccountController extends Controller
     {
         $user = Auth::user();
 
+
         // Validate data
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
             'email' => 'required|string|email|max:100',
             'bio' => 'string|max:800',
-            'image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
+            'user_image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
         ]);
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('user_image')) {
             // Delete old image
             if ($user->user_image) {
                 Storage::disk('public')->delete($user->user_image);
             }
 
             // Store new image
-            $imagePath = $request->file('image')->store('user_images', 'public');
-            $validatedData['image'] = $imagePath;
+            $imagePath = $request->file('user_image')->store('user_images', 'public');
+            $validatedData['user_image'] = $imagePath;
         }
 
         // Update the user information
         $user->update($validatedData);
 
-        return redirect()->route('login')->with('success', 'Seus dados foram atualizados com sucesso!');
+        return redirect()->back()->with('success', 'Seus dados foram atualizados com sucesso!');
     }
 
     /**

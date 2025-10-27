@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'clistenes@metabee.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
-            'user_image' => 'ceo.jpg',
+            'user_image' => 'user_images/ceo.jpg',
             'bio' => 'Com uma sólida experiência na indústria no desenvolvimento de AMRs (Robôs Móveis Autônomos), Clistenes é o principal idealizador da MetaBee. Formado em Matemática e Engenharia de Software, ele combina conhecimento técnico com uma visão estratégica voltada para democratizar o acesso às tecnologias emergentes. Sua trajetória profissional é marcada pela inovação e pela capacidade de transformar ideias em realidade, sempre explorando soluções práticas no universo da robótica, fabricação digital e educação maker. Clistenes lidera a MetaBee com paixão, inspirando equipes, alunos e parceiros a superar limites e alcançar novos horizontes no setor tecnológico.',
             'role' => 'instructor',
             'created_at' => now(),
