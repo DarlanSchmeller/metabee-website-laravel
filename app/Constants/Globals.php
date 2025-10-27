@@ -4,12 +4,16 @@ namespace App\Constants;
 
 class Globals
 {
-    const MENU_ITEMS = [
+    const MAIN_PAGES = [
         ['label' => 'Home', 'href' => '/'],
         ['label' => 'Cursos', 'href' => '/cursos'],
         ['label' => 'Sobre nós', 'href' => '/sobre-nos'],
         ['label' => 'Planos', 'href' => '/planos'],
     ];
+
+    const FACEBOOK_LINK = 'https://www.facebook.com/profile.php?id=61550807497574';
+    const LINKEDIN_LINK = 'https://www.linkedin.com/company/metabee_educacaoerobotica/';
+    const INSTAGRAM_LINK = 'https://www.instagram.com/metabee.robotica/';
 
     const PRICING = [
         [

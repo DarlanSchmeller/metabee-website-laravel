@@ -33,7 +33,7 @@ class AccountController extends Controller
         // Validate data
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
-            'email' => 'required|string|email|max:100|unique:users',
+            'email' => 'required|string|email|max:100',
             'bio' => 'string|max:800',
             'image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
         ]);

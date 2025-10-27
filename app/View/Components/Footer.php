@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Constants\Globals;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
@@ -17,37 +18,32 @@ class Footer extends Component
             [
                 'title' => 'Cursos',
                 'links' => [
-                    'Fundamentos de Robótica',
-                    'Machine Learning',
-                    'Automação Industrial',
-                    'Tecnologia de Drones',
+                    ['label' => 'Fundamentos de Robótica', 'href' => '/cursos/fundamentos-de-robotica'],
+                    ['label' => 'Machine Learning', 'href' => '/cursos/machine-learning'],
+                    ['label' => 'Automação Industrial', 'href' => '/cursos/automacao-industrial'],
+                    ['label' => 'Tecnologia de Drones', 'href' => '/cursos/tecnologia-de-drones'],
                 ],
             ],
             [
                 'title' => 'Recursos',
                 'links' => [
-                    'Documentação',
-                    'Tutoriais',
-                    'Comunidade',
-                    'Carreiras',
+                    ['label' => 'Documentação', 'href' => '/documentacao'],
+                    ['label' => 'Tutoriais', 'href' => '/tutoriais'],
+                    ['label' => 'Comunidade', 'href' => '/comunidade'],
+                    ['label' => 'Carreiras', 'href' => '/carreiras'],
                 ],
             ],
             [
                 'title' => 'Empresa',
-                'links' => [
-                    'Sobre Nós',
-                    'Cursos',
-                    'Planos',
-                    'Contato',
-                ],
+                'links' => Globals::MAIN_PAGES,
             ],
             [
                 'title' => 'Suporte',
                 'links' => [
-                    'Central de Ajuda',
-                    'Suporte ao Estudante',
-                    'Política de Reembolso',
-                    'Termos de Serviço',
+                    ['label' => 'Central de Ajuda', 'href' => '/ajuda'],
+                    ['label' => 'Suporte ao Estudante', 'href' => '/suporte'],
+                    ['label' => 'Política de Reembolso', 'href' => '/reembolso'],
+                    ['label' => 'Termos de Serviço', 'href' => '/termos'],
                 ],
             ],
         ];

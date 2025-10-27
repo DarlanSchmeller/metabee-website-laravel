@@ -12,7 +12,7 @@ class Header extends Component
 
     public function __construct()
     {
-        $this->menuItems = GLOBALS::MENU_ITEMS;
+        $this->menuItems = GLOBALS::MAIN_PAGES;
     }
 
     public function render(): View
