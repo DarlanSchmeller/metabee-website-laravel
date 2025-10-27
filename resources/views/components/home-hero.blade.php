@@ -75,19 +75,14 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-r from-amber-500/50 to-yellow-500/50 rounded-3xl blur-xl"
                     ></div>
-                    <img
-                        src="{{ asset("images/robot.png") }}"
-                        alt="Robô"
-                        class="relative rounded-3xl shadow-2xl shadow-amber-500/20 w-full h-96 object-cover border border-amber-500/30"
-                    />
-
                     <div
-                        class="absolute -top-6 -left-6 bg-gray-900 border border-amber-500/30 rounded-2xl p-4 shadow-xl shadow-amber-500/20"
+                        class="relative w-full h-96 rounded-3xl border border-amber-500/30 bg-gradient-to-br from-amber-400 via-orange-300 to-amber-300 shadow-2xl shadow-amber-500/20"
                     >
-                        <div class="flex items-center space-x-3">
-                            <div class="w-3 h-3 bg-amber-500 rounded-full animate-pulse"></div>
-                            <span class="text-sm font-medium text-amber-400">Aulas online</span>
-                        </div>
+                        <img
+                            src="{{ asset("images/robot.png") }}"
+                            alt="Robô"
+                            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-8 w-auto h-[130%] object-contain"
+                        />
                     </div>
 
                     <div
