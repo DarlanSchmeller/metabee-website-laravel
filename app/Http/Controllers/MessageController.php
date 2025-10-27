@@ -3,23 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class MessageController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
-     * Display a listing of the resource.
+     * Display a listing of messages.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        // Check if user is authorized
+        $this->authorize('view', Message::class);
+
+        // Get messages
+        $messages = Message::latest()->paginate(5);
+
+        return view('pages.messages.index')->with('messages', $messages);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created message in DB.
      */
-    public function create(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => 'string|min:6|max:120',
@@ -36,18 +46,15 @@ class MessageController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Remove the specified message from DB.
      */
-    public function store(Request $request)
+    public function destroy(Message $message)
     {
-        //
-    }
+        // Check if user is authorized to delete
+        $this->authorize('delete', Message::class);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $message->delete();
+
+        return redirect()->back()->with('success', 'Mensagem deletada com sucesso!');
     }
 }

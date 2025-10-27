@@ -1,13 +1,9 @@
 <form method="POST" action="{{ route("login") }}" class="space-y-5 md:space-y-6">
     @csrf
 
-    @if ($errors->any())
+    @if (session("error"))
         <div class="bg-red-500 text-white p-4 rounded mb-4">
-            <ul class="list-disc list-inside">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            {{ session("error") }}
         </div>
     @endif
 
@@ -73,7 +69,6 @@
     >
         Entrar
     </button>
-
     <div class="mt-4 text-center text-sm text-gray-300">
         Ainda não tem uma conta?
         <a href="{{ route("register") }}" class="text-amber-400 hover:text-amber-300 font-medium">Crie agora</a>

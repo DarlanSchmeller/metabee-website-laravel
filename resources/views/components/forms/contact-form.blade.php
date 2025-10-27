@@ -23,7 +23,7 @@
                     </p>
                 </div>
 
-                <form method="POST" action="{{ route("message.create") }}" class="space-y-6">
+                <form method="POST" action="{{ route("message.store") }}" class="space-y-6">
                     @csrf
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>

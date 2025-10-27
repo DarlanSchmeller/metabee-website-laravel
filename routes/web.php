@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/cursos/update/{course}', [CourseController::class, 'update'])->name('cursos.update');
     Route::delete('/cursos/delete/{course}', [CourseController::class, 'destroy'])->name('cursos.destroy');
 
+    Route::get('/message', [MessageController::class, 'index'])->name('message.index');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
@@ -39,7 +40,8 @@ Route::get('/planos', function () {
     return view('pages.planos');
 })->name('planos');
 
-Route::post('/message', [MessageController::class, 'create'])->name('message.create');
+Route::post('/message', [MessageController::class, 'store'])->name('message.store');
+Route::delete('/message/{message}', [MessageController::class, 'destroy'])->name('message.destroy');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
