@@ -33,10 +33,17 @@
                             class="w-full h-full object-cover group-hover:scale-113 transition-transform duration-300"
                         />
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                        <div
-                            class="absolute top-4 right-4 bg-gray-900/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-500 text-sm font-semibold border border-amber-500/30"
-                        >
-                            {{ ucfirst($course->level) ?? "Nível" }}
+                        <div class="absolute top-4 right-4 flex gap-2">
+                            <div
+                                class="bg-gray-900/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-500 text-sm font-semibold border border-amber-500/30"
+                            >
+                                {{ ucfirst($course->level) ?? "Nível" }}
+                            </div>
+                            <div
+                                class="bg-gray-900/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-500 text-sm font-semibold border border-amber-500/30"
+                            >
+                                {{ ucfirst($course->category) ?? "Categoria" }}
+                            </div>
                         </div>
                     </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\Globals;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
+        $categories = Globals::COURSE_CATEGORY_LABELS;
+
+        Schema::create('courses', function (Blueprint $table) use ($categories) {
             $table->id();
             $table->string('title');
-            $table->string('category');
+            $table->enum('category', $categories);
             $table->text('description');
             $table->text('fullDescription');
             $table->string('image');

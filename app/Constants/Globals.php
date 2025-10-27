@@ -11,8 +11,28 @@ class Globals
         ['label' => 'Planos', 'href' => '/planos'],
     ];
 
+    const SEARCH_CATEGORY = '/cursos/search?keywords=&categories%5B%5D=';
+
+    const COURSE_CATEGORIES = [
+        ['icon' => 'cube', 'label' => 'Exploradores da Robótica', 'href' => self::SEARCH_CATEGORY.'Exploradores+da+Robótica'],
+        ['icon' => 'wrench', 'label' => 'MakerBee', 'href' => self::SEARCH_CATEGORY.'MakerBee'],
+        ['icon' => 'cpu-chip', 'label' => 'IA & ML', 'href' => self::SEARCH_CATEGORY.'IA+%26+ML'],
+        ['icon' => 'computer-desktop', 'label' => 'Hardware', 'href' => self::SEARCH_CATEGORY.'Hardware'],
+        ['icon' => 'code-bracket', 'label' => 'Programação', 'href' => self::SEARCH_CATEGORY.'Programação'],
+    ];
+
+    const COURSE_CATEGORY_LABELS = [
+        'Exploradores da Robótica' => 'Exploradores da Robótica',
+        'MakerBee' => 'MakerBee',
+        'IA & ML' => 'IA & ML',
+        'Hardware' => 'Hardware',
+        'Programação' => 'Programação',
+    ];
+
     const FACEBOOK_LINK = 'https://www.facebook.com/profile.php?id=61550807497574';
+
     const LINKEDIN_LINK = 'https://www.linkedin.com/company/metabee_educacaoerobotica/';
+
     const INSTAGRAM_LINK = 'https://www.instagram.com/metabee.robotica/';
 
     const PRICING = [

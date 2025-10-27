@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\Globals;
 use App\Models\Course;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
@@ -40,9 +41,10 @@ class CourseController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $categoryLabels = collect(Globals::COURSE_CATEGORIES)->pluck('label')->implode(',');
         $validatedData = $request->validate([
             'title' => 'required|string|max:100',
-            'category' => 'required|string|max:50',
+            'category' => 'required|in:'.$categoryLabels,
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2080',
@@ -147,9 +149,10 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course): RedirectResponse
     {
+        $categoryLabels = collect(Globals::COURSE_CATEGORIES)->pluck('label')->implode(',');
         $validatedData = $request->validate([
             'title' => 'required|string|max:100',
-            'category' => 'required|string|max:50',
+            'category' => 'required|in:'.$categoryLabels,
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',

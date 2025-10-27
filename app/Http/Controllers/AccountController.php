@@ -30,7 +30,6 @@ class AccountController extends Controller
     {
         $user = Auth::user();
 
-
         // Validate data
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',

@@ -17,12 +17,7 @@ class Footer extends Component
         $this->footerSections = [
             [
                 'title' => 'Cursos',
-                'links' => [
-                    ['label' => 'Fundamentos de Robótica', 'href' => '/cursos/fundamentos-de-robotica'],
-                    ['label' => 'Machine Learning', 'href' => '/cursos/machine-learning'],
-                    ['label' => 'Automação Industrial', 'href' => '/cursos/automacao-industrial'],
-                    ['label' => 'Tecnologia de Drones', 'href' => '/cursos/tecnologia-de-drones'],
-                ],
+                'links' => Globals::COURSE_CATEGORIES,
             ],
             [
                 'title' => 'Recursos',

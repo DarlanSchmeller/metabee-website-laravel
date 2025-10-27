@@ -89,6 +89,10 @@
                                 <x-heroicon-o-book-open class="w-5 h-5 text-amber-500" />
                                 <span class="text-content">{{ $course->lessons }} aulas</span>
                             </div>
+                            <div class="flex items-center space-x-2">
+                                <x-heroicon-o-clipboard-document-list class="w-5 h-5 text-amber-500" />
+                                <span class="text-content">{{ $course->category }}</span>
+                            </div>
                         </div>
 
                         {{-- Sobre o Curso --}}

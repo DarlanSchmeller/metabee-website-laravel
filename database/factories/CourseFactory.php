@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Constants\Globals;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Http;
@@ -35,9 +36,12 @@ class CourseFactory extends Factory
         // Store the file in storage/app/public/course_images
         Storage::disk('public')->put($path, $imageContent);
 
+        // Get course categories
+        $categories = Globals::COURSE_CATEGORY_LABELS;
+
         return [
             'title' => fake()->sentence(6, 3),
-            'category' => fake()->randomElement(['ia & ml', 'hardware', 'programacao']),
+            'category' => fake()->randomElement($categories),
             'description' => fake()->paragraph(2),
             'fullDescription' => fake()->paragraphs(3, true),
 

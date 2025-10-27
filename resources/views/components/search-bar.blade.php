@@ -16,7 +16,6 @@
     <div class="flex flex-wrap justify-center gap-3">
         @foreach ($categories as $cat)
             <label class="relative">
-                {{-- Hidden checkbox first (important for peer to work) --}}
                 <input
                     onchange="this.form.submit()"
                     type="checkbox"
@@ -26,11 +25,10 @@
                     {{ in_array($cat["label"], (array) request("categories", [])) ? "checked" : "" }}
                 />
 
-                {{-- Styled content --}}
                 <div
-                    class="flex items-center space-x-2 px-4 py-2 rounded-xl font-medium cursor-pointer transition-all duration-300 border border-amber-500/20 bg-gray-900/50 text-gray-300 hover:border-amber-500/40 peer-checked:bg-gradient-to-r peer-checked:from-amber-500 peer-checked:to-yellow-500 peer-checked:text-gray-900 peer-checked:shadow-lg peer-checked:shadow-amber-500/30"
+                    class="flex items-center space-x-2 px-4 py-2 rounded-xl font-medium cursor-pointer border border-amber-500/20 bg-gray-900/50 text-gray-300 transition-all duration-300 hover:border-amber-500/40 peer-checked:bg-amber-400/40 peer-checked:text-amber-400 peer-checked:shadow-lg peer-checked:shadow-amber-500/30"
                 >
-                    <div class="text-amber-400 transition-colors duration-300 peer-checked:text-gray-900">
+                    <div class="text-amber-400">
                         <x-dynamic-component :component="'heroicon-o-' . $cat['icon']" class="w-5 h-5" />
                     </div>
                     <span>{{ $cat["label"] }}</span>

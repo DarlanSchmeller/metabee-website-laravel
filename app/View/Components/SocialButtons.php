@@ -10,7 +10,9 @@ use Illuminate\View\Component;
 class SocialButtons extends Component
 {
     public $facebookLink;
+
     public $linkedinLink;
+
     public $instagramLink;
 
     /**

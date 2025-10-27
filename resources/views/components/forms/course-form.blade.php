@@ -30,11 +30,11 @@
                 :value="old('title', $course?->title ?? '')"
             />
 
-            <x-text-input
+            <x-select-input
                 label="Categoria"
                 name="category"
-                placeholder="Digite a categoria"
-                :value="old('category', $course?->category ?? '')"
+                :options="$courseCategories"
+                :selected="old('category', $course?->category ?? '')"
             />
 
             <x-text-area-input
