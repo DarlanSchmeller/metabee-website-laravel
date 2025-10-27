@@ -34,7 +34,7 @@
                 label="Categoria"
                 name="category"
                 :options="$courseCategories"
-                :selected="old('category', $course?->category ?? '')"
+                :selected="$course?->category"
             />
 
             <x-text-area-input
@@ -88,7 +88,7 @@
                     'intermediario' => 'Intermediário',
                     'avançado' => 'Avançado',
                 ]"
-                :selected="old('level', $course?->level ?? '')"
+                :selected="$course?->level"
             />
         </div>
 
@@ -221,7 +221,7 @@
             />
 
             <x-text-area-input
-                label="O que você vai aprender"
+                label="O que você vai aprender (separado por vírgula)"
                 name="whatYouLearn"
                 rows="3"
                 placeholder="Digite cada item separado por vírgula"
@@ -234,7 +234,7 @@
             />
 
             <x-text-area-input
-                label="Skills"
+                label="Skills (separadas por vírgula)"
                 name="skills"
                 rows="3"
                 placeholder="Ex: JavaScript, Laravel, Tailwind"
@@ -245,7 +245,7 @@
             />
 
             <x-text-area-input
-                label="Requisitos"
+                label="Requisitos (separados por vírgula)"
                 name="requirements"
                 rows="3"
                 placeholder="Ex: Conhecimento básico de HTML/CSS"

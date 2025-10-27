@@ -16,7 +16,7 @@ class Globals
     const COURSE_CATEGORIES = [
         ['icon' => 'cube', 'label' => 'Exploradores da Robótica', 'href' => self::SEARCH_CATEGORY.'Exploradores+da+Robótica'],
         ['icon' => 'wrench', 'label' => 'MakerBee', 'href' => self::SEARCH_CATEGORY.'MakerBee'],
-        ['icon' => 'cpu-chip', 'label' => 'IA & ML', 'href' => self::SEARCH_CATEGORY.'IA+%26+ML'],
+        ['icon' => 'cpu-chip', 'label' => 'IA e ML', 'href' => self::SEARCH_CATEGORY.'IA+%e+ML'],
         ['icon' => 'computer-desktop', 'label' => 'Hardware', 'href' => self::SEARCH_CATEGORY.'Hardware'],
         ['icon' => 'code-bracket', 'label' => 'Programação', 'href' => self::SEARCH_CATEGORY.'Programação'],
     ];
@@ -24,7 +24,7 @@ class Globals
     const COURSE_CATEGORY_LABELS = [
         'Exploradores da Robótica' => 'Exploradores da Robótica',
         'MakerBee' => 'MakerBee',
-        'IA & ML' => 'IA & ML',
+        'IA e ML' => 'IA e ML',
         'Hardware' => 'Hardware',
         'Programação' => 'Programação',
     ];
