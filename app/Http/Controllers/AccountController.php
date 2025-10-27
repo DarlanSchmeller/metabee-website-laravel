@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
@@ -25,7 +26,7 @@ class AccountController extends Controller
     /**
      * Update the user personal information
      */
-    public function update(Request $request)
+    public function updatePersonalInfo(Request $request)
     {
         $user = Auth::user();
 
@@ -35,17 +36,51 @@ class AccountController extends Controller
             'email' => 'required|string|email|max:100|unique:users',
             'bio' => 'string|max:800',
             'image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
-            'current_password' => 'required|string|min:8',
-            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Hash password
-        $validatedData['password'] = Hash::make($validatedData['password']);
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($user->user_image) {
+                Storage::disk('public')->delete($user->user_image);
+            }
+
+            // Store new image
+            $imagePath = $request->file('image')->store('user_images', 'public');
+            $validatedData['image'] = $imagePath;
+        }
 
         // Update the user information
         $user->update($validatedData);
 
         return redirect()->route('login')->with('success', 'Seus dados foram atualizados com sucesso!');
+    }
+
+    /**
+     * Update the user credentials
+     */
+    public function updateUserCredentials(Request $request)
+    {
+        // Validate data
+        $validatedData = $request->validate([
+            'password' => 'required|string|min:8',
+            'new-password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user = Auth::user();
+
+        // Confirm current password is correct
+        if (! Hash::check($validatedData['password'], $user->password)) {
+            return redirect()->back()->with('error', 'A senha atual está incorreta.');
+        }
+
+        // Hash password
+        $validatedData['password'] = Hash::make($validatedData['new-password']);
+        unset($validatedData['new-password']);
+
+        // Update the user credentials
+        $user->update($validatedData);
+
+        return redirect()->route('account.index')->with('success', 'Suas credenciais foram atualizadas com sucesso!');
     }
 
     /**
@@ -57,7 +92,7 @@ class AccountController extends Controller
 
         // Block instructors from deleting their account
         if ($user->role === 'instructor') {
-            return redirect()->back()->with('error', 'A conta de um instrutor não deve ser apagada');
+            return redirect()->back()->with('error', 'A conta de um instrutor não deve ser deletada');
         }
 
         // Delete user image
@@ -68,6 +103,6 @@ class AccountController extends Controller
         // Delete account
         $user->delete();
 
-        return redirect()->route('home')->with('success', 'Sua conta foi apagada com sucesso!');
+        return redirect()->route('home')->with('success', 'Sua conta foi deletada com sucesso!');
     }
 }

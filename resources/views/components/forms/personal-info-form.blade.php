@@ -1,7 +1,7 @@
 @props(["user" => null])
 
 <form
-    action="{{ route("home", $user->id) }}"
+    action="{{ route("account.personal-info.update") }}"
     method="POST"
     enctype="multipart/form-data"
     class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-6 text-white"

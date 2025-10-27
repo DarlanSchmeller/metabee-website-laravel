@@ -15,7 +15,8 @@ Route::get('/cursos/search', [CourseController::class, 'search'])->name('cursos.
 
 Route::middleware('auth')->group(function () {
     Route::get('/minha-conta', [AccountController::class, 'index'])->name('account.index');
-    Route::put('/minha-conta', [AccountController::class, 'update'])->name('account.update');
+    Route::put('/minha-conta/personal-info', [AccountController::class, 'updatePersonalInfo'])->name('account.personal-info.update');
+    Route::put('/minha-conta/credentials', [AccountController::class, 'updateUserCredentials'])->name('account.credentials.update');
     Route::delete('/minha-conta/delete', [AccountController::class, 'destroy'])->name('account.destroy');
 
     Route::get('/cursos/criar', [CourseController::class, 'create'])->name('cursos.create');
