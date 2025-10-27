@@ -2,21 +2,18 @@
 
 namespace App\View\Components;
 
-use App\Models\Course;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class FeaturedCourses extends Component
+class CourseCard extends Component
 {
-    public $courses;
-
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        $this->courses = Course::orderBy('students', 'desc')->take(3)->get();
+        //
     }
 
     /**
@@ -24,6 +21,6 @@ class FeaturedCourses extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.featured_courses');
+        return view('components.course-card');
     }
 }
