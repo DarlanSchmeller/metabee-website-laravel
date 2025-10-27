@@ -38,8 +38,16 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        Course::factory()->count(20)->create([
-            'instructor_id' => $user->id,
-        ]);
+        // Use factory to create fake data
+        // Course::factory()->count(20)->create([
+        //     'instructor_id' => $user->id,
+        // ]);
+
+        // Create courses using json data
+        $courses = json_decode(file_get_contents(database_path('seeders/data/courses.json')), true);
+
+        foreach ($courses as $course) {
+            Course::create($course);
+        }
     }
 }

@@ -128,7 +128,7 @@ class CourseController extends Controller
             $query->whereIn('category', $searchCategories);
         }
 
-        $courses = $query->paginate(10)
+        $courses = $query->paginate(9)
             ->appends($request->only(['keywords', 'categories']));
 
         return view('pages.courses.index')->with('courses', $courses);
