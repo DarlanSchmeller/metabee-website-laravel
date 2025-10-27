@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class AccountController extends Controller
@@ -32,9 +32,16 @@ class AccountController extends Controller
 
         // Validate data
         $validatedData = $request->validate([
-            'name' => 'required|string|max:100',
-            'email' => 'required|string|email|max:100',
-            'bio' => 'string|max:800',
+            'name' => 'required|string|min:8|max:100',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'min:6',
+                'max:100',
+                Rule::unique('users')->ignore($user->id),
+            ],
+            'bio' => 'string|min:16|max:800',
             'user_image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
         ]);
 

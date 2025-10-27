@@ -13,7 +13,7 @@
             title="Precisa de uma solução personalizada?"
             content="Oferecemos soluções empresariais sob medida para organizações com necessidades específicas. Entre em
                 contato com nossa equipe para discutir sua demanda."
-            buttonText="Pronto para Começar Sua Jornada?"
+            buttonText="Entre em Contato Conosco"
             link="{{ route('home') }}"
         />
     </div>

@@ -19,7 +19,7 @@
                 @foreach ($menuItems as $item)
                     <a
                         href="{{ $item["href"] }}"
-                        class="text-gray-300 hover:text-amber-400 font-medium transition-colors"
+                        class="{{ request()->url() === url($item["href"]) ? "text-amber-400 font-bold" : "text-gray-300 hover:text-amber-400" }} hover:text-amber-300 transition-colors"
                     >
                         {{ $item["label"] }}
                     </a>

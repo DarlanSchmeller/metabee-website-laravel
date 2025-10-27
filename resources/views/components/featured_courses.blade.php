@@ -10,7 +10,7 @@
 
         <div class="grid lg:grid-cols-3 gap-8 mb-12">
             @foreach ($courses as $course)
-                <x-course-card-alternative  :course="$course"/>
+                <x-course-card-alternative :course="$course" />
             @endforeach
         </div>
 
