@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\Module;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -42,42 +43,50 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Use factory to create fake course data
-        Course::factory()->count(20)->create([
-            'instructor_id' => $user->id,
-        ]);
+        // Course::factory()->count(20)->create([
+        //     'instructor_id' => $user->id,
+        // ]);
 
         // Create courses using json data
-        // $courses = json_decode(file_get_contents(database_path('seeders/data/courses.json')), true);
+        $courses = json_decode(file_get_contents(database_path('seeders/data/courses.json')), true);
 
-        // foreach ($courses as $course) {
-        //     // Download image content
-        //     $imageContent = Http::get($course['image'])->body();
-        //     $fileName = Str::random(20).'.jpg';
-        //     $path = 'course_images/'.$fileName;
+        foreach ($courses as $courseData) {
+            // Download image content
+            $imageContent = Http::get($courseData['image'])->body();
+            $fileName = Str::random(20) . '.jpg';
+            $path = 'course_images/' . $fileName;
 
-        //     // Store new image path
-        //     $course['image'] = $path;
+            // Store new image path
+            $courseData['image'] = $path;
+            Storage::disk('public')->put($path, $imageContent);
 
-        //     // Store the file in storage/app/public/course_images
-        //     Storage::disk('public')->put($path, $imageContent);
+            // Extract curriculum before creating course
+            $curriculum = $courseData['curriculum'] ?? [];
+            unset($courseData['curriculum']);
 
-        //     // Extract curriculum before creating course
-        //     $curriculum = $course['curriculum'] ?? [];
-        //     unset($course['curriculum']);
+            // Create course
+            $course = Course::create($courseData);
 
-        //     // Create course
-        //     $course = Course::create($course);
+            // Create modules and lessons
+            foreach ($curriculum as $moduleIndex => $moduleData) {
+                // Create module
+                $module = Module::create([
+                    'course_id' => $course->id,
+                    'title' => $moduleData['title'],
+                    'order' => $moduleIndex + 1,
+                ]);
 
-        //     // Create modules
-        //     foreach ($curriculum as $index => $moduleData) {
-        //         Module::create([
-        //             'course_id' => $course->id,
-        //             'title' => $moduleData['module'],
-        //             'duration' => $moduleData['duration'],
-        //             'order' => $index + 1,
-        //             'lessons' => $moduleData['lessons'], // optional field if your table has it
-        //         ]);
-        //     }
-        // }
+                // Create lessons for this module
+                foreach ($moduleData['lessons'] as $lessonIndex => $lessonData) {
+                    Lesson::create([
+                        'module_id' => $module->id,
+                        'title' => $lessonData['title'],
+                        'url' => $lessonData['url'],
+                        'duration' => $lessonData['duration'],
+                        'order' => $lessonIndex + 1,
+                    ]);
+                }
+            }
+        }
     }
 }
