@@ -6,6 +6,7 @@ use App\Models\Message;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class MessageController extends Controller
@@ -31,18 +32,24 @@ class MessageController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $validatedData = $request->validate([
-            'name' => 'string|min:6|max:120',
-            'email' => 'email|min:6|max:100',
-            'message' => 'string|min:20|max:300',
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'name' => 'string|min:6|max:120',
+                'email' => 'email|min:6|max:100',
+                'message' => 'string|min:20|max:300',
+            ]);
 
-        Message::create($validatedData);
+            Message::create($validatedData);
 
-        return redirect()->back()->with([
-            'success' => 'Mensagem enviada, entraremos em contato em breve!',
-            'message_sent' => true,
-        ]);
+            return redirect()->back()->with([
+                'success' => 'Mensagem enviada, entraremos em contato em breve!',
+                'message_sent' => true,
+            ]);
+        } catch (ValidationException $e) {
+            return redirect(url()->previous() . '#contact')
+                ->withErrors($e->validator)
+                ->withInput();
+        }
     }
 
     /**
