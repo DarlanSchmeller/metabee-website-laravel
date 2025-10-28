@@ -38,7 +38,7 @@ php artisan migrate
 
 #### Seed Database (Optional)
 
-You can seed the database with users, jobs and bookmarks
+You can seed the database with users and courses.
 
 ```
 php artisan db:seed
