@@ -163,7 +163,7 @@
                         >
                             <h2 class="text-2xl font-bold mb-6">Currículo do Curso</h2>
                             <div class="space-y-4">
-                                @foreach ($course->curriculum as $index => $module)
+                                @foreach ($course->modules as $index => $module)
                                     <div
                                         class="flex items-center justify-between p-4 bg-gray-800/50 border border-amber-500/20 rounded-xl hover:border-amber-500/40 transition-all"
                                     >
@@ -177,7 +177,7 @@
                                             </div>
                                             <div>
                                                 <h3 class="text-white font-semibold">
-                                                    {{ $module["module"] }}
+                                                    {{ $module["title"] }}
                                                 </h3>
                                                 <p class="text-content text-sm">{{ $module["lessons"] }} aulas</p>
                                             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Constants\Globals;
 use App\Models\Course;
+use App\Models\Module;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -85,17 +86,26 @@ class CourseController extends Controller
             }
         }
 
-        // Handle curriculum
-        $validatedData['curriculum'] = $validatedData['modules'];
-        unset($validatedData['modules']);
-
         // Handle image upload
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('course_images', 'public');
             $validatedData['image'] = $imagePath;
         }
 
-        Course::create($validatedData);
+        // Grab modules data and unset
+        $modules = $validatedData['modules'];
+        unset($validatedData['modules']);
+
+        $course = Course::create($validatedData);
+
+        // Create modules in DB
+        foreach ($modules as $index => $module) {
+            $module['title'] = $module['module'];
+            $module['course_id'] = $course->id;
+            $module['order'] = $index;
+
+            Module::create($module);
+        }
 
         return redirect()->route('cursos.index')->with('success', 'Curso criado com sucesso!');
     }
@@ -105,7 +115,7 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $course = Course::with('instructor')->findOrFail($id);
+        $course = Course::with(['instructor', 'modules'])->findOrFail($id);
 
         return view('pages.courses.show')->with('course', $course);
     }

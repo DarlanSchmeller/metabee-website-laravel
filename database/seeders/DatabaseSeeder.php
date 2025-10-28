@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Course;
+use App\Models\Module;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -40,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        // Use factory to create fake data
+        // Use factory to create fake course data
         // Course::factory()->count(20)->create([
         //     'instructor_id' => $user->id,
         // ]);
@@ -51,8 +52,8 @@ class DatabaseSeeder extends Seeder
         foreach ($courses as $course) {
             // Download image content
             $imageContent = Http::get($course['image'])->body();
-            $fileName = Str::random(20).'.jpg';
-            $path = 'course_images/'.$fileName;
+            $fileName = Str::random(20) . '.jpg';
+            $path = 'course_images/' . $fileName;
 
             // Store new image path
             $course['image'] = $path;
@@ -60,7 +61,23 @@ class DatabaseSeeder extends Seeder
             // Store the file in storage/app/public/course_images
             Storage::disk('public')->put($path, $imageContent);
 
-            Course::create($course);
+            // Extract curriculum before creating course
+            $curriculum = $course['curriculum'] ?? [];
+            unset($course['curriculum']);
+
+            // Create course
+            $course = Course::create($course);
+
+            // Create modules
+            foreach ($curriculum as $index => $moduleData) {
+                Module::create([
+                    'course_id' => $course->id,
+                    'title' => $moduleData['module'],
+                    'duration' => $moduleData['duration'],
+                    'order' => $index + 1,
+                    'lessons' => $moduleData['lessons'], // optional field if your table has it
+                ]);
+            }
         }
     }
 }

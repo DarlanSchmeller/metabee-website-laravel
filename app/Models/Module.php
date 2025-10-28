@@ -14,6 +14,7 @@ class Module extends Model
         'course_id',
         'title',
         'duration',
+        'lessons',
         'order',
     ];
 

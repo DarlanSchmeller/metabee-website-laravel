@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Constants\Globals;
+use App\Models\Course;
+use App\Models\Module;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Http;
@@ -30,8 +32,8 @@ class CourseFactory extends Factory
 
         // Download image content
         $imageContent = Http::get($imageUrl)->body();
-        $fileName = Str::random(20).'.jpg';
-        $path = 'course_images/'.$fileName;
+        $fileName = Str::random(20) . '.jpg';
+        $path = 'course_images/' . $fileName;
 
         // Store the file in storage/app/public/course_images
         Storage::disk('public')->put($path, $imageContent);
@@ -54,15 +56,16 @@ class CourseFactory extends Factory
             'students' => fake()->numberBetween(12, 520),
             'projects' => fake()->numberBetween(0, 10),
             'tags' => fake()->randomElements([
-                'Popular', 'Em Destaque', 'Novo', 'Em Alta', 'AI', 'Hardware', 'Programação',
+                'Popular',
+                'Em Destaque',
+                'Novo',
+                'Em Alta',
+                'AI',
+                'Hardware',
+                'Programação',
             ], rand(1, 3)),
             'whatYouLearn' => fake()->sentences(rand(3, 6)),
             'skills' => fake()->words(rand(3, 6)),
-            'curriculum' => array_map(fn ($i) => [
-                'module' => fake()->sentence(3),
-                'lessons' => fake()->numberBetween(2, 8),
-                'duration' => fake()->numberBetween(10, 120).' min',
-            ], range(1, rand(3, 6))),
             'requirements' => fake()->sentences(rand(2, 5)),
             'language' => fake()->randomElement(['Português', 'English', 'Español']),
             'certificate' => fake()->boolean(),
@@ -71,5 +74,23 @@ class CourseFactory extends Factory
             'price' => fake()->randomFloat(2, 10, 200),
             'level' => fake()->randomElement(['iniciante', 'intermediario', 'avançado']),
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Course $course) {
+            // Create modules for the course
+            $modulesCount = fake()->numberBetween(3, 6);
+
+            for ($i = 1; $i <= $modulesCount; $i++) {
+                Module::create([
+                    'course_id' => $course->id,
+                    'title' => fake()->sentence(3),
+                    'duration' => fake()->numberBetween(10, 120) . ' min',
+                    'lessons' => fake()->numberBetween(10, 120),
+                    'order' => $i,
+                ]);
+            }
+        });
     }
 }
