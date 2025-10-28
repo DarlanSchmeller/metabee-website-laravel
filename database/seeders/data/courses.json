@@ -4,7 +4,7 @@
         "category": "IA e ML",
         "description": "Explore os princípios básicos da inteligência artificial e suas aplicações práticas.",
         "fullDescription": "Este curso oferece uma introdução abrangente à IA, cobrindo algoritmos, aprendizado de máquina e suas implementações no mundo real.",
-        "image": "https://images.pexels.com/photos/1181358/pexels-photo-1181358.jpeg",
+        "image": "https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 40,
         "lessons": 10,
@@ -59,7 +59,7 @@
         "category": "Exploradores da Robótica",
         "description": "Aprenda os conceitos fundamentais da robótica e como construir seu primeiro robô.",
         "fullDescription": "Este curso aborda os princípios da robótica, desde a mecânica básica até a programação de robôs simples.",
-        "image": "https://images.pexels.com/photos/1181358/pexels-photo-1181358.jpeg",
+        "image": "https://images.pexels.com/photos/7868822/pexels-photo-7868822.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 30,
         "lessons": 8,
@@ -114,7 +114,7 @@
         "category": "Programação",
         "description": "Aprenda os conceitos básicos de programação utilizando a linguagem Python.",
         "fullDescription": "Este curso oferece uma introdução à programação, abordando variáveis, estruturas de controle e funções em Python.",
-        "image": "https://images.pexels.com/photos/1181358/pexels-photo-1181358.jpeg",
+        "image": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 35,
         "lessons": 9,
@@ -169,7 +169,7 @@
         "category": "MakerBee",
         "description": "Aprenda a criar designs profissionais utilizando a ferramenta Tailwind CSS.",
         "fullDescription": "Este curso ensina como utilizar o Tailwind CSS para criar apresentações, posts para redes sociais e outros materiais gráficos para seu Website.",
-        "image": "https://images.pexels.com/photos/1181358/pexels-photo-1181358.jpeg",
+        "image": "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 25,
         "lessons": 7,
@@ -225,7 +225,7 @@
         "category": "Exploradores da Robótica",
         "description": "Descubra as estratégias fundamentais do Desenvolvimento Web e como aplicá-las em seu negócio.",
         "fullDescription": "Este curso aborda SEO, Desenvolvimento Web conteúdo, redes sociais e outras estratégias essenciais para o Desenvolvimento Web.",
-        "image": "https://images.pexels.com/photos/1181358/pexels-photo-1181358.jpeg",
+        "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 40,
         "lessons": 10,
@@ -280,7 +280,7 @@
         "category": "Exploradores da Robótica",
         "description": "Aprenda os conceitos básicos da Modelagem digital e como tirar fotos incríveis.",
         "fullDescription": "Este curso aborda a composição fotográfica, configurações de câmera e técnicas para capturar imagens de alta qualidade.",
-        "image": "https://images.pexels.com/photos/1181358/pexels-photo-1181358.jpeg",
+        "image": "https://images.pexels.com/photos/15470542/pexels-photo-15470542.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 30,
         "lessons": 8,
@@ -335,7 +335,7 @@
         "category": "IA e ML",
         "description": "Introdução aos conceitos básicos de Inteligência Artificial e Machine Learning.",
         "fullDescription": "Este curso abrange os fundamentos da IA e ML, incluindo algoritmos, redes neurais e aprendizado supervisionado.",
-        "image": "https://images.pexels.com/photos/1231234/pexels-photo-1231234.jpeg",
+        "image": "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 40,
         "lessons": 10,
@@ -391,7 +391,7 @@
         "category": "Exploradores da Robótica",
         "description": "Curso introdutório sobre robótica e automação.",
         "fullDescription": "Aprenda os conceitos básicos de robótica, incluindo sensores, atuadores e programação de robôs.",
-        "image": "https://images.pexels.com/photos/2342345/pexels-photo-2342345.jpeg",
+        "image": "https://images.pexels.com/photos/9242852/pexels-photo-9242852.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 35,
         "lessons": 8,
@@ -447,7 +447,7 @@
         "category": "Programação",
         "description": "Aprenda a desenvolver aplicações web interativas usando JavaScript.",
         "fullDescription": "Este curso ensina os fundamentos do JavaScript, incluindo manipulação de DOM e eventos.",
-        "image": "https://images.pexels.com/photos/3453456/pexels-photo-3453456.jpeg",
+        "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 50,
         "lessons": 12,
@@ -503,7 +503,7 @@
         "category": "Programação",
         "description": "Curso básico sobre criação de jogos digitais.",
         "fullDescription": "Aprenda os conceitos fundamentais do desenvolvimento de jogos, incluindo design e programação.",
-        "image": "https://images.pexels.com/photos/4564567/pexels-photo-4564567.jpeg",
+        "image": "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 45,
         "lessons": 10,
@@ -559,7 +559,7 @@
         "category": "Programação",
         "description": "Aprenda a criar aplicativos móveis nativos usando Flutter.",
         "fullDescription": "Este curso ensina a desenvolver aplicativos para Android e iOS com uma única base de código.",
-        "image": "https://images.pexels.com/photos/5675678/pexels-photo-5675678.jpeg",
+        "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 60,
         "lessons": 15,
@@ -615,7 +615,7 @@
         "category": "Hardware",
         "description": "Curso básico sobre análise e visualização de dados.",
         "fullDescription": "Aprenda a manipular dados, realizar análises exploratórias e criar visualizações.",
-        "image": "https://images.pexels.com/photos/6786789/pexels-photo-6786789.jpeg",
+        "image": "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 50,
         "lessons": 12,
@@ -662,6 +662,504 @@
         "resources": true,
         "rating": 4.7,
         "price": 135.99,
+        "level": "iniciante",
+        "created_at": "2025-10-27 20:11:36",
+        "updated_at": "2025-10-27 20:11:36"
+    },
+    {
+        "title": "Fundamentos de Robótica com Arduino",
+        "category": "Exploradores da Robótica",
+        "description": "Aprenda a construir e programar robôs simples utilizando Arduino.",
+        "fullDescription": "Neste curso, você aprenderá os princípios básicos da robótica, eletrônica e programação usando a plataforma Arduino.",
+        "image": "https://images.pexels.com/photos/21905/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600",
+        "instructor_id": 1,
+        "duration": 70,
+        "lessons": 14,
+        "students": 420,
+        "projects": 4,
+        "tags": [
+            "Arduino",
+            "Robótica",
+            "Eletrônica"
+        ],
+        "whatYouLearn": [
+            "Montagem de circuitos",
+            "Programação de sensores",
+            "Controle de motores"
+        ],
+        "skills": [
+            "Arduino",
+            "C/C++",
+            "Soldagem e prototipagem"
+        ],
+        "curriculum": [
+            {
+                "module": "Introdução à Robótica",
+                "lessons": 4,
+                "duration": "10h"
+            },
+            {
+                "module": "Sensores e Atuadores",
+                "lessons": 5,
+                "duration": "20h"
+            },
+            {
+                "module": "Projetos Práticos",
+                "lessons": 5,
+                "duration": "40h"
+            }
+        ],
+        "requirements": [
+            "Conhecimentos básicos de eletrônica",
+            "Interesse em robótica"
+        ],
+        "language": "Português",
+        "certificate": true,
+        "resources": true,
+        "rating": 4.8,
+        "price": 179.99,
+        "level": "iniciante",
+        "created_at": "2025-10-27 20:11:36",
+        "updated_at": "2025-10-27 20:11:36"
+    },
+    {
+        "title": "Programação em Python para Iniciantes",
+        "category": "Programação",
+        "description": "Domine os fundamentos da linguagem Python e comece a programar do zero.",
+        "fullDescription": "Curso prático para quem deseja iniciar na programação utilizando Python, com foco em lógica, estruturas de dados e automação.",
+        "image": "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "instructor_id": 1,
+        "duration": 80,
+        "lessons": 20,
+        "students": 1200,
+        "projects": 6,
+        "tags": [
+            "Python",
+            "Lógica",
+            "Automação"
+        ],
+        "whatYouLearn": [
+            "Sintaxe do Python",
+            "Estruturas de dados",
+            "Automação de tarefas"
+        ],
+        "skills": [
+            "Python",
+            "Programação básica",
+            "Lógica computacional"
+        ],
+        "curriculum": [
+            {
+                "module": "Introdução ao Python",
+                "lessons": 5,
+                "duration": "15h"
+            },
+            {
+                "module": "Controle de Fluxo e Funções",
+                "lessons": 5,
+                "duration": "20h"
+            },
+            {
+                "module": "Automação Prática",
+                "lessons": 10,
+                "duration": "45h"
+            }
+        ],
+        "requirements": [
+            "Computador com Python instalado",
+            "Vontade de aprender"
+        ],
+        "language": "Português",
+        "certificate": true,
+        "resources": true,
+        "rating": 4.9,
+        "price": 129.99,
+        "level": "iniciante",
+        "created_at": "2025-10-27 20:11:36",
+        "updated_at": "2025-10-27 20:11:36"
+    },
+    {
+        "title": "Desenvolvimento Web com HTML, CSS e JavaScript",
+        "category": "Programação",
+        "description": "Crie sites modernos e responsivos do zero.",
+        "fullDescription": "Aprenda a estruturar páginas com HTML, estilizar com CSS e adicionar interatividade usando JavaScript.",
+        "image": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "instructor_id": 1,
+        "duration": 100,
+        "lessons": 25,
+        "students": 950,
+        "projects": 7,
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "whatYouLearn": [
+            "Criação de layouts",
+            "Responsividade",
+            "Manipulação do DOM"
+        ],
+        "skills": [
+            "HTML",
+            "CSS",
+            "JS",
+            "Design responsivo"
+        ],
+        "curriculum": [
+            {
+                "module": "HTML e Semântica",
+                "lessons": 8,
+                "duration": "30h"
+            },
+            {
+                "module": "Estilos com CSS",
+                "lessons": 8,
+                "duration": "30h"
+            },
+            {
+                "module": "Introdução ao JavaScript",
+                "lessons": 9,
+                "duration": "40h"
+            }
+        ],
+        "requirements": [
+            "Nenhum conhecimento prévio necessário"
+        ],
+        "language": "Português",
+        "certificate": true,
+        "resources": true,
+        "rating": 4.9,
+        "price": 139.99,
+        "level": "iniciante",
+        "created_at": "2025-10-27 20:11:36",
+        "updated_at": "2025-10-27 20:11:36"
+    },
+    {
+        "title": "Design de Interfaces com Figma",
+        "category": "MakerBee",
+        "description": "Aprenda a criar interfaces bonitas e funcionais usando o Figma.",
+        "fullDescription": "Curso voltado para designers e desenvolvedores que desejam dominar a criação de layouts profissionais com Figma.",
+        "image": "https://images.pexels.com/photos/3184454/pexels-photo-3184454.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "instructor_id": 1,
+        "duration": 45,
+        "lessons": 10,
+        "students": 300,
+        "projects": 3,
+        "tags": [
+            "UI Design",
+            "Figma",
+            "Prototipagem"
+        ],
+        "whatYouLearn": [
+            "Design de interfaces",
+            "Prototipagem",
+            "Design system"
+        ],
+        "skills": [
+            "UX/UI",
+            "Prototipagem",
+            "Figma"
+        ],
+        "curriculum": [
+            {
+                "module": "Fundamentos de Design",
+                "lessons": 3,
+                "duration": "10h"
+            },
+            {
+                "module": "Ferramentas do Figma",
+                "lessons": 4,
+                "duration": "15h"
+            },
+            {
+                "module": "Criação de Protótipos",
+                "lessons": 3,
+                "duration": "20h"
+            }
+        ],
+        "requirements": [
+            "Conta gratuita no Figma"
+        ],
+        "language": "Português",
+        "certificate": true,
+        "resources": true,
+        "rating": 4.6,
+        "price": 109.99,
+        "level": "iniciante",
+        "created_at": "2025-10-27 20:11:36",
+        "updated_at": "2025-10-27 20:11:36"
+    },
+    {
+        "title": "Introdução à Inteligência Artificial",
+        "category": "Programação",
+        "description": "Descubra os conceitos fundamentais de IA e aprendizado de máquina.",
+        "fullDescription": "Um curso introdutório sobre os principais algoritmos e aplicações práticas da Inteligência Artificial.",
+        "image": "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "instructor_id": 1,
+        "duration": 75,
+        "lessons": 15,
+        "students": 560,
+        "projects": 4,
+        "tags": [
+            "IA",
+            "Machine Learning",
+            "Python"
+        ],
+        "whatYouLearn": [
+            "Redes neurais",
+            "Classificação e regressão",
+            "Análise de dados"
+        ],
+        "skills": [
+            "Python",
+            "Scikit-Learn",
+            "Lógica de IA"
+        ],
+        "curriculum": [
+            {
+                "module": "Fundamentos de IA",
+                "lessons": 5,
+                "duration": "20h"
+            },
+            {
+                "module": "Aprendizado de Máquina",
+                "lessons": 5,
+                "duration": "25h"
+            },
+            {
+                "module": "Projetos Práticos",
+                "lessons": 5,
+                "duration": "30h"
+            }
+        ],
+        "requirements": [
+            "Conhecimento básico de Python"
+        ],
+        "language": "Português",
+        "certificate": true,
+        "resources": true,
+        "rating": 4.8,
+        "price": 189.99,
+        "level": "intermediário",
+        "created_at": "2025-10-27 20:11:36",
+        "updated_at": "2025-10-27 20:11:36"
+    },
+    {
+        "title": "Eletrônica Básica para Robótica",
+        "category": "Hardware",
+        "description": "Compreenda os fundamentos da eletrônica aplicada à robótica.",
+        "fullDescription": "Aprenda sobre resistores, capacitores, LEDs e sensores em circuitos voltados para projetos de robótica.",
+        "image": "https://images.pexels.com/photos/6074936/pexels-photo-6074936.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "instructor_id": 1,
+        "duration": 60,
+        "lessons": 12,
+        "students": 280,
+        "projects": 3,
+        "tags": [
+            "Eletrônica",
+            "Robótica",
+            "Circuitos"
+        ],
+        "whatYouLearn": [
+            "Leitura de esquemas",
+            "Soldagem básica",
+            "Montagem de protótipos"
+        ],
+        "skills": [
+            "Hardware",
+            "Circuitos",
+            "Prototipagem"
+        ],
+        "curriculum": [
+            {
+                "module": "Conceitos de Eletrônica",
+                "lessons": 4,
+                "duration": "15h"
+            },
+            {
+                "module": "Componentes Eletrônicos",
+                "lessons": 4,
+                "duration": "20h"
+            },
+            {
+                "module": "Aplicações em Robótica",
+                "lessons": 4,
+                "duration": "25h"
+            }
+        ],
+        "requirements": [
+            "Nenhum conhecimento prévio necessário"
+        ],
+        "language": "Português",
+        "certificate": true,
+        "resources": true,
+        "rating": 4.5,
+        "price": 119.99,
+        "level": "iniciante",
+        "created_at": "2025-10-27 20:11:36",
+        "updated_at": "2025-10-27 20:11:36"
+    },
+    {
+        "title": "Desenvolvimento de APIs com Node.js e Express",
+        "category": "Programação",
+        "description": "Crie APIs modernas e performáticas com Node.js.",
+        "fullDescription": "Curso focado na criação de backends eficientes utilizando Express, integração com bancos de dados e autenticação JWT.",
+        "image": "https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "instructor_id": 1,
+        "duration": 65,
+        "lessons": 14,
+        "students": 500,
+        "projects": 5,
+        "tags": [
+            "Node.js",
+            "API",
+            "Express"
+        ],
+        "whatYouLearn": [
+            "Rotas e middlewares",
+            "Banco de dados",
+            "Autenticação JWT"
+        ],
+        "skills": [
+            "JavaScript",
+            "Express",
+            "APIs REST"
+        ],
+        "curriculum": [
+            {
+                "module": "Fundamentos do Node.js",
+                "lessons": 4,
+                "duration": "15h"
+            },
+            {
+                "module": "Express e Rotas",
+                "lessons": 5,
+                "duration": "25h"
+            },
+            {
+                "module": "Integração com DB",
+                "lessons": 5,
+                "duration": "25h"
+            }
+        ],
+        "requirements": [
+            "Conhecimento básico de JavaScript"
+        ],
+        "language": "Português",
+        "certificate": true,
+        "resources": true,
+        "rating": 4.8,
+        "price": 159.99,
+        "level": "intermediário",
+        "created_at": "2025-10-27 20:11:36",
+        "updated_at": "2025-10-27 20:11:36"
+    },
+    {
+        "title": "Desenvolvimento Frontend com React",
+        "category": "Programação",
+        "description": "Domine o desenvolvimento de interfaces reativas com React.",
+        "fullDescription": "Aprenda a criar aplicações SPA modernas, componentes reutilizáveis e gerenciar estado com React Hooks.",
+        "image": "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "instructor_id": 1,
+        "duration": 90,
+        "lessons": 18,
+        "students": 800,
+        "projects": 5,
+        "tags": [
+            "React",
+            "Frontend",
+            "JavaScript"
+        ],
+        "whatYouLearn": [
+            "Componentização",
+            "Hooks",
+            "Gerenciamento de estado"
+        ],
+        "skills": [
+            "React",
+            "JavaScript",
+            "SPA Development"
+        ],
+        "curriculum": [
+            {
+                "module": "Fundamentos do React",
+                "lessons": 5,
+                "duration": "25h"
+            },
+            {
+                "module": "Hooks e Context API",
+                "lessons": 6,
+                "duration": "30h"
+            },
+            {
+                "module": "Projeto Final",
+                "lessons": 7,
+                "duration": "35h"
+            }
+        ],
+        "requirements": [
+            "Conhecimento intermediário em JavaScript"
+        ],
+        "language": "Português",
+        "certificate": true,
+        "resources": true,
+        "rating": 4.9,
+        "price": 189.99,
+        "level": "intermediário",
+        "created_at": "2025-10-27 20:11:36",
+        "updated_at": "2025-10-27 20:11:36"
+    },
+    {
+        "title": "Montagem e Manutenção de Computadores",
+        "category": "Hardware",
+        "description": "Aprenda a montar, configurar e realizar manutenção em PCs.",
+        "fullDescription": "Curso completo sobre hardware, montagem de computadores, identificação de peças e solução de problemas técnicos.",
+        "image": "https://images.pexels.com/photos/4709375/pexels-photo-4709375.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "instructor_id": 1,
+        "duration": 85,
+        "lessons": 18,
+        "students": 650,
+        "projects": 4,
+        "tags": [
+            "Hardware",
+            "Computadores",
+            "Manutenção"
+        ],
+        "whatYouLearn": [
+            "Montagem de PCs",
+            "Diagnóstico de falhas",
+            "Limpeza e upgrade"
+        ],
+        "skills": [
+            "Hardware",
+            "Manutenção",
+            "Configuração de BIOS"
+        ],
+        "curriculum": [
+            {
+                "module": "Componentes de Hardware",
+                "lessons": 6,
+                "duration": "25h"
+            },
+            {
+                "module": "Montagem Prática",
+                "lessons": 6,
+                "duration": "30h"
+            },
+            {
+                "module": "Manutenção e Upgrades",
+                "lessons": 6,
+                "duration": "30h"
+            }
+        ],
+        "requirements": [
+            "Interesse em hardware e tecnologia"
+        ],
+        "language": "Português",
+        "certificate": true,
+        "resources": true,
+        "rating": 4.7,
+        "price": 149.99,
         "level": "iniciante",
         "created_at": "2025-10-27 20:11:36",
         "updated_at": "2025-10-27 20:11:36"

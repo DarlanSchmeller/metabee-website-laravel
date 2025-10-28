@@ -6,7 +6,9 @@ use App\Models\Course;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -47,6 +49,17 @@ class DatabaseSeeder extends Seeder
         $courses = json_decode(file_get_contents(database_path('seeders/data/courses.json')), true);
 
         foreach ($courses as $course) {
+            // Download image content
+            $imageContent = Http::get($course['image'])->body();
+            $fileName = Str::random(20).'.jpg';
+            $path = 'course_images/'.$fileName;
+
+            // Store new image path
+            $course['image'] = $path;
+
+            // Store the file in storage/app/public/course_images
+            Storage::disk('public')->put($path, $imageContent);
+
             Course::create($course);
         }
     }
