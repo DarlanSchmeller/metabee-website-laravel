@@ -45,7 +45,7 @@ class CourseController extends Controller
         $categoryLabels = collect(Globals::COURSE_CATEGORIES)->pluck('label')->implode(',');
         $validatedData = $request->validate([
             'title' => 'required|string|max:100',
-            'category' => 'required|in:'.$categoryLabels,
+            'category' => 'required|in:' . $categoryLabels,
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2080',
@@ -128,8 +128,8 @@ class CourseController extends Controller
 
         if ($searchKeywords) {
             $query->where(function ($q) use ($searchKeywords) {
-                $q->whereRaw('LOWER(title) like ?', ['%'.$searchKeywords.'%']);
-                $q->orWhereRaw('LOWER(description) like ?', ['%'.$searchKeywords.'%']);
+                $q->whereRaw('LOWER(title) like ?', ['%' . $searchKeywords . '%']);
+                $q->orWhereRaw('LOWER(description) like ?', ['%' . $searchKeywords . '%']);
             });
         }
 
@@ -152,6 +152,9 @@ class CourseController extends Controller
         // Check if user is authorized
         $this->authorize('update', $course);
 
+        // Load the modules
+        $course->load('modules');
+
         return view('pages.courses.edit')->with('course', $course);
     }
 
@@ -163,7 +166,7 @@ class CourseController extends Controller
         $categoryLabels = collect(Globals::COURSE_CATEGORIES)->pluck('label')->implode(',');
         $validatedData = $request->validate([
             'title' => 'required|string|max:100',
-            'category' => 'required|in:'.$categoryLabels,
+            'category' => 'required|in:' . $categoryLabels,
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
@@ -208,12 +211,47 @@ class CourseController extends Controller
         $validatedData['certificate'] = $request->has('certificate');
         $validatedData['resources'] = $request->has('resources');
 
-        // Handle curriculum
-        $validatedData['curriculum'] = $validatedData['modules'];
+        // Grab modules data and unset
+        $modulesData = $validatedData['modules'];
         unset($validatedData['modules']);
 
         // Update course
         $course->update($validatedData);
+
+        // Sync modules
+        $existingModuleIds = $course->modules()->pluck('id')->toArray();
+        $incomingModuleIds = [];
+
+        foreach ($modulesData as $index => $moduleData) {
+            if (!empty($moduleData['id'])) {
+                // Update existing module
+                $module = Module::find($moduleData['id']);
+                if ($module) {
+                    $module->update([
+                        'title' => $moduleData['module'],
+                        'lessons' => $moduleData['lessons'],
+                        'duration' => $moduleData['duration'],
+                        'order' => $index,
+                    ]);
+                    $incomingModuleIds[] = $module->id;
+                }
+            } else {
+                // Create new module
+                $module = $course->modules()->create([
+                    'title' => $moduleData['module'],
+                    'lessons' => $moduleData['lessons'],
+                    'duration' => $moduleData['duration'],
+                    'order' => $index,
+                ]);
+                $incomingModuleIds[] = $module->id;
+            }
+        }
+
+        // Delete modules that were removed from form
+        $toDelete = array_diff($existingModuleIds, $incomingModuleIds);
+        if (!empty($toDelete)) {
+            Module::whereIn('id', $toDelete)->delete();
+        }
 
         return redirect()->route('cursos.show', $course->id)->with('success', 'Curso atualizado com sucesso!');
     }

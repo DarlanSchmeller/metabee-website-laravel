@@ -52,8 +52,8 @@ class DatabaseSeeder extends Seeder
         foreach ($courses as $course) {
             // Download image content
             $imageContent = Http::get($course['image'])->body();
-            $fileName = Str::random(20) . '.jpg';
-            $path = 'course_images/' . $fileName;
+            $fileName = Str::random(20).'.jpg';
+            $path = 'course_images/'.$fileName;
 
             // Store new image path
             $course['image'] = $path;

@@ -95,7 +95,22 @@
         {{-- Curriculum --}}
         <div
             x-data="curriculumBuilder(
-                        {{ json_encode(old("modules", $course?->curriculum ?? [["module" => "", "lessons" => 1, "duration" => ""]])) }},
+                        {{
+                            json_encode(
+                                old(
+                                    "modules",
+                                    $course?->modules
+                                        ->map(
+                                            fn ($m) => [
+                                                "module" => $m->title,
+                                                "lessons" => $m->lessons,
+                                                "duration" => $m->duration,
+                                            ],
+                                        )
+                                        ->toArray() ?? [["module" => "", "lessons" => 1, "duration" => ""]],
+                                ),
+                            )
+                        }},
                         {{ json_encode($errors->toArray()) }},
                     )"
             class="space-y-8 mt-14 pt-14 border-amber-500/30 border-t"

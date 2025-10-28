@@ -32,8 +32,8 @@ class CourseFactory extends Factory
 
         // Download image content
         $imageContent = Http::get($imageUrl)->body();
-        $fileName = Str::random(20) . '.jpg';
-        $path = 'course_images/' . $fileName;
+        $fileName = Str::random(20).'.jpg';
+        $path = 'course_images/'.$fileName;
 
         // Store the file in storage/app/public/course_images
         Storage::disk('public')->put($path, $imageContent);
@@ -86,7 +86,7 @@ class CourseFactory extends Factory
                 Module::create([
                     'course_id' => $course->id,
                     'title' => fake()->sentence(3),
-                    'duration' => fake()->numberBetween(10, 120) . ' min',
+                    'duration' => fake()->numberBetween(10, 120).' min',
                     'lessons' => fake()->numberBetween(10, 120),
                     'order' => $i,
                 ]);
