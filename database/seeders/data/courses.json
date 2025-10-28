@@ -387,10 +387,10 @@
         "updated_at": "2025-10-27 20:11:36"
     },
     {
-        "title": "Robótica para Iniciantes",
+        "title": "Robótica Avançada",
         "category": "Exploradores da Robótica",
-        "description": "Curso introdutório sobre robótica e automação.",
-        "fullDescription": "Aprenda os conceitos básicos de robótica, incluindo sensores, atuadores e programação de robôs.",
+        "description": "Curso Avançado sobre robótica e automação.",
+        "fullDescription": "Aprenda os conceitos avançados de robótica, incluindo sensores, atuadores e programação de robôs.",
         "image": "https://images.pexels.com/photos/9242852/pexels-photo-9242852.jpeg?auto=compress&cs=tinysrgb&w=600",
         "instructor_id": 1,
         "duration": 35,
@@ -398,7 +398,7 @@
         "students": 200,
         "projects": 2,
         "tags": [
-            "Iniciante",
+            "Avançado",
             "Arduino",
             "Sensores"
         ],
@@ -438,7 +438,7 @@
         "resources": true,
         "rating": 4.7,
         "price": 135.99,
-        "level": "iniciante",
+        "level": "avançado",
         "created_at": "2025-10-27 20:11:36",
         "updated_at": "2025-10-27 20:11:36"
     },
