@@ -14,7 +14,7 @@
             content="Oferecemos soluções empresariais sob medida para organizações com necessidades específicas. Entre em
                 contato com nossa equipe para discutir sua demanda."
             buttonText="Entre em Contato Conosco"
-            link="{{ route('home') }}"
+            link="{{ route('home') }}#contact"
         />
     </div>
 </x-layout>

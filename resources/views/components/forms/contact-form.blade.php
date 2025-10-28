@@ -1,4 +1,4 @@
-<section class="relative py-20 overflow-hidden">
+<section class="relative py-20 overflow-hidden" id="contact">
     <div class="absolute inset-0">
         <img src="{{ asset("images/contato.jpg") }}" alt="Fundo de Robótica" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-br from-gray-950/40 via-gray-900/70 to-gray-950/80"></div>

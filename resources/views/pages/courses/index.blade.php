@@ -15,7 +15,7 @@
             title="Não encontrou o que procurava?"
             content="Estamos sempre adicionando novos cursos. Entre em contato para sugerir temas ou solicitar treinamentos personalizados para sua equipe."
             buttonText="Fale Conosco"
-            link="{{ route('home') }}"
+            link="{{ route('home') }}#contact"
             :icon="true"
         />
     </div>
