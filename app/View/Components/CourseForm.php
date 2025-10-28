@@ -19,8 +19,6 @@ class CourseForm extends Component
     public function __construct()
     {
         $this->courseFields = [
-            ['Duração (horas)', 'duration', 'number', '1', null],
-            ['Aulas', 'lessons', 'number', '1', null],
             ['Projetos', 'projects', 'number', '0', null],
             ['Idioma', 'language', 'text', 'Ex: Português', null],
             ['Preço (R$)', 'price', 'number', '0.00', '0.01'],

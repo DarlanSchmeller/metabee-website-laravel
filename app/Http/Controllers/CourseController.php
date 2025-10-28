@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Constants\Globals;
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\Module;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
@@ -17,17 +18,24 @@ class CourseController extends Controller
     use AuthorizesRequests;
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the course.
      */
     public function index(): View
     {
-        $courses = Course::latest()->paginate(9);
+        $courses = Course::with(['modules' => fn($q) => $q->withSum('lessons', 'duration')])
+            ->latest()
+            ->paginate(9)
+            ->through(function ($course) {
+                $course->total_duration = $course->modules->sum('lessons_sum_duration');
+                return $course;
+            });
 
-        return view('pages.courses.index')->with('courses', $courses);
+        return view('pages.courses.index', compact('courses'));
     }
 
+
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new course.
      */
     public function create()
     {
@@ -49,15 +57,16 @@ class CourseController extends Controller
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2080',
-            'duration' => 'nullable|integer|min:0',
-            'lessons' => 'nullable|integer|min:0',
             'projects' => 'nullable|integer|min:0',
             'language' => 'nullable|string|max:50',
             'price' => 'nullable|numeric|min:0',
             'level' => 'required|in:iniciante,intermediario,avançado',
-            'modules.*.module' => 'required|string|max:100',
-            'modules.*.lessons' => 'required|integer|min:1',
-            'modules.*.duration' => 'required|string|max:50',
+            'modules' => 'required|array|min:1',
+            'modules.*.title' => 'required|string|max:100',
+            'modules.*.lessons' => 'required|array|min:1',
+            'modules.*.lessons.*.title' => 'required|string|max:100',
+            'modules.*.lessons.*.url' => 'required|url|max:255',
+            'modules.*.lessons.*.duration' => 'required|integer',
             'tags' => 'nullable|string',
             'whatYouLearn' => 'nullable|string',
             'skills' => 'nullable|string',
@@ -99,25 +108,53 @@ class CourseController extends Controller
         $course = Course::create($validatedData);
 
         // Create modules in DB
-        foreach ($modules as $index => $module) {
-            $module['title'] = $module['module'];
-            $module['course_id'] = $course->id;
-            $module['order'] = $index;
+        foreach ($modules as $index => $moduleData) {
+            $moduleData['course_id'] = $course->id;
+            $moduleData['order'] = $index;
 
-            Module::create($module);
+            // Get lessons data and unset
+            $lessons = $moduleData['lessons'];
+            unset($moduleData['lessons']);
+
+            $module = Module::create($moduleData);
+
+            // Create lessons in DB
+            foreach ($lessons as $index => $lesson) {
+                Lesson::create([
+                    'module_id' => $module->id,
+                    'title' => $lesson['title'],
+                    'url' => $lesson['url'],
+                    'duration' => $lesson['duration'],
+                    'order' => $index,
+                ]);
+            }
         }
 
         return redirect()->route('cursos.index')->with('success', 'Curso criado com sucesso!');
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified course.
      */
     public function show($id)
     {
-        $course = Course::with(['instructor', 'modules'])->findOrFail($id);
+        $course = Course::with([
+            'instructor',
+            'modules' => function ($query) {
+                $query->withCount('lessons');
+                $query->withSum('lessons', 'duration');
+            }
+        ])->findOrFail($id);
 
-        return view('pages.courses.show')->with('course', $course);
+        // Get course duration and lesson count
+        $courseTotalDuration = $course->modules->sum('lessons_sum_duration');
+        $courseTotalLessons = $course->modules->sum('lessons_count');
+
+        return view('pages.courses.show')->with([
+            'course' => $course,
+            'courseTotalDuration' => $courseTotalDuration,
+            'courseTotalLessons' => $courseTotalLessons
+        ]);
     }
 
     public function search(Request $request): View
@@ -145,7 +182,7 @@ class CourseController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified course.
      */
     public function edit(Course $course): View
     {
@@ -170,8 +207,6 @@ class CourseController extends Controller
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
-            'duration' => 'nullable|integer|min:0',
-            'lessons' => 'nullable|integer|min:0',
             'projects' => 'nullable|integer|min:0',
             'language' => 'nullable|string|max:50',
             'price' => 'nullable|numeric|min:0',
@@ -223,7 +258,7 @@ class CourseController extends Controller
         $incomingModuleIds = [];
 
         foreach ($modulesData as $index => $moduleData) {
-            if (!empty($moduleData['id'])) {
+            if (! empty($moduleData['id'])) {
                 // Update existing module
                 $module = Module::find($moduleData['id']);
                 if ($module) {
@@ -249,7 +284,7 @@ class CourseController extends Controller
 
         // Delete modules that were removed from form
         $toDelete = array_diff($existingModuleIds, $incomingModuleIds);
-        if (!empty($toDelete)) {
+        if (! empty($toDelete)) {
             Module::whereIn('id', $toDelete)->delete();
         }
 

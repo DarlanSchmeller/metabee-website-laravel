@@ -42,42 +42,42 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Use factory to create fake course data
-        // Course::factory()->count(20)->create([
-        //     'instructor_id' => $user->id,
-        // ]);
+        Course::factory()->count(20)->create([
+            'instructor_id' => $user->id,
+        ]);
 
         // Create courses using json data
-        $courses = json_decode(file_get_contents(database_path('seeders/data/courses.json')), true);
+        // $courses = json_decode(file_get_contents(database_path('seeders/data/courses.json')), true);
 
-        foreach ($courses as $course) {
-            // Download image content
-            $imageContent = Http::get($course['image'])->body();
-            $fileName = Str::random(20).'.jpg';
-            $path = 'course_images/'.$fileName;
+        // foreach ($courses as $course) {
+        //     // Download image content
+        //     $imageContent = Http::get($course['image'])->body();
+        //     $fileName = Str::random(20).'.jpg';
+        //     $path = 'course_images/'.$fileName;
 
-            // Store new image path
-            $course['image'] = $path;
+        //     // Store new image path
+        //     $course['image'] = $path;
 
-            // Store the file in storage/app/public/course_images
-            Storage::disk('public')->put($path, $imageContent);
+        //     // Store the file in storage/app/public/course_images
+        //     Storage::disk('public')->put($path, $imageContent);
 
-            // Extract curriculum before creating course
-            $curriculum = $course['curriculum'] ?? [];
-            unset($course['curriculum']);
+        //     // Extract curriculum before creating course
+        //     $curriculum = $course['curriculum'] ?? [];
+        //     unset($course['curriculum']);
 
-            // Create course
-            $course = Course::create($course);
+        //     // Create course
+        //     $course = Course::create($course);
 
-            // Create modules
-            foreach ($curriculum as $index => $moduleData) {
-                Module::create([
-                    'course_id' => $course->id,
-                    'title' => $moduleData['module'],
-                    'duration' => $moduleData['duration'],
-                    'order' => $index + 1,
-                    'lessons' => $moduleData['lessons'], // optional field if your table has it
-                ]);
-            }
-        }
+        //     // Create modules
+        //     foreach ($curriculum as $index => $moduleData) {
+        //         Module::create([
+        //             'course_id' => $course->id,
+        //             'title' => $moduleData['module'],
+        //             'duration' => $moduleData['duration'],
+        //             'order' => $index + 1,
+        //             'lessons' => $moduleData['lessons'], // optional field if your table has it
+        //         ]);
+        //     }
+        // }
     }
 }

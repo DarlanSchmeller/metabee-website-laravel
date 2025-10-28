@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Constants\Globals;
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\Module;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -32,8 +33,8 @@ class CourseFactory extends Factory
 
         // Download image content
         $imageContent = Http::get($imageUrl)->body();
-        $fileName = Str::random(20).'.jpg';
-        $path = 'course_images/'.$fileName;
+        $fileName = Str::random(20) . '.jpg';
+        $path = 'course_images/' . $fileName;
 
         // Store the file in storage/app/public/course_images
         Storage::disk('public')->put($path, $imageContent);
@@ -51,8 +52,6 @@ class CourseFactory extends Factory
             'image' => $path,
 
             'instructor_id' => $user->id,
-            'duration' => fake()->numberBetween(1, 80),
-            'lessons' => fake()->numberBetween(5, 50),
             'students' => fake()->numberBetween(12, 520),
             'projects' => fake()->numberBetween(0, 10),
             'tags' => fake()->randomElements([
@@ -79,17 +78,26 @@ class CourseFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Course $course) {
-            // Create modules for the course
             $modulesCount = fake()->numberBetween(3, 6);
 
             for ($i = 1; $i <= $modulesCount; $i++) {
-                Module::create([
+                $module = Module::create([
                     'course_id' => $course->id,
                     'title' => fake()->sentence(3),
-                    'duration' => fake()->numberBetween(10, 120).' min',
-                    'lessons' => fake()->numberBetween(10, 120),
                     'order' => $i,
                 ]);
+
+                // Create lessons for this module
+                $lessonsCount = fake()->numberBetween(3, 8); // or whatever range you want
+                for ($j = 1; $j <= $lessonsCount; $j++) {
+                    Lesson::create([
+                        'module_id' => $module->id,
+                        'title' => fake()->sentence(4),
+                        'url' => fake()->url(),
+                        'duration' => fake()->numberBetween(10, 120), // in minutes
+                        'order' => $j,
+                    ]);
+                }
             }
         });
     }

@@ -13,6 +13,7 @@ class Lesson extends Model
         'module_id',
         'title',
         'duration',
+        'url',
         'order',
     ];
 

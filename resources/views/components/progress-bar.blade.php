@@ -1,7 +1,7 @@
 <div class="mb-8 relative w-full" x-data>
     <div class="flex items-center w-full">
-        <template x-for="(s, index) in 3" :key="s">
-            <div class="flex items-center" :class="{ 'w-full': index < 2 }">
+        <template x-for="(s, index) in 4" :key="s">
+            <div class="flex items-center" :class="{ 'w-full': index < 3 }">
                 <!-- Step Circle -->
                 <div class="flex flex-col items-center">
                     <div
@@ -19,6 +19,9 @@
                             <x-heroicon-o-academic-cap class="w-5 h-5" />
                         </template>
                         <template x-if="s === 3">
+                            <x-heroicon-o-book-open class="w-5 h-5" />
+                        </template>
+                        <template x-if="s === 4">
                             <x-heroicon-o-photo class="w-5 h-5" />
                         </template>
                     </div>
@@ -29,12 +32,12 @@
                               'text-amber-500': step > s,
                               'text-gray-500': step < s
                           }"
-                        x-text="['Básico','Estrutura','Recursos'][s-1]"
+                        x-text="['Básico','Estrutura','Currículo','Recursos'][s-1]"
                     ></span>
                 </div>
 
                 <!-- Connector Line -->
-                <template x-if="index < 2">
+                <template x-if="index < 3">
                     <div
                         class="h-0.5 flex-grow mx-2 transition-colors"
                         :class="step > s ? 'bg-amber-500' : 'bg-gray-800'"

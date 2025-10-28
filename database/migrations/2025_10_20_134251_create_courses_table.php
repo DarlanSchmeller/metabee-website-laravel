@@ -24,8 +24,6 @@ return new class extends Migration
             $table->foreignId('instructor_id')
                 ->constrained('users')
                 ->onDelete('cascade');
-            $table->integer('duration');
-            $table->integer('lessons');
             $table->integer('students')->default(0);
             $table->integer('projects')->default(0);
             $table->json('tags')->nullable();

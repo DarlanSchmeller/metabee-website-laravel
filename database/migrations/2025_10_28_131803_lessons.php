@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('module_id')->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->string('duration');
+            $table->integer('duration');
+            $table->string('url')->default('https://www.youtube.com/watch?v=Cwa57POkDys');
             $table->integer('order');
             $table->timestamps();
         });

@@ -19,8 +19,6 @@ class Course extends Model
         'description',
         'fullDescription',
         'image',
-        'duration',
-        'lessons',
         'instructor_id',
         'projects',
         'language',

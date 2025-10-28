@@ -16,7 +16,15 @@ class FeaturedCourses extends Component
      */
     public function __construct()
     {
-        $this->courses = Course::orderBy('students', 'desc')->take(3)->get();
+        $this->courses = Course::with(['modules' => fn($q) => $q->withSum('lessons', 'duration')])
+            ->orderBy('students', 'desc')
+            ->take(3)
+            ->get()
+            ->map(function ($course) {
+                // Sum all module lesson durations
+                $course->total_duration = $course->modules->sum('lessons_sum_duration');
+                return $course;
+            });
     }
 
     /**
