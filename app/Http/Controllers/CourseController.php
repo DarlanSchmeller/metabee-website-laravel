@@ -211,9 +211,12 @@ class CourseController extends Controller
             'language' => 'nullable|string|max:50',
             'price' => 'nullable|numeric|min:0',
             'level' => 'required|in:iniciante,intermediario,avançado',
-            'modules.*.module' => 'required|string|max:100',
-            'modules.*.lessons' => 'required|integer|min:1',
-            'modules.*.duration' => 'required|string|max:50',
+            'modules' => 'required|array|min:1',
+            'modules.*.title' => 'required|string|max:100',
+            'modules.*.lessons' => 'required|array|min:1',
+            'modules.*.lessons.*.title' => 'required|string|max:100',
+            'modules.*.lessons.*.url' => 'required|url|max:255',
+            'modules.*.lessons.*.duration' => 'required|integer',
             'tags' => 'nullable|string',
             'whatYouLearn' => 'nullable|string',
             'skills' => 'nullable|string',
@@ -257,36 +260,69 @@ class CourseController extends Controller
         $existingModuleIds = $course->modules()->pluck('id')->toArray();
         $incomingModuleIds = [];
 
-        foreach ($modulesData as $index => $moduleData) {
-            if (! empty($moduleData['id'])) {
+        foreach ($modulesData as $moduleIndex => $moduleData) {
+            $lessonsData = $moduleData['lessons'] ?? [];
+            unset($moduleData['lessons']);
+
+            if (!empty($moduleData['id'])) {
                 // Update existing module
                 $module = Module::find($moduleData['id']);
-                if ($module) {
-                    $module->update([
-                        'title' => $moduleData['module'],
-                        'lessons' => $moduleData['lessons'],
-                        'duration' => $moduleData['duration'],
-                        'order' => $index,
-                    ]);
-                    $incomingModuleIds[] = $module->id;
-                }
+                $module->update([
+                    'title' => $moduleData['title'],  // make sure it's 'title' not 'module'
+                    'order' => $moduleIndex,
+                ]);
             } else {
                 // Create new module
                 $module = $course->modules()->create([
-                    'title' => $moduleData['module'],
-                    'lessons' => $moduleData['lessons'],
-                    'duration' => $moduleData['duration'],
-                    'order' => $index,
+                    'title' => $moduleData['title'],
+                    'order' => $moduleIndex,
                 ]);
-                $incomingModuleIds[] = $module->id;
+            }
+
+            $incomingModuleIds[] = $module->id;
+
+            // Sync lessons for this module
+            $existingLessonIds = $module->lessons()->pluck('id')->toArray();
+            $incomingLessonIds = [];
+
+            foreach ($lessonsData as $lessonIndex => $lesson) {
+                if (!empty($lesson['id'])) {
+                    // Update existing lesson
+                    $existingLesson = Lesson::find($lesson['id']);
+                    if ($existingLesson) {
+                        $existingLesson->update([
+                            'title' => $lesson['title'],
+                            'url' => $lesson['url'],
+                            'duration' => $lesson['duration'],
+                            'order' => $lessonIndex,
+                        ]);
+                        $incomingLessonIds[] = $existingLesson->id;
+                    }
+                } else {
+                    // Create new lesson
+                    $newLesson = $module->lessons()->create([
+                        'title' => $lesson['title'],
+                        'url' => $lesson['url'],
+                        'duration' => $lesson['duration'],
+                        'order' => $lessonIndex,
+                    ]);
+                    $incomingLessonIds[] = $newLesson->id;
+                }
+            }
+
+            // Delete lessons that were removed from form
+            $lessonsToDelete = array_diff($existingLessonIds, $incomingLessonIds);
+            if (!empty($lessonsToDelete)) {
+                Lesson::whereIn('id', $lessonsToDelete)->delete();
             }
         }
 
         // Delete modules that were removed from form
-        $toDelete = array_diff($existingModuleIds, $incomingModuleIds);
-        if (! empty($toDelete)) {
-            Module::whereIn('id', $toDelete)->delete();
+        $modulesToDelete = array_diff($existingModuleIds, $incomingModuleIds);
+        if (!empty($modulesToDelete)) {
+            Module::whereIn('id', $modulesToDelete)->delete();
         }
+
 
         return redirect()->route('cursos.show', $course->id)->with('success', 'Curso atualizado com sucesso!');
     }

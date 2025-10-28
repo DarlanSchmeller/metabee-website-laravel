@@ -239,7 +239,7 @@
                                     <div class="space-y-3 text-content">
                                         <div class="flex items-center space-x-3">
                                             <x-heroicon-o-play class="w-5 h-5 text-amber-500" />
-                                            <span>{{ $course->lessons }} aulas em vídeo</span>
+                                            <span>{{ $courseTotalLessons }} aulas em vídeo</span>
                                         </div>
                                         @if ($course->projects)
                                             <div class="flex items-center space-x-3">

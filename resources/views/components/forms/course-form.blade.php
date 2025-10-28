@@ -72,7 +72,7 @@
                     'modules',
                     $course?->modules->map(
                             fn($m) => [
-                                'module' => $m->title,
+                                'title' => $m->title,
                                 'lessons' => $m->lessons,
                                 'duration' => $m->duration,
                             ],
