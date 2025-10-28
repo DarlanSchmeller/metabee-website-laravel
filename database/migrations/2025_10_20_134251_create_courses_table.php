@@ -31,7 +31,6 @@ return new class extends Migration
             $table->json('tags')->nullable();
             $table->json('whatYouLearn')->nullable();
             $table->json('skills')->nullable();
-            $table->json('curriculum')->nullable();
             $table->json('requirements')->nullable();
             $table->string('language')->nullable();
             $table->boolean('certificate')->default(true);
