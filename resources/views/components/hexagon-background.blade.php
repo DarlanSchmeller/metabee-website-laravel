@@ -1,4 +1,4 @@
-<div class="absolute inset-0 opacity-10">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
     <div
         class="absolute inset-0"
         style="

@@ -46,7 +46,7 @@ class MessageController extends Controller
                 'message_sent' => true,
             ]);
         } catch (ValidationException $e) {
-            return redirect(url()->previous() . '#contact')
+            return redirect(url()->previous().'#contact')
                 ->withErrors($e->validator)
                 ->withInput();
         }
@@ -55,7 +55,7 @@ class MessageController extends Controller
     /**
      * Remove the specified message from DB.
      */
-    public function destroy(Message $message)
+    public function destroy(Message $message): RedirectResponse
     {
         // Check if user is authorized to delete
         $this->authorize('delete', Message::class);

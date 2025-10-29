@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseWatchController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MessageController;
@@ -11,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/cursos', [CourseController::class, 'index'])->name('cursos.index');
-
 Route::get('/cursos/search', [CourseController::class, 'search'])->name('cursos.search');
 
 Route::middleware('auth')->group(function () {
@@ -19,6 +19,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/minha-conta/personal-info', [AccountController::class, 'updatePersonalInfo'])->name('account.personal-info.update');
     Route::put('/minha-conta/credentials', [AccountController::class, 'updateUserCredentials'])->name('account.credentials.update');
     Route::delete('/minha-conta/delete', [AccountController::class, 'destroy'])->name('account.destroy');
+
+    Route::get('cursos/{course}/{module}/{lesson}', [CourseWatchController::class, 'show'])->name('course.watch');
 
     Route::get('/cursos/criar', [CourseController::class, 'create'])->name('cursos.create');
     Route::post('/cursos/criar', [CourseController::class, 'store'])->name('cursos.store');

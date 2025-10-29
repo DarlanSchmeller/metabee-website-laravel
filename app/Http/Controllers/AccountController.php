@@ -26,7 +26,7 @@ class AccountController extends Controller
     /**
      * Update the user personal information
      */
-    public function updatePersonalInfo(Request $request)
+    public function updatePersonalInfo(Request $request): RedirectResponse
     {
         $user = Auth::user();
 
@@ -65,7 +65,7 @@ class AccountController extends Controller
     /**
      * Update the user credentials
      */
-    public function updateUserCredentials(Request $request)
+    public function updateUserCredentials(Request $request): RedirectResponse
     {
         // Validate data
         $validatedData = $request->validate([

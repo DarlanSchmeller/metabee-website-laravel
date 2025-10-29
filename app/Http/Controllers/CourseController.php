@@ -22,22 +22,22 @@ class CourseController extends Controller
      */
     public function index(): View
     {
-        $courses = Course::with(['modules' => fn($q) => $q->withSum('lessons', 'duration')])
+        $courses = Course::with(['modules' => fn ($q) => $q->withSum('lessons', 'duration')])
             ->latest()
             ->paginate(9)
             ->through(function ($course) {
                 $course->total_duration = $course->modules->sum('lessons_sum_duration');
+
                 return $course;
             });
 
         return view('pages.courses.index', compact('courses'));
     }
 
-
     /**
      * Show the form for creating a new course.
      */
-    public function create()
+    public function create(): View
     {
         // Check if user is authorized
         $this->authorize('create', Course::class);
@@ -53,7 +53,7 @@ class CourseController extends Controller
         $categoryLabels = collect(Globals::COURSE_CATEGORIES)->pluck('label')->implode(',');
         $validatedData = $request->validate([
             'title' => 'required|string|max:100',
-            'category' => 'required|in:' . $categoryLabels,
+            'category' => 'required|in:'.$categoryLabels,
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2080',
@@ -136,14 +136,14 @@ class CourseController extends Controller
     /**
      * Display the specified course.
      */
-    public function show($id)
+    public function show($id): View
     {
         $course = Course::with([
             'instructor',
             'modules' => function ($query) {
                 $query->withCount('lessons');
                 $query->withSum('lessons', 'duration');
-            }
+            },
         ])->findOrFail($id);
 
         // Get course duration and lesson count
@@ -153,7 +153,7 @@ class CourseController extends Controller
         return view('pages.courses.show')->with([
             'course' => $course,
             'courseTotalDuration' => $courseTotalDuration,
-            'courseTotalLessons' => $courseTotalLessons
+            'courseTotalLessons' => $courseTotalLessons,
         ]);
     }
 
@@ -165,8 +165,8 @@ class CourseController extends Controller
 
         if ($searchKeywords) {
             $query->where(function ($q) use ($searchKeywords) {
-                $q->whereRaw('LOWER(title) like ?', ['%' . $searchKeywords . '%']);
-                $q->orWhereRaw('LOWER(description) like ?', ['%' . $searchKeywords . '%']);
+                $q->whereRaw('LOWER(title) like ?', ['%'.$searchKeywords.'%']);
+                $q->orWhereRaw('LOWER(description) like ?', ['%'.$searchKeywords.'%']);
             });
         }
 
@@ -203,7 +203,7 @@ class CourseController extends Controller
         $categoryLabels = collect(Globals::COURSE_CATEGORIES)->pluck('label')->implode(',');
         $validatedData = $request->validate([
             'title' => 'required|string|max:100',
-            'category' => 'required|in:' . $categoryLabels,
+            'category' => 'required|in:'.$categoryLabels,
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',
@@ -264,7 +264,7 @@ class CourseController extends Controller
             $lessonsData = $moduleData['lessons'] ?? [];
             unset($moduleData['lessons']);
 
-            if (!empty($moduleData['id'])) {
+            if (! empty($moduleData['id'])) {
                 // Update existing module
                 $module = Module::find($moduleData['id']);
                 $module->update([
@@ -286,7 +286,7 @@ class CourseController extends Controller
             $incomingLessonIds = [];
 
             foreach ($lessonsData as $lessonIndex => $lesson) {
-                if (!empty($lesson['id'])) {
+                if (! empty($lesson['id'])) {
                     // Update existing lesson
                     $existingLesson = Lesson::find($lesson['id']);
                     if ($existingLesson) {
@@ -312,17 +312,16 @@ class CourseController extends Controller
 
             // Delete lessons that were removed from form
             $lessonsToDelete = array_diff($existingLessonIds, $incomingLessonIds);
-            if (!empty($lessonsToDelete)) {
+            if (! empty($lessonsToDelete)) {
                 Lesson::whereIn('id', $lessonsToDelete)->delete();
             }
         }
 
         // Delete modules that were removed from form
         $modulesToDelete = array_diff($existingModuleIds, $incomingModuleIds);
-        if (!empty($modulesToDelete)) {
+        if (! empty($modulesToDelete)) {
             Module::whereIn('id', $modulesToDelete)->delete();
         }
-
 
         return redirect()->route('cursos.show', $course->id)->with('success', 'Curso atualizado com sucesso!');
     }

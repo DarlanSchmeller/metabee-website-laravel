@@ -34,7 +34,7 @@ class RegisterController extends Controller
         $registrationData['password'] = Hash::make($registrationData['password']);
 
         // Create the new user
-        $user = User::create($registrationData);
+        User::create($registrationData);
 
         return redirect()->route('login')->with('success', 'Você agora está registrado e pode realizar o login!');
     }
