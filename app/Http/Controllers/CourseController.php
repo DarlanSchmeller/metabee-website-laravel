@@ -18,7 +18,7 @@ class CourseController extends Controller
     use AuthorizesRequests;
 
     /**
-     * Display a listing of the course.
+     * Display a listing of the courses.
      */
     public function index(): View
     {
@@ -175,7 +175,14 @@ class CourseController extends Controller
             $query->whereIn('category', $searchCategories);
         }
 
-        $courses = $query->paginate(9)
+        $courses = $query
+            ->with(['modules' => fn($q) => $q->withSum('lessons', 'duration')])
+            ->latest()
+            ->paginate(9)
+            ->through(function ($course) {
+                $course->total_duration = $course->modules->sum('lessons_sum_duration');
+                return $course;
+            })
             ->appends($request->only(['keywords', 'categories']));
 
         return view('pages.courses.index')->with('courses', $courses);

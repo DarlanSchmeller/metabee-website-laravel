@@ -29,17 +29,17 @@
                 "lessons": [
                     {
                         "title": "O que é IA?",
-                        "url": "https://www.youtube.com/watch?v=example1",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "20"
                     },
                     {
                         "title": "História e Evolução da IA",
-                        "url": "https://www.youtube.com/watch?v=example2",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "25"
                     },
                     {
                         "title": "Principais Aplicações",
-                        "url": "https://www.youtube.com/watch?v=example3",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "30"
                     }
                 ]
@@ -49,7 +49,7 @@
                 "lessons": [
                     {
                         "title": "Supervisionado vs Não-supervisionado",
-                        "url": "https://www.youtube.com/watch?v=example4",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "35"
                     },
                     {
@@ -59,7 +59,7 @@
                     },
                     {
                         "title": "Overfitting e Underfitting",
-                        "url": "https://www.youtube.com/watch?v=example6",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "30"
                     }
                 ]
@@ -69,17 +69,17 @@
                 "lessons": [
                     {
                         "title": "Perceptron e Neurônio Artificial",
-                        "url": "https://www.youtube.com/watch?v=example7",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "25"
                     },
                     {
                         "title": "Backpropagation",
-                        "url": "https://www.youtube.com/watch?v=example8",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "35"
                     },
                     {
                         "title": "Redes Convolucionais (CNN)",
-                        "url": "https://www.youtube.com/watch?v=example9",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "40"
                     }
                 ]
@@ -89,7 +89,7 @@
                 "lessons": [
                     {
                         "title": "IA em Python",
-                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys://www.youtube.com/watch?v=example10",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "30"
                     },
                     {
@@ -147,7 +147,7 @@
                 "lessons": [
                     {
                         "title": "O que são Redes Neurais",
-                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys1",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "25"
                     },
                     {
@@ -215,17 +215,17 @@
                 "lessons": [
                     {
                         "title": "Introdução ao Python - Aula 1",
-                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys1",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "10"
                     },
                     {
                         "title": "Introdução ao Python - Aula 2",
-                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys1",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "10"
                     },
                     {
                         "title": "Introdução ao Python - Aula 3",
-                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys1",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "10"
                     }
                 ]
@@ -235,17 +235,17 @@
                 "lessons": [
                     {
                         "title": "Estruturas de Controle - Aula 1",
-                        "url": "https://example.com/controle-1",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "10"
                     },
                     {
                         "title": "Estruturas de Controle - Aula 2",
-                        "url": "https://example.com/controle-2",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "10"
                     },
                     {
                         "title": "Estruturas de Controle - Aula 3",
-                        "url": "https://example.com/controle-3",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "10"
                     }
                 ]
@@ -255,17 +255,17 @@
                 "lessons": [
                     {
                         "title": "Funções e Módulos - Aula 1",
-                        "url": "https://example.com/funcoes-1",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "10"
                     },
                     {
                         "title": "Funções e Módulos - Aula 2",
-                        "url": "https://example.com/funcoes-2",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "10"
                     },
                     {
                         "title": "Funções e Módulos - Aula 3",
-                        "url": "https://example.com/funcoes-3",
+                        "url": "https://www.youtube.com/watch?v=Cwa57POkDys",
                         "duration": "10"
                     }
                 ]
