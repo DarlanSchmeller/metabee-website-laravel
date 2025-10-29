@@ -20,7 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/minha-conta/credentials', [AccountController::class, 'updateUserCredentials'])->name('account.credentials.update');
     Route::delete('/minha-conta/delete', [AccountController::class, 'destroy'])->name('account.destroy');
 
-    Route::get('cursos/{course}/{module}/{lesson}', [CourseWatchController::class, 'show'])->name('course.watch');
+    Route::get('cursos/{course}/{module}/{lesson}', [CourseWatchController::class, 'show'])->name('cursos.watch');
+    Route::post('cursos/{lesson}/complete', [CourseWatchController::class, 'completeLesson'])->name('cursos.complete-lesson');
+    Route::delete('cursos/{lesson}/complete', [CourseWatchController::class, 'uncompleteLesson'])->name('cursos.uncomplete-lesson');
 
     Route::get('/cursos/criar', [CourseController::class, 'create'])->name('cursos.create');
     Route::post('/cursos/criar', [CourseController::class, 'store'])->name('cursos.store');

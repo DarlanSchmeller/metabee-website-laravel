@@ -14,6 +14,8 @@ class UserCompletedLesson extends Model
         'lesson_id'
     ];
 
+    public $timestamps = false;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
