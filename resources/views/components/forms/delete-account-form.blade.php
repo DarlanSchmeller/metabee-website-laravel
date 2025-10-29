@@ -1,7 +1,7 @@
 <form
     method="POST"
     action="{{ route("account.destroy") }}"
-    onsubmit="confirm('Você tem certeza que deseja deletar sua conta? Este processo é irreversível e todas suas informações serão deletadas permanentemente.')"
+    onsubmit="return confirm('Você tem certeza que deseja deletar sua conta? Este processo é irreversível e todas suas informações serão deletadas permanentemente.')"
 >
     @csrf
     @method("DELETE")
