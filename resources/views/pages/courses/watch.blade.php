@@ -126,10 +126,9 @@
                                                     <div
                                                         class="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-800 flex-shrink-0"
                                                     >
-                                                        {{-- Play --}}
                                                         <x-heroicon-o-play class="h-4 w-4 text-gray-400" />
                                                     </div>
-                                                    <div>
+                                                    <div class="flex-1 min-w-0">
                                                         <p class="text-sm font-medium text-white truncate">
                                                             {{ $lesson->title }}
                                                         </p>
