@@ -149,11 +149,15 @@ class CourseController extends Controller
         // Get course duration and lesson count
         $courseTotalDuration = $course->modules->sum('lessons_sum_duration');
         $courseTotalLessons = $course->modules->sum('lessons_count');
+        $firstModule = $course->modules->first();
+        $firstLesson = $firstModule->lessons->first();
 
         return view('pages.courses.show')->with([
             'course' => $course,
             'courseTotalDuration' => $courseTotalDuration,
             'courseTotalLessons' => $courseTotalLessons,
+            'firstModule' => $firstModule,
+            'firstLesson' => $firstLesson,
         ]);
     }
 

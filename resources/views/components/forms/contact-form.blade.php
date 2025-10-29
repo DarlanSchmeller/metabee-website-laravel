@@ -108,7 +108,7 @@
                         <x-heroicon-o-signal class="w-10 h-10 text-green-400" />
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-2">Mensagem enviada!</h3>
-                    <p class="text-gray-400">Obrigado por entrar em contato. Retornaremos contato em breve.</p>
+                    <p class="text-gray-400">Obrigado por entrar em contato! Retornaremos em breve com uma resposta.</p>
                 </div>
             @endif
 

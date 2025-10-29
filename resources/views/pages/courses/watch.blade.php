@@ -70,8 +70,13 @@
                                     {{ $completedCurrentLesson
                                         ? 'hover:bg-red-500/10 border border-red-500/30 text-red-400'
                                         : 'hover:bg-green-500/10 border border-green-500/30 text-green-400' }}">
-                                    <x-heroicon-o-check-circle class="h-5 w-5" />
-                                    {{ $completedCurrentLesson ? 'Marcar como Incompleto' : 'Marcar como Completo' }}
+
+                                    @if($completedCurrentLesson)
+                                        <x-heroicon-o-x-circle class="h-5 w-5" />
+                                    @else
+                                        <x-heroicon-o-check-circle class="h-5 w-5" />
+                                    @endif
+                                    {{ $completedCurrentLesson ? 'Marcar como Não Concluído' : 'Marcar como Concluído' }}
                                 </button>
                             </form>
                         </div>
@@ -157,7 +162,7 @@
                                                         </p>
                                                         <p class="text-xs text-gray-500">
                                                             {{ intdiv($lessonData->duration, 60) ? intdiv($lessonData->duration, 60) . 'h ' : '' }}
-                                                            {{ $lessonData->duration % 60 ? $lesson->duration % 60 . 'min' : '' }}
+                                                            {{ $lessonData->duration % 60 ? $lessonData->duration % 60 . 'min' : '' }}
                                                         </p>
                                                     </div>
                                                 </button>

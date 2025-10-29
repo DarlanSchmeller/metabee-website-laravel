@@ -6,18 +6,24 @@ use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Module;
 use App\Models\UserCompletedLesson;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CourseWatchController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display the specified lesson.
      */
     public function show(Course $course, Module $module, Lesson $lesson): View
     {
         $user = Auth::user();
+
+        // Check if user is authorized to watch course
+        $this->authorize('watch', $course);
 
         $modules = $course->modules()
             ->with('lessons')

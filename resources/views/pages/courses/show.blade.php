@@ -243,19 +243,33 @@
                                     <p class="text-content">Pagamento único, acesso vitalício</p>
                                 </div>
 
-                                <a href="{{ route("planos") }}">
-                                    <button
-                                        class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 mb-4"
-                                    >
-                                        Matricule-se Agora
-                                    </button>
-                                </a>
+                                @auth()
+                                    @if(auth()->user()->role !== 'guest')
+                                        <a href="{{ route('cursos.watch', [$course->id, $firstModule, $firstLesson]) }}">
+                                            <button
+                                                class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 mb-4"
+                                            >
+                                                Assistir Aulas
+                                            </button>
+                                        </a>
+                                    @endif
+                                @else
+                                    <a href="{{ route("planos") }}">
+                                        <button
+                                            class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 mb-4"
+                                        >
+                                            Matricule-se Agora
+                                        </button>
+                                    </a>
 
-                                <button
-                                    class="w-full border border-amber-500/50 text-amber-400 px-6 py-4 rounded-xl font-semibold hover:bg-amber-500/10 transition-all duration-300 mb-6"
-                                >
-                                    Comprar Curso Separadamente
-                                </button>
+                                    <a href="{{ route('planos') }}">
+                                        <button
+                                            class="w-full border border-amber-500/50 text-amber-400 px-6 py-4 rounded-xl font-semibold hover:bg-amber-500/10 transition-all duration-300 mb-6"
+                                        >
+                                            Comprar Curso Separadamente
+                                        </button>
+                                    </a>
+                                @endif
 
                                 <div class="border-t border-amber-500/20 pt-6">
                                     <h3 class="text-white font-semibold mb-4">Este curso inclui:</h3>
