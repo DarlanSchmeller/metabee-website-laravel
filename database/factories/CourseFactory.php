@@ -69,7 +69,6 @@ class CourseFactory extends Factory
             'language' => fake()->randomElement(['Português', 'English', 'Español']),
             'certificate' => fake()->boolean(),
             'resources' => fake()->boolean(),
-            'rating' => fake()->randomFloat(1, 3, 5),
             'price' => fake()->randomFloat(2, 10, 200),
             'level' => fake()->randomElement(['iniciante', 'intermediario', 'avançado']),
         ];

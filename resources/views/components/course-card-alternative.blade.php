@@ -21,7 +21,7 @@
         >
             <div class="flex items-center space-x-1">
                 <x-heroicon-s-star class="w-4 h-4 text-amber-500 fill-current" />
-                <span class="text-sm font-semibold text-amber-400">{{ $course->rating }}</span>
+                <span class="text-sm font-semibold text-amber-400">{{ number_format($course->average_rating, 1) }}</span>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
 
             <div class="flex items-center space-x-1">
                 <x-heroicon-o-star class="w-4 h-4 text-amber-400" />
-                <span class="text-white font-semibold">{{ $course->rating }}</span>
+                <span class="text-white font-semibold">{{ number_format($course->average_rating, 1) }}</span>
             </div>
         </div>
 

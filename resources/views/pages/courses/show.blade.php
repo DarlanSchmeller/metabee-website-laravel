@@ -75,7 +75,7 @@
                         <div class="flex flex-wrap gap-6 mb-8 text-white">
                             <div class="flex items-center space-x-2">
                                 <x-heroicon-o-star class="w-5 h-5 text-amber-500" />
-                                <span class="font-semibold">{{ $course->rating }}</span>
+                                <span class="font-semibold">{{ $averageRating }}</span>
                             </div>
                             <div class="flex items-center space-x-2">
                                 <x-heroicon-o-user-group class="w-5 h-5 text-amber-500" />
@@ -286,7 +286,8 @@
                                                     <div class="flex gap-">
                                                         @for ($i = 1; $i <= 5; $i++)
                                                             <x-heroicon-s-star
-                                                                class="w-5 h-5 transition-colors duration-150 {{ $i <= $review->rating ? 'text-amber-400' : 'text-gray-600' }}"
+                                                                class="w-5 h-5 transition-colors duration-150 
+                                                                {{ $i <= $review->rating ? 'text-amber-400' : 'text-gray-600' }}"
                                                             />
                                                         @endfor
                                                     </div>

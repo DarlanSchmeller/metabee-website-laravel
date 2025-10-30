@@ -36,7 +36,6 @@ class Course extends Model
     protected $casts = [
         'certificate' => 'boolean',
         'resources' => 'boolean',
-        'rating' => 'float',
         'price' => 'float',
         'tags' => 'array',
         'whatYouLearn' => 'array',

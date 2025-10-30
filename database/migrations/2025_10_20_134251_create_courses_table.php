@@ -33,7 +33,6 @@ return new class extends Migration
             $table->string('language')->nullable();
             $table->boolean('certificate')->default(true);
             $table->boolean('resources')->default(true);
-            $table->float('rating')->default(0);
             $table->float('price')->default(0);
             $table->enum('level', ['iniciante', 'intermediario', 'avançado']);
             $table->timestamps();

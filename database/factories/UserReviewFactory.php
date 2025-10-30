@@ -25,7 +25,7 @@ class UserReviewFactory extends Factory
             'user_id' => fake()->randomElement($userIds),
             'course_id' => fake()->randomElement($courseIds),
             'content' => fake()->paragraph(4, true),
-            'rating' => fake()->numberBetween(3, 5),
+            'rating' => fake()->numberBetween(2, 5),
         ];
     }
 }

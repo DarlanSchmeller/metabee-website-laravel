@@ -17,12 +17,14 @@ class FeaturedCourses extends Component
     public function __construct()
     {
         $this->courses = Course::with(['modules' => fn ($q) => $q->withSum('lessons', 'duration')])
+            ->withAvg('reviews', 'rating')
             ->orderBy('students', 'desc')
             ->take(3)
             ->get()
             ->map(function ($course) {
                 // Sum all module lesson durations
                 $course->total_duration = $course->modules->sum('lessons_sum_duration');
+                $course->average_rating = number_format($course->reviews->avg('rating'), 1, '.', '');
 
                 return $course;
             });

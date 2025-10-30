@@ -66,7 +66,7 @@
             <div class="flex items-center space-x-1">
                 <x-heroicon-o-star class="w-4 h-4 text-amber-400" />
                 <span class="text-white font-semibold">
-                    {{ $course->rating }}
+                    {{ number_format($course->average_rating, 1) }}
                 </span>
             </div>
         </div>
