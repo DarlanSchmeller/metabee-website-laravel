@@ -11,7 +11,7 @@ class UserCompletedLesson extends Model
 
     protected $fillable = [
         'user_id',
-        'lesson_id'
+        'lesson_id',
     ];
 
     public $timestamps = false;

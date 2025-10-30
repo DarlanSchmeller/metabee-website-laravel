@@ -146,7 +146,18 @@ class CourseController extends Controller
             },
         ])->findOrFail($id);
 
-        // Get course duration and lesson count
+        // Get course reviews
+        $reviews = $course->reviews()
+            ->with('user')
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+        // Check if user already reviewed the course
+        $existingReview = auth()->check()
+            ? $reviews->firstWhere('user_id', auth()->id()) ?? false
+            : false;
+
+        // Get course related data
         $courseTotalDuration = $course->modules->sum('lessons_sum_duration');
         $courseTotalLessons = $course->modules->sum('lessons_count');
         $firstModule = $course->modules->first();
@@ -158,6 +169,8 @@ class CourseController extends Controller
             'courseTotalLessons' => $courseTotalLessons,
             'firstModule' => $firstModule,
             'firstLesson' => $firstLesson,
+            'reviews' => $reviews,
+            'existingReview' => $existingReview,
         ]);
     }
 
@@ -180,11 +193,12 @@ class CourseController extends Controller
         }
 
         $courses = $query
-            ->with(['modules' => fn($q) => $q->withSum('lessons', 'duration')])
+            ->with(['modules' => fn ($q) => $q->withSum('lessons', 'duration')])
             ->latest()
             ->paginate(9)
             ->through(function ($course) {
                 $course->total_duration = $course->modules->sum('lessons_sum_duration');
+
                 return $course;
             })
             ->appends($request->only(['keywords', 'categories']));
@@ -279,7 +293,7 @@ class CourseController extends Controller
                 // Update existing module
                 $module = Module::find($moduleData['id']);
                 $module->update([
-                    'title' => $moduleData['title'],  // make sure it's 'title' not 'module'
+                    'title' => $moduleData['title'],
                     'order' => $moduleIndex,
                 ]);
             } else {

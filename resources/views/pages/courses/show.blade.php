@@ -1,6 +1,4 @@
-@props([
-    "course",
-])
+@props(['course'])
 
 <x-layout>
     <div class="min-h-screen bg-gray-950">
@@ -11,34 +9,25 @@
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-row gap-6">
                     {{-- Back Button --}}
-                    <a
-                        href="{{ route("cursos.index") }}"
-                        class="inline-flex items-center space-x-2 bg-gray-800/60 hover:bg-gray-700/80 text-amber-400 hover:text-amber-300 font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-amber-500/40 transition-all duration-200 border border-amber-500/30 mb-6"
-                    >
+                    <a href="{{ route('cursos.index') }}"
+                        class="inline-flex items-center space-x-2 bg-gray-800/60 hover:bg-gray-700/80 text-amber-400 hover:text-amber-300 font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-amber-500/40 transition-all duration-200 border border-amber-500/30 mb-6">
                         <x-heroicon-o-arrow-left class="w-5 h-5" />
                         <span>Voltar para Cursos</span>
                     </a>
-                    @can("update", $course)
+                    @can('update', $course)
                         {{-- Edit Button --}}
-                        <a
-                            href="{{ route("cursos.edit", $course->id) }}"
-                            class="inline-flex items-center space-x-2 bg-blue-700/80 hover:bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-blue-500/30 mb-6"
-                        >
+                        <a href="{{ route('cursos.edit', $course->id) }}"
+                            class="inline-flex items-center space-x-2 bg-blue-700/80 hover:bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-blue-500/30 mb-6">
                             <x-heroicon-o-pencil class="w-5 h-5" />
                             <span>Editar Curso</span>
                         </a>
 
-                        <form
-                            action="{{ route("cursos.destroy", $course->id) }}"
-                            method="POST"
-                            onsubmit="return confirm('Tem certeza que deseja apagar este curso?')"
-                        >
+                        <form action="{{ route('cursos.destroy', $course->id) }}" method="POST"
+                            onsubmit="return confirm('Tem certeza que deseja apagar este curso?')">
                             @csrf
-                            @method("DELETE")
-                            <button
-                                type="submit"
-                                class="inline-flex items-center space-x-2 bg-red-700/80 hover:bg-red-600 text-white font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-red-500/30 mb-6"
-                            >
+                            @method('DELETE')
+                            <button type="submit"
+                                class="inline-flex items-center space-x-2 bg-red-700/80 hover:bg-red-600 text-white font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-red-500/30 mb-6">
                                 <x-heroicon-o-trash class="w-5 h-5" />
                                 <span>Apagar Curso</span>
                             </button>
@@ -51,18 +40,13 @@
                     <div class="lg:col-span-2">
                         {{-- Course Image --}}
                         <div class="relative rounded-2xl overflow-hidden mb-8">
-                            <img
-                                src="{{ asset("storage/" . $course->image) }}"
-                                alt="{{ $course->title }}"
-                                class="w-full h-96 object-cover"
-                            />
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent"
-                            ></div>
+                            <img src="{{ asset('storage/' . $course->image) }}" alt="{{ $course->title }}"
+                                class="w-full h-96 object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent">
+                            </div>
                             <div class="absolute bottom-6 left-6 right-6">
                                 <div
-                                    class="inline-block bg-gray-900/90 backdrop-blur-sm px-4 py-2 rounded-full text-amber-500 text-sm font-semibold border border-amber-500/30 mb-4"
-                                >
+                                    class="inline-block bg-gray-900/90 backdrop-blur-sm px-4 py-2 rounded-full text-amber-500 text-sm font-semibold border border-amber-500/30 mb-4">
                                     {{ ucfirst($course->level) }}
                                 </div>
                                 <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -85,8 +69,8 @@
                                 <x-heroicon-o-clock class="w-5 h-5 text-amber-500" />
                                 <span class="text-content">
                                     @if ($courseTotalDuration)
-                                        {{ intdiv($courseTotalDuration, 60) ? intdiv($courseTotalDuration, 60) . "h " : "" }}
-                                        {{ $courseTotalDuration % 60 ? $courseTotalDuration % 60 . "min" : "" }}
+                                        {{ intdiv($courseTotalDuration, 60) ? intdiv($courseTotalDuration, 60) . 'h ' : '' }}
+                                        {{ $courseTotalDuration % 60 ? $courseTotalDuration % 60 . 'min' : '' }}
                                     @endif
                                 </span>
                             </div>
@@ -101,8 +85,7 @@
                         </div>
 
                         <div
-                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white"
-                        >
+                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white">
                             <h2 class="text-2xl font-bold mb-4">Sobre este Curso</h2>
                             <p class="text-content leading-relaxed mb-6">
                                 {{ $course->fullDescription }}
@@ -129,15 +112,13 @@
                         </div>
 
                         <div
-                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white"
-                        >
+                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white">
                             <h2 class="text-2xl font-bold mb-6">O que você vai aprender</h2>
                             <div class="grid md:grid-cols-2 gap-4 text-content">
                                 @foreach ($course->whatYouLearn as $item)
                                     <div class="flex items-start space-x-3">
                                         <x-heroicon-o-check-circle
-                                            class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5"
-                                        />
+                                            class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                                         <span>{{ $item }}</span>
                                     </div>
                                 @endforeach
@@ -145,14 +126,12 @@
                         </div>
 
                         <div
-                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white"
-                        >
+                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white">
                             <h2 class="text-2xl font-bold mb-6">Habilidades que você irá adquirir</h2>
                             <div class="flex flex-wrap gap-3">
                                 @foreach ($course->skills as $skill)
                                     <span
-                                        class="px-4 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400 text-sm font-medium"
-                                    >
+                                        class="px-4 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400 text-sm font-medium">
                                         {{ $skill }}
                                     </span>
                                 @endforeach
@@ -160,18 +139,15 @@
                         </div>
 
                         <div
-                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white"
-                        >
+                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white">
                             <h2 class="text-2xl font-bold mb-6">Currículo do Curso</h2>
                             <div class="space-y-4">
                                 @foreach ($course->modules as $index => $module)
                                     <div
-                                        class="flex items-center justify-between p-4 bg-gray-800/50 border border-amber-500/20 rounded-xl hover:border-amber-500/40 transition-all"
-                                    >
+                                        class="flex flex-col gap-2 md:flex-row items-start md:items-center justify-start md:justify-between p-4 bg-gray-800/50 border border-amber-500/20 rounded-xl hover:border-amber-500/40 transition-all">
                                         <div class="flex items-center space-x-4">
                                             <div
-                                                class="w-10 h-10 bg-gradient-to-br from-amber-500/20 to-yellow-500/20 rounded-lg flex items-center justify-center border border-amber-500/30"
-                                            >
+                                                class="w-10 h-10 bg-gradient-to-br from-amber-500/20 to-yellow-500/20 rounded-lg flex items-center justify-center border border-amber-500/30">
                                                 <span class="text-amber-500 font-semibold">
                                                     {{ $loop->iteration }}
                                                 </span>
@@ -186,7 +162,7 @@
                                         <div class="flex items-center space-x-2 text-content text-sm">
                                             <x-heroicon-o-clock class="w-4 h-4" />
                                             <span>
-                                                {{ $module->lessons_sum_duration >= 60 ? intdiv($module->lessons_sum_duration, 60) . "h " : "" }}
+                                                {{ $module->lessons_sum_duration >= 60 ? intdiv($module->lessons_sum_duration, 60) . 'h ' : '' }}
                                                 {{ $module->lessons_sum_duration % 60 }}m
                                             </span>
                                         </div>
@@ -196,8 +172,7 @@
                         </div>
 
                         <div
-                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white"
-                        >
+                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 mb-8 text-white">
                             <h2 class="text-2xl font-bold mb-6">Requisitos</h2>
                             <ul class="space-y-3 text-content">
                                 @foreach ($course->requirements as $req)
@@ -211,15 +186,12 @@
 
                         {{-- Instrutor --}}
                         <div
-                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 text-white"
-                        >
+                            class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 text-white">
                             <h2 class="text-2xl font-bold mb-6">Seu Instrutor</h2>
                             <div class="flex items-start space-x-6 md:flex-row md:gap-0 flex-col gap-8">
-                                <img
-                                    src="{{ asset("storage/" . $course->instructor->user_image) }}"
+                                <img src="{{ asset('storage/' . $course->instructor->user_image) }}"
                                     alt="{{ $course->instructor->name }}"
-                                    class="w-24 h-24 rounded-2xl object-cover border-2 border-amber-500/30"
-                                />
+                                    class="w-24 h-24 rounded-2xl object-cover border-2 border-amber-500/30" />
                                 <div>
                                     <h3 class="text-xl font-bold mb-2">
                                         {{ $course->instructor->name }}
@@ -231,49 +203,102 @@
                             </div>
                         </div>
 
-                        @auth()
-                            <x-review-form :course="$course" />
-                        @endauth
+                        {{-- Course Reviews --}}
+                        <section class="relative pt-8 overflow-hidden">
+                            <div
+                                class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8">
+                                @auth()
+                                    <x-review-form :course="$course" :reviewed="$existingReview" />
+                                @endauth
+
+                                {{-- Divider --}}
+                                <div class="flex items-center my-8">
+                                    <div class="flex-1 h-px bg-gray-700/50"></div>
+                                    <span class="px-4 text-gray-400 text-sm font-medium">Avaliações</span>
+                                    <div class="flex-1 h-px bg-gray-700/50"></div>
+                                </div>
+
+                                {{-- List Reviews --}}
+                                <div class="space-y-6 mt-12">
+                                    @forelse ($reviews as $review)
+                                        <div
+                                            class="flex gap-4 p-4 bg-gray-800/50 rounded-xl border border-amber-500/20 shadow-sm">
+                                            {{-- Avatar --}}
+                                            <div
+                                                class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center overflow-hidden">
+                                                @if (!empty($review->user->user_image) && file_exists(storage_path('app/public/' . $review->user->user_image)))
+                                                    <img src="{{ asset('storage/' . $review->user->user_image) }}"
+                                                        alt="{{ $review->user->name }}"
+                                                        class="w-full h-full object-cover" />
+                                                @else
+                                                    <x-heroicon-o-user class="w-6 h-6 text-amber-400" />
+                                                @endif
+                                            </div>
+
+                                            {{-- Review Content --}}
+                                            <div class="flex-1">
+                                                <div
+                                                    class="flex flex-col gap-2 items-start md:flex-row md:gap-4 md:items-center md:justify-between">
+                                                    <div class="flex flex-wrap items-center gap-4">
+                                                        <h4 class="font-semibold text-white">{{ $review->user->name }}
+                                                        </h4>
+                                                        <div class="flex items-center gap-1 text-gray-400 text-xs">
+                                                            <x-heroicon-o-calendar class="w-4 h-4" />
+                                                            <span>{{ $review->created_at->format('d/m/Y') }}</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex gap-">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <x-heroicon-s-star
+                                                                class="w-5 h-5 transition-colors duration-150 {{ $i <= $review->rating ? 'text-amber-400' : 'text-gray-600' }}" />
+                                                        @endfor
+                                                    </div>
+                                                </div>
+
+                                                <p class="mt-2 text-gray-300 text-sm">{{ $review->content }}</p>
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <div class="flex flex-col items-center gap-4 pb-6 font-semibold text-gray-400">
+                                            <x-heroicon-o-pencil class="w-6 h-6" />
+                                            <p class="text-sm">Este curso ainda não possui nenhuma avaliação</p>
+                                        </div>
+                                    @endforelse
+
+                                    {{-- Pagination --}}
+                                    <div class="mt-10">
+                                        {{ $reviews->links('vendor.pagination.tailwind') }}
+                                    </div>
+                                </div>
+
+                        </section>
                     </div>
 
                     {{-- Sidebar --}}
                     <div class="lg:col-span-1">
                         <div class="sticky top-32">
                             <div
-                                class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 text-white"
-                            >
+                                class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8 text-white">
                                 <div class="mb-6">
                                     <div class="text-4xl font-bold mb-2">${{ $course->price }}</div>
                                     <p class="text-content">Pagamento único, acesso vitalício</p>
                                 </div>
 
                                 @auth()
-                                    @if(auth()->user()->role !== 'guest')
+                                    @if (auth()->user()->role !== 'guest')
                                         <a href="{{ route('cursos.watch', [$course->id, $firstModule, $firstLesson]) }}">
                                             <button
-                                                class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 mb-4"
-                                            >
+                                                class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 mb-4">
                                                 Assistir Aulas
                                             </button>
                                         </a>
+                                    @else
+                                        <x-course-guest-buttons />
                                     @endif
                                 @else
-                                    <a href="{{ route("planos") }}">
-                                        <button
-                                            class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 mb-4"
-                                        >
-                                            Matricule-se Agora
-                                        </button>
-                                    </a>
-
-                                    <a href="{{ route('planos') }}">
-                                        <button
-                                            class="w-full border border-amber-500/50 text-amber-400 px-6 py-4 rounded-xl font-semibold hover:bg-amber-500/10 transition-all duration-300 mb-6"
-                                        >
-                                            Comprar Curso Separadamente
-                                        </button>
-                                    </a>
-                                @endif
+                                    <x-course-guest-buttons />
+                                @endauth
 
                                 <div class="border-t border-amber-500/20 pt-6">
                                     <h3 class="text-white font-semibold mb-4">Este curso inclui:</h3>
@@ -314,7 +339,7 @@
                                 <div class="border-t border-amber-500/20 pt-6 mt-6 text-content text-sm">
                                     Última atualização:
                                     <span class="text-white font-medium">
-                                        {{ $course->updated_at->translatedFormat("d F Y") }}
+                                        {{ $course->updated_at->translatedFormat('d F Y') }}
                                     </span>
                                 </div>
                             </div>

@@ -2,12 +2,18 @@
 
 <div class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-6 text-center">
     <div class="relative mb-4">
-        <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-amber-500/30 mx-auto">
-            <img
-                src="{{ asset("storage/" . $user->user_image) }}"
-                alt="{{ $user->name }}"
-                class="w-full h-full object-cover"
-            />
+        <div
+            class="w-32 h-32 rounded-full overflow-hidden bg-amber-500/20 border border-amber-500/40 mx-auto flex flex-col justify-center items-center"
+        >
+            @if (! empty($user->user_image) && file_exists(storage_path("app/public/" . $user->user_image)))
+                <img
+                    src="{{ asset("storage/" . $user->user_image) }}"
+                    alt="{{ $user->name }}"
+                    class="w-full h-full object-cover"
+                />
+            @else
+                <x-heroicon-o-user class="w-16 h-16 text-amber-400" />
+            @endif
         </div>
     </div>
 

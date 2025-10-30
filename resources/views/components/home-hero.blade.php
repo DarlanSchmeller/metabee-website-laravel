@@ -51,7 +51,7 @@
                         class="group flex items-center justify-center px-8 py-4 border border-amber-500/50 rounded-xl font-medium text-amber-400 hover:bg-amber-500/10 transition-all duration-300"
                     >
                         <x-heroicon-o-play class="mr-2 w-5 h-5" />
-                        Ver Demonstração
+                        Visualizar Cursos
                     </a>
                 </div>
 

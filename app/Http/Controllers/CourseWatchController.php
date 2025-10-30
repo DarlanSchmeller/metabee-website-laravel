@@ -31,19 +31,19 @@ class CourseWatchController extends Controller
             ->get();
 
         // Flatten all lessons in order
-        $allLessons = $modules->flatMap(fn($mod) => $mod->lessons->sortBy('order'));
-        $currentIndex = $allLessons->search(fn($l) => $l->id === $lesson->id);
+        $allLessons = $modules->flatMap(fn ($mod) => $mod->lessons->sortBy('order'));
+        $currentIndex = $allLessons->search(fn ($l) => $l->id === $lesson->id);
 
         // Previous & next lessons
         $previousLesson = $allLessons->get($currentIndex - 1);
-        $nextLesson     = $allLessons->get($currentIndex + 1);
+        $nextLesson = $allLessons->get($currentIndex + 1);
 
         $completedLessonIds = $user->completedLessons()
             ->whereIn('lesson_id', $modules->pluck('lessons.*.id')->flatten())
             ->pluck('lesson_id')
             ->toArray();
 
-        $courseTotalLessons = $modules->sum(fn($mod) => $mod->lessons->count());
+        $courseTotalLessons = $modules->sum(fn ($mod) => $mod->lessons->count());
         $completedCurrentLesson = in_array($lesson->id, $completedLessonIds);
         $progress = round(count($completedLessonIds) / $courseTotalLessons * 100);
 

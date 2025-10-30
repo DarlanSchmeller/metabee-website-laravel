@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Course;
 use App\Models\UserReview;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
@@ -39,16 +38,35 @@ class ReviewController extends Controller
     /**
      * Update the specified review in DB.
      */
-    public function update(Request $request, string $id): RedirectResponse
+    public function update(Request $request, Course $course): RedirectResponse
     {
+        $validatedData = $request->validate([
+            'rating' => 'required|integer|in:1,2,3,4,5',
+            'content' => 'required|string|min:10|max:400',
+        ]);
+
+        $user = Auth::user();
+
+        // Update review in db
+        UserReview::where('user_id', $user->id)
+            ->where('course_id', $course->id)
+            ->update($validatedData);
+
         return redirect()->back()->with('success', 'Avaliação atualizada com sucesso!');
     }
 
     /**
      * Remove the specified review from DB.
      */
-    public function destroy(string $id): RedirectResponse
+    public function destroy(Course $course): RedirectResponse
     {
+        $user = Auth::user();
+
+        // Delete review in db
+        UserReview::where('user_id', $user->id)
+            ->where('course_id', $course->id)
+            ->delete();
+
         return redirect()->back()->with('success', 'Avaliação deletada com sucesso!');
     }
 }
