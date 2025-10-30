@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('review/{course}', [ReviewController::class, 'store'])->name('review.store');
     Route::put('review/{course}', [ReviewController::class, 'update'])->name('review.update');
-    Route::delete('review/{course}', [ReviewController::class, 'delete'])->name('review.delete');
+    Route::delete('review/{course}', [ReviewController::class, 'destroy'])->name('review.delete');
 
     Route::get('/message', [MessageController::class, 'index'])->name('message.index');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

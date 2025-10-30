@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Module;
 use App\Models\User;
+use App\Models\UserReview;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -84,6 +85,21 @@ class DatabaseSeeder extends Seeder
                         'url' => $lessonData['url'],
                         'duration' => $lessonData['duration'],
                         'order' => $lessonIndex + 1,
+                    ]);
+                }
+            }
+        }
+
+        User::factory(16)->create();
+        $users = User::where('id', '!=', 1)->get();
+        $courses = Course::all();
+
+        foreach ($users as $user) {
+            foreach ($courses as $course) {
+                if (mt_rand(1, 100) <= 30) {
+                    UserReview::factory()->create([
+                        'user_id' => $user->id,
+                        'course_id' => $course->id,
                     ]);
                 }
             }
