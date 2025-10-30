@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Lesson::class, 'user_completed_lessons');
     }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(UserReview::class);
+    }
 }

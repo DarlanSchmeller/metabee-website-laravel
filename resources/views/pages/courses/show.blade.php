@@ -230,6 +230,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        @auth()
+                            <x-review-form :course="$course" />
+                        @endauth
                     </div>
 
                     {{-- Sidebar --}}
