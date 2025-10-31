@@ -15,6 +15,7 @@
             content="Junte-se a milhares de alunos que já estão construindo o futuro com a robótica."
             buttonText="Explorar Cursos"
             link="{{ route('cursos.index') }}"
+            :icon="true"
         />
     </div>
 </x-layout>

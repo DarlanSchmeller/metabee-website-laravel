@@ -35,7 +35,7 @@
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-12">
                     <a href="{{ route("planos") }}">
-                        <x-button px="px-8" py="py-4">
+                        <x-button px="px-8 w-full" py="py-4">
                             <span class="flex items-center justify-center">
                                 Começar agora
                                 <x-heroicon-o-arrow-right
