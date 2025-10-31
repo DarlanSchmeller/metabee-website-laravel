@@ -29,13 +29,13 @@
                 <div class="space-y-6">
                     <x-profile-card :user="$user" />
                     <x-profile-stats :user="$user" />
-                    <x-delete-account-form />
                 </div>
 
                 <!-- Right Column -->
                 <div class="lg:col-span-2 space-y-6">
                     <x-personal-info-form :user="$user" />
                     <x-update-password-form :user="$user" />
+                    <x-delete-account-form />
                 </div>
             </div>
         </div>

@@ -2,7 +2,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-8">
         @foreach ($plans as $plan)
             <div
-                class="relative bg-gradient-to-br from-gray-900 to-gray-900/50 rounded-3xl p-8 transition-all duration-300 border {{ $plan["highlighted"] ? "border-2 border-amber-500 shadow-2xl shadow-amber-500/20 scale-105 lg:scale-110" : "border-amber-500/20 hover:border-amber-500/40 hover:shadow-xl hover:shadow-amber-500/10" }}"
+                class="relative bg-gradient-to-br from-gray-900 to-gray-900/50 rounded-3xl p-8 transition-all duration-300 border {{
+                    $plan["highlighted"] ? "border-2 border-amber-500 shadow-2xl shadow-amber-500/20 scale-105 lg:scale-110" : "border-amber-500/20 hover:border-amber-500/40 hover:shadow-xl hover:shadow-amber-500/10"
+                }}"
             >
                 @if ($plan["highlighted"])
                     <span
@@ -42,11 +44,28 @@
                     @endforeach
                 </ul>
 
-                <button
-                    class="w-full py-4 rounded-xl font-semibold transition-all duration-300 {{ $plan["highlighted"] ? "bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 hover:scale-105" : "bg-gray-800 text-white border border-amber-500/30 hover:bg-gray-700 hover:border-amber-500/50" }}"
-                >
-                    Escolher Plano
-                </button>
+                @if (auth()->check())
+                    <form method="POST" action="{{ route("account.upgrade", strtolower($plan["name"])) }}">
+                        @csrf
+                        <button
+                            class="w-full py-4 rounded-xl font-semibold transition-all duration-300 {{
+                                $plan["highlighted"] ? "bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 hover:scale-105" : "bg-gray-800 text-white border border-amber-500/30 hover:bg-gray-700 hover:border-amber-500/50"
+                            }}"
+                        >
+                            Escolher Plano
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route("login") }}">
+                        <button
+                            class="w-full py-4 rounded-xl font-semibold transition-all duration-300 {{
+                                $plan["highlighted"] ? "bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 hover:scale-105" : "bg-gray-800 text-white border border-amber-500/30 hover:bg-gray-700 hover:border-amber-500/50"
+                            }}"
+                        >
+                            Escolher Plano
+                        </button>
+                    </a>
+                @endif
             </div>
         @endforeach
     </div>

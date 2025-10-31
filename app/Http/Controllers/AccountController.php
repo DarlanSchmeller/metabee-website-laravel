@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\Globals;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -111,5 +112,25 @@ class AccountController extends Controller
         $user->delete();
 
         return redirect()->route('home')->with('success', 'Sua conta foi deletada com sucesso!');
+    }
+
+    public function upgrade(string $plan): RedirectResponse
+    {
+        $user = Auth::user();
+
+        // Block instructors from upgrading
+        if ($user->role === 'instructor') {
+            return redirect()->back()->with('error', 'Instrutores não podem adquirir planos.');
+        }
+
+        // Check if plan is valid
+        if (! in_array($plan, Globals::PLANS)) {
+            return redirect()->route('home')->with('error', 'O plano escolhido é inválido.');
+        }
+
+        // Upgrade user role to updated plan
+        $user->update(['role' => $plan]);
+
+        return redirect()->route('account.index')->with('success', 'Plano adquirido com sucesso!');
     }
 }

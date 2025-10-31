@@ -22,7 +22,7 @@ class CourseController extends Controller
      */
     public function index(): View
     {
-        $courses = Course::with(['modules' => fn($q) => $q->withSum('lessons', 'duration')])
+        $courses = Course::with(['modules' => fn ($q) => $q->withSum('lessons', 'duration')])
             ->latest()
             ->withAvg('reviews', 'rating')
             ->paginate(9)
@@ -55,7 +55,7 @@ class CourseController extends Controller
         $categoryLabels = collect(Globals::COURSE_CATEGORIES)->pluck('label')->implode(',');
         $validatedData = $request->validate([
             'title' => 'required|string|max:100',
-            'category' => 'required|in:' . $categoryLabels,
+            'category' => 'required|in:'.$categoryLabels,
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2080',
@@ -186,8 +186,8 @@ class CourseController extends Controller
 
         if ($searchKeywords) {
             $query->where(function ($q) use ($searchKeywords) {
-                $q->whereRaw('LOWER(title) like ?', ['%' . $searchKeywords . '%']);
-                $q->orWhereRaw('LOWER(description) like ?', ['%' . $searchKeywords . '%']);
+                $q->whereRaw('LOWER(title) like ?', ['%'.$searchKeywords.'%']);
+                $q->orWhereRaw('LOWER(description) like ?', ['%'.$searchKeywords.'%']);
             });
         }
 
@@ -197,7 +197,7 @@ class CourseController extends Controller
         }
 
         $courses = $query
-            ->with(['modules' => fn($q) => $q->withSum('lessons', 'duration')])
+            ->with(['modules' => fn ($q) => $q->withSum('lessons', 'duration')])
             ->withAvg('reviews', 'rating')
             ->latest()
             ->paginate(9)
@@ -234,7 +234,7 @@ class CourseController extends Controller
         $categoryLabels = collect(Globals::COURSE_CATEGORIES)->pluck('label')->implode(',');
         $validatedData = $request->validate([
             'title' => 'required|string|max:100',
-            'category' => 'required|in:' . $categoryLabels,
+            'category' => 'required|in:'.$categoryLabels,
             'description' => 'required|string|max:300',
             'fullDescription' => 'nullable|string|max:1000',
             'image' => 'image|mimes:jpeg,png,jpg,webp|max:2080',

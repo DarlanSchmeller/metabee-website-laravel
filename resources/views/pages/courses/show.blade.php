@@ -40,7 +40,7 @@
                                 class="inline-flex items-center space-x-2 bg-red-700/80 hover:bg-red-600 text-white font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-red-500/30 mb-6"
                             >
                                 <x-heroicon-o-trash class="w-5 h-5" />
-                                <span>Apagar Curso</span>
+                                <span>Deletar Curso</span>
                             </button>
                         </form>
                     @endcan
@@ -286,7 +286,7 @@
                                                     <div class="flex gap-">
                                                         @for ($i = 1; $i <= 5; $i++)
                                                             <x-heroicon-s-star
-                                                                class="w-5 h-5 transition-colors duration-150 
+                                                                class="w-5 h-5 transition-colors duration-150
                                                                 {{ $i <= $review->rating ? 'text-amber-400' : 'text-gray-600' }}"
                                                             />
                                                         @endfor

@@ -22,6 +22,8 @@ Route::middleware(['throttle:global'])->group(function () {
         Route::put('/minha-conta/credentials', [AccountController::class, 'updateUserCredentials'])->name('account.credentials.update');
         Route::delete('/minha-conta/delete', [AccountController::class, 'destroy'])->name('account.destroy');
 
+        Route::post('account.upgrade/{plan}', [AccountController::class, 'upgrade'])->name('account.upgrade');
+
         Route::get('cursos/{course}/{module}/{lesson}', [CourseWatchController::class, 'show'])->name('cursos.watch');
         Route::post('cursos/{lesson}/complete', [CourseWatchController::class, 'completeLesson'])->name('cursos.complete-lesson');
         Route::delete('cursos/{lesson}/complete', [CourseWatchController::class, 'uncompleteLesson'])->name('cursos.uncomplete-lesson');

@@ -88,4 +88,10 @@ class Globals
             'highlighted' => false,
         ],
     ];
+
+    const PLANS = [
+        'starter',
+        'profissional',
+        'enterprise',
+    ];
 }

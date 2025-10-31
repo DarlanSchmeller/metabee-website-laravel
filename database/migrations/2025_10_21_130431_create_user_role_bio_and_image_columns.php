@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('user_image')->nullable();
             $table->text('bio')->nullable();
-            $table->enum('role', ['guest', 'subscriber', 'premium', 'instructor'])->default('guest');
+            $table->enum('role', ['guest', 'starter', 'profissional', 'enterprise', 'instructor'])->default('guest');
         });
     }
 

@@ -9,7 +9,7 @@
     @csrf
     @method("PUT")
     <h3 class="text-xl font-semibold text-white flex items-center gap-3">
-        <x-heroicon-o-key class="w-6 h-6 text-amber-400" />
+        <x-heroicon-o-key class="w-6 h-6 text-amber-500" />
         Segurança
     </h3>
 
