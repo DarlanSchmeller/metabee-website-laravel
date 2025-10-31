@@ -34,16 +34,15 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                    <a
-                        href="{{ route("planos") }}"
-                        class="group bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300"
-                    >
-                        <span class="flex items-center justify-center">
-                            Começar agora
-                            <x-heroicon-o-arrow-right
-                                class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-                            />
-                        </span>
+                    <a href="{{ route("planos") }}">
+                        <x-button px="px-8" py="py-4">
+                            <span class="flex items-center justify-center">
+                                Começar agora
+                                <x-heroicon-o-arrow-right
+                                    class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+                                />
+                            </span>
+                        </x-button>
                     </a>
 
                     <a

@@ -9,23 +9,20 @@
             <div class="absolute top-20 right-20 w-96 h-96 bg-amber-500/20 rounded-full filter blur-3xl"></div>
 
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row gap-1 md:gap-6">
+                <div class="flex flex-col md:flex-row gap-1 md:gap-6 pb-6">
                     {{-- Back Button --}}
-                    <a
-                        href="{{ route("cursos.index") }}"
-                        class="inline-flex items-center space-x-2 bg-gray-800/60 hover:bg-gray-700/80 text-amber-400 hover:text-amber-300 font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-amber-500/40 transition-all duration-200 border border-amber-500/30 mb-6"
-                    >
-                        <x-heroicon-o-arrow-left class="w-5 h-5" />
-                        <span>Voltar para Cursos</span>
+                    <a href="{{ route("cursos.index") }}">
+                        <x-button-outline color="amber">
+                            <x-heroicon-o-arrow-left class="w-5 h-5" />
+                            <span>Voltar para Cursos</span>
+                        </x-button-outline>
                     </a>
                     @can("update", $course)
-                        {{-- Edit Button --}}
-                        <a
-                            href="{{ route("cursos.edit", $course->id) }}"
-                            class="inline-flex items-center space-x-2 bg-blue-700/80 hover:bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-blue-500/30 mb-6"
-                        >
-                            <x-heroicon-o-pencil class="w-5 h-5" />
-                            <span>Editar Curso</span>
+                        <a href="{{ route("cursos.edit", $course->id) }}">
+                            <x-button-outline color="blue">
+                                <x-heroicon-o-pencil class="w-5 h-5" />
+                                <span>Editar Curso</span>
+                            </x-button-outline>
                         </a>
 
                         <form
@@ -35,13 +32,10 @@
                         >
                             @csrf
                             @method("DELETE")
-                            <button
-                                type="submit"
-                                class="inline-flex items-center space-x-2 bg-red-700/80 hover:bg-red-600 text-white font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-red-500/30 mb-6"
-                            >
+                            <x-button-outline color="red" type="submit">
                                 <x-heroicon-o-trash class="w-5 h-5" />
                                 <span>Deletar Curso</span>
-                            </button>
+                            </x-button-outline>
                         </form>
                     @endcan
                 </div>
@@ -341,11 +335,7 @@
                                         <a
                                             href="{{ route("cursos.watch", [$course->id, $firstModule, $firstLesson]) }}"
                                         >
-                                            <button
-                                                class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 mb-4"
-                                            >
-                                                Assistir Aulas
-                                            </button>
+                                            <x-button px="px-6 w-full mb-6">Assistir Aulas</x-button>
                                         </a>
                                     @else
                                         <x-course-guest-buttons />

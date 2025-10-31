@@ -7,6 +7,7 @@ use App\Models\UserReview;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class ReviewController extends Controller
 {
@@ -15,24 +16,30 @@ class ReviewController extends Controller
      */
     public function store(Request $request, Course $course): RedirectResponse
     {
-        $validatedData = $request->validate([
-            'rating' => 'required|integer|in:1,2,3,4,5',
-            'content' => 'required|string|min:10|max:400',
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'rating' => 'required|integer|in:1,2,3,4,5',
+                'content' => 'required|string|min:10|max:400',
+            ]);
 
-        $user = Auth::user();
-        $validatedData['user_id'] = $user->id;
-        $validatedData['course_id'] = $course->id;
+            $user = Auth::user();
+            $validatedData['user_id'] = $user->id;
+            $validatedData['course_id'] = $course->id;
 
-        // Check if user reviewed this course
-        if ($user->reviews()->where('course_id', $course->id)->exists()) {
-            return redirect()->back()->with('error', 'Você já avaliou este curso.');
+            // Check if user reviewed this course
+            if ($user->reviews()->where('course_id', $course->id)->exists()) {
+                return redirect()->back()->with('error', 'Você já avaliou este curso.');
+            }
+
+            // Store review in db
+            UserReview::create($validatedData);
+
+            return redirect()->back()->with('success', 'Avaliação criada com sucesso!');
+        } catch (ValidationException $e) {
+            return redirect(url()->previous().'#review-section')
+                ->withErrors($e->validator)
+                ->withInput();
         }
-
-        // Store review in db
-        UserReview::create($validatedData);
-
-        return redirect()->back()->with('success', 'Avaliação criada com sucesso!');
     }
 
     /**

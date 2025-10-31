@@ -16,14 +16,20 @@
 
         <div class="text-center">
             <a href="{{ route("cursos.index") }}">
-                <button
-                    class="group bg-gray-900 text-amber-400 border-2 border-amber-500/50 px-8 py-4 rounded-xl font-medium hover:bg-amber-500 hover:text-gray-900 transition-all duration-300"
+                <x-button
+                    background="bg-gray-900  border-2 border-amber-500/50"
+                    px="px-8"
+                    py="py-4"
+                    hover="hover:bg-amber-500 hover:text-gray-900"
+                    scale=""
+                    text="text-amber-400"
+                    font="font-medium"
                 >
                     <span class="flex items-center justify-center">
                         Ver Todos os Cursos
                         <x-heroicon-o-arrow-right class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </span>
-                </button>
+                </x-button>
             </a>
         </div>
     </div>

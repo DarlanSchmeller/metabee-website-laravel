@@ -63,12 +63,15 @@
         </div>
     </div>
 
-    <button
+    <x-button
         type="submit"
-        class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-900 font-semibold hover:from-amber-600 hover:to-yellow-600 hover:shadow-md hover:shadow-amber-500/20 transition-all duration-300 py-3 rounded-lg text-base md:text-lg"
+        px="w-full"
+        py="py-3"
+        hover="hover:from-amber-600 hover:to-yellow-600 hover:shadow-md hover:shadow-amber-500/20"
+        scale=""
     >
         Entrar
-    </button>
+    </x-button>
     <div class="mt-4 text-center text-sm text-gray-300">
         Ainda não tem uma conta?
         <a href="{{ route("register") }}" class="text-amber-400 hover:text-amber-300 font-medium">Crie agora</a>

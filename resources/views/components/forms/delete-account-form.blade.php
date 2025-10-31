@@ -26,12 +26,9 @@
     >
         @csrf
         @method("DELETE")
-        <button
-            type="submit"
-            class="inline-flex items-center space-x-2 bg-gray-800/60 hover:bg-gray-700/80 text-red-400 hover:text-red-300 font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-red-500/40 transition-all duration-200 border border-red-500/30"
-        >
+        <x-button-outline type="submit" color="red">
             <x-heroicon-s-backspace class="w-5 h-5" />
             <span>Deletar Conta</span>
-        </button>
+        </x-button-outline>
     </form>
 </div>

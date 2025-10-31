@@ -95,12 +95,18 @@
                             <a
                                 href="{{ route("cursos.watch", [$course->id, $previousLesson->module_id, $previousLesson->id]) }}"
                             >
-                                <button
-                                    class="bg-gray-800/50 border border-amber-500/30 text-amber-400 px-4 py-2 rounded-md hover:bg-amber-500/10 flex items-center gap-2 text-sm"
+                                <x-button
+                                    px="px-4 flex items-center text-sm gap-2"
+                                    py="py-2"
+                                    hover="hover:bg-amber-500/10 hover:shadow-lg text-smhover:shadow-amber-500/50 gap-2"
+                                    rounded="rounded-md"
+                                    background="bg-gray-800/50 border border-amber-500/30"
+                                    text="text-amber-400"
+                                    scale=""
                                 >
                                     <x-heroicon-o-arrow-left class="h-5 w-5" />
                                     Voltar
-                                </button>
+                                </x-button>
                             </a>
                         @endif
 
@@ -109,12 +115,15 @@
                                 href="{{ route("cursos.watch", [$course->id, $nextLesson->module_id, $nextLesson->id]) }}"
                                 class="ml-auto"
                             >
-                                <button
-                                    class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 font-semibold px-4 py-2 rounded-md hover:shadow-lg hover:shadow-amber-500/50 flex items-center text-sm gap-2"
+                                <x-button
+                                    px="px-4 flex items-center text-sm gap-2"
+                                    py="py-2"
+                                    hover="hover:shadow-lg hover:shadow-amber-500/50 gap-2"
+                                    rounded="rounded-md"
                                 >
                                     Próximo
                                     <x-heroicon-o-arrow-right class="h-5 w-5" />
-                                </button>
+                                </x-button>
                             </a>
                         @endif
                     </div>

@@ -72,16 +72,14 @@
         <div class="flex items-center justify-between">
             <div class="text-2xl font-bold text-amber-400">R$ {{ $course->price }}</div>
             <a href="{{ route("cursos.show", $course->id) }}">
-                <button
-                    class="group/btn bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300"
-                >
+                <x-button px="px-4" py="py-3">
                     <span class="flex items-center">
                         Visualizar Curso
                         <x-heroicon-o-arrow-right
                             class="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform"
                         />
                     </span>
-                </button>
+                </x-button>
             </a>
         </div>
     </div>

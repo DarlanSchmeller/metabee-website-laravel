@@ -14,20 +14,7 @@
             @if ($icon)
                 <x-heroicon-o-book-open class="w-16 h-16 text-amber-500 mx-auto mb-6" />
             @else
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-16 h-16 text-amber-500 mx-auto mb-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M16 7a4 4 0 11-8 0 4 4 0 018 0z"
-                    />
-                </svg>
+                <x-heroicon-o-chart-pie class="w-20 h-20 mx-auto mb-6 text-amber-400" />
             @endif
 
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{{ $title }}</h2>
@@ -35,11 +22,9 @@
                 {{ $content }}
             </p>
             <a href="{{ $link }}">
-                <button
-                    class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300"
-                >
+                <x-button>
                     {{ $buttonText }}
-                </button>
+                </x-button>
             </a>
         </div>
     </div>

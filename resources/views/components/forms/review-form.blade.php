@@ -20,13 +20,10 @@
             >
                 @csrf
                 @method("DELETE")
-                <button
-                    type="submit"
-                    class="inline-flex items-center space-x-2 bg-gray-800/60 hover:bg-gray-700/80 text-red-400 hover:text-red-300 font-semibold px-3 py-2 rounded-lg shadow-md hover:shadow-red-500/40 transition-all duration-200 border border-red-500/30 text-sm"
-                >
+                <x-button-outline type="submit" color="red">
                     <x-heroicon-o-x-circle class="w-5 h-5 text-red-400" />
                     <span>Apagar Avaliação</span>
-                </button>
+                </x-button-outline>
             </form>
         @endif
     </div>
@@ -79,13 +76,10 @@
 
         {{-- Submit --}}
         <div class="flex justify-end">
-            <button
-                type="submit"
-                class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-5 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 flex items-center space-x-2"
-            >
+            <x-button type="submit" px="px-5 flex flex-row gap-2 items-center" py="py-2">
                 <span>{{ $reviewed ? "Atualizar" : "Enviar" }}</span>
                 <x-heroicon-o-arrow-right class="w-5 h-5 text-gray-900" />
-            </button>
+            </x-button>
         </div>
     </form>
 </div>

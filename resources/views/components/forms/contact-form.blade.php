@@ -91,13 +91,10 @@
                         </div>
                     </div>
 
-                    <button
-                        type="submit"
-                        class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
-                    >
+                    <x-button type="submit" px="px-8 w-full" py="py-4 flex items-center justify-center space-x-2">
                         <span>Enviar Mensagem</span>
                         <x-heroicon-o-arrow-right class="w-6 h-6 text-gray-900" />
-                    </button>
+                    </x-button>
                 </form>
             @else
                 {{-- Success Message --}}

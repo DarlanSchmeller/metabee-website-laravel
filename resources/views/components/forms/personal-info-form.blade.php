@@ -14,13 +14,10 @@
             <x-heroicon-o-identification class="w-6 h-6 text-amber-400" />
             Informações Pessoais
         </h3>
-        <button
-            type="submit"
-            class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-4 py-2 rounded-lg hover:shadow-lg hover:shadow-amber-500/50 flex items-center gap-2"
-        >
+        <x-button type="submit" px="px-4 flex items-center gap-2" py="py-2" scale="" font="">
             <x-heroicon-o-document-arrow-down class="w-4 h-4" />
             Salvar
-        </button>
+        </x-button>
     </div>
 
     <div class="grid gap-6 sm:grid-cols-2 mb-6">

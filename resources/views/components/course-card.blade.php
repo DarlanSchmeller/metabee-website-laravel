@@ -74,11 +74,8 @@
         {{-- Price & Button --}}
         <div class="mt-auto flex items-center justify-between pt-6 border-t border-amber-500/20">
             <span class="text-2xl font-bold text-white">R$ {{ $course->price }}</span>
-            <a
-                href="{{ route("cursos.show", $course->id) }}"
-                class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 px-6 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300"
-            >
-                Visualizar Curso
+            <a href="{{ route("cursos.show", $course->id) }}">
+                <x-button px="px-6" py="py-2">Visualizar Curso</x-button>
             </a>
         </div>
     </div>

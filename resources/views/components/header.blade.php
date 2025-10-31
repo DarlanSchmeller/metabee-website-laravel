@@ -72,11 +72,7 @@
                         </button>
                     </a>
                     <a href="{{ route("planos") }}">
-                        <button
-                            class="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all font-semibold"
-                        >
-                            Começar Agora
-                        </button>
+                        <x-button px="px-4" py="py-2" rounded="rounded-lg">Começar Agora</x-button>
                     </a>
                 </div>
             @endauth

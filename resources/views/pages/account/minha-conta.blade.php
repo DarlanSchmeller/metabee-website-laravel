@@ -5,12 +5,11 @@
 
         <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
             <div class="flex flex-wrap justify-between gap-6">
-                <a
-                    href="{{ route("cursos.index") }}"
-                    class="inline-flex items-center space-x-2 bg-gray-800/60 hover:bg-gray-700/80 text-amber-400 hover:text-amber-300 font-semibold px-5 py-3 rounded-lg shadow-md hover:shadow-amber-500/40 transition-all duration-200 border border-amber-500/30 mb-6"
-                >
-                    <x-heroicon-o-arrow-left class="w-5 h-5" />
-                    <span>Voltar para a Home</span>
+                <a href="{{ route("cursos.index") }}">
+                    <x-button-outline color="amber">
+                        <x-heroicon-o-arrow-left class="w-5 h-5" />
+                        <span>Voltar para a Home</span>
+                    </x-button-outline>
                 </a>
 
                 @if ($user->role === "instructor")
