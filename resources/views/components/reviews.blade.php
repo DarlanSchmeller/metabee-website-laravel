@@ -6,7 +6,7 @@
 <section class="relative pt-12 overflow-hidden" id="review-section">
     <div class="bg-gradient-to-br from-gray-900 to-gray-900/50 border border-amber-500/20 rounded-2xl p-8">
         @auth
-            <x-review-form :course="$course" :reviewed="$existingReview" />
+            <x-review-form :course="$course" :reviewed="$existingreview" />
         @endauth
 
         {{-- Divider --}}

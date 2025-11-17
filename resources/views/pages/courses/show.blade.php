@@ -19,7 +19,7 @@
                             :totallessons="$courseTotalLessons"
                         />
 
-                        <x-reviews :course="$course" :existing-review="$existingReview" :reviews="$reviews" />
+                        <x-reviews :course="$course" :existingreview="$existingReview" :reviews="$reviews" />
                     </div>
 
                     {{-- Sidebar --}}
